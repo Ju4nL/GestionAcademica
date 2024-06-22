@@ -1,6 +1,6 @@
-package AP3_4Clases;
+package Modelos;
 
-import AP3_4Clases.Grado;
+import Controladores.Grado;
 
 public class GradoController {
     private Grado modelodelgrado;

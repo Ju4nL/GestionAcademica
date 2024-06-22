@@ -1,6 +1,6 @@
-package AP3_4Clases;
+package Modelos;
 
-import AP3_4Clases.Vacante;
+import Controladores.Vacante;
 
 public class VacanteController {
     private Vacante modelodelavacante;

@@ -1,4 +1,4 @@
-package AP3_4Clases;
+package Controladores;
 public class Seccion {
     private int SeccionID;
     private String SeccionNombre;

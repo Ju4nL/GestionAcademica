@@ -1,6 +1,5 @@
-package AP3_4Clases;
-
-import AP3_4Clases.Seccion;
+package Modelos;
+import Controladores.Seccion;
 
 public class SeccionController {
     private Seccion modelodelaseccion;

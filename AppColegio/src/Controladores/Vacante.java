@@ -1,4 +1,4 @@
-package AP3_4Clases;
+package Controladores;
 public class Vacante {
     private int VacanteID;
     private String Grado;

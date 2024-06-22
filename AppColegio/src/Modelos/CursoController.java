@@ -1,6 +1,5 @@
-package AP3_4Clases;
-
-import AP3_4Clases.Curso;
+package Modelos;
+import Controladores.Curso;
 
 public class CursoController {
     
