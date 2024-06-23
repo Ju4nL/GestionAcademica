@@ -1,5 +1,5 @@
-package Modelos;
-import Controladores.Curso;
+package Controladores;
+import Modelos.Curso;
 
 public class CursoController {
     

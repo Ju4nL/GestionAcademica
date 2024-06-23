@@ -1,5 +1,5 @@
-package Modelos;
-import Controladores.Seccion;
+package Controladores;
+import Modelos.Seccion;
 
 public class SeccionController {
     private Seccion modelodelaseccion;

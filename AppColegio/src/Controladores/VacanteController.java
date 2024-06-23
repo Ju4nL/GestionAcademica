@@ -1,6 +1,6 @@
-package Modelos;
+package Controladores;
 
-import Controladores.Vacante;
+import Modelos.Vacante;
 
 public class VacanteController {
     private Vacante modelodelavacante;

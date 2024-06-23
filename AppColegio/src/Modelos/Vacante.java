@@ -1,4 +1,4 @@
-package Controladores;
+package Modelos;
 public class Vacante {
     private int VacanteID;
     private String Grado;

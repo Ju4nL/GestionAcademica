@@ -1,6 +1,6 @@
-package Modelos;
+package Controladores;
 
-import Controladores.Grado;
+import Modelos.Grado;
 
 public class GradoController {
     private Grado modelodelgrado;

@@ -1,4 +1,4 @@
-package Controladores;
+package Modelos;
 public class Seccion {
     private int SeccionID;
     private String SeccionNombre;

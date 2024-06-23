@@ -1,4 +1,4 @@
-package Controladores;
+package Modelos;
 public class Grado {
     private int GradoID;
     private String GradoNombre;
