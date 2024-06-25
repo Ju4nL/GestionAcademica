@@ -2,6 +2,10 @@ package View;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.FlatLightLaf;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 public class LoginFrame extends javax.swing.JFrame {
@@ -10,7 +14,7 @@ public class LoginFrame extends javax.swing.JFrame {
         initComponents();
         initFlat();
     }
-
+   
     private void initFlat() {
         FlatLightLaf.setup();
         pswContrasena.putClientProperty(FlatClientProperties.STYLE,""+
@@ -18,9 +22,34 @@ public class LoginFrame extends javax.swing.JFrame {
         txtEmail.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT,"Ingrese su email");
         pswContrasena.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT,"Ingrese su password");
         
-        
-
     }
+    
+    public JTextField getTxtUsername() {
+        return txtEmail;
+    }
+    
+    public JPasswordField getPswPassword() {
+        return pswContrasena;
+    }
+    
+    public void setLoginAction(ActionListener action){
+        btnIniciarSesion.addActionListener(action);
+    }
+    
+    public void setRegisterAction(ActionListener action){
+        btnRegistrate.addActionListener(action);
+    }
+    
+    public void displayErrorMessage(String message){
+        JOptionPane.showMessageDialog(this, message, "Error Login", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    public void displaySucessMessage(String message){
+        JOptionPane.showMessageDialog(this, message);
+    }
+    
+    
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
