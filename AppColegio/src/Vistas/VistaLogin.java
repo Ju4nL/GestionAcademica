@@ -17,7 +17,7 @@ public class VistaLogin extends javax.swing.JPanel {
     }
     
     private void init(){
-        FlatLightLaf.setup();
+         
         loginPasswordInput.putClientProperty(FlatClientProperties.STYLE,""+
                 "showRevealButton:true");
         loginUserInput.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT,"Ingrese su email");
