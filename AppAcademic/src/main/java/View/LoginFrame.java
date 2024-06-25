@@ -23,7 +23,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 "showRevealButton:true");
         txtEmail.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT,"Ingrese su email");
         pswContrasena.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT,"Ingrese su password");
-        
+         
     }
     
     public JTextField getTxtUsername() {
@@ -127,9 +127,10 @@ public class LoginFrame extends javax.swing.JFrame {
 
         getContentPane().add(panelBg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 500));
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/LoginImage.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 0, 380, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(423, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -1,12 +1,10 @@
 package View;
 
-import com.formdev.flatlaf.FlatClientProperties;
-import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.FlatClientProperties; 
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.UIManager;
+import javax.swing.JTextField; 
 
 public class RegisterFrame extends javax.swing.JFrame {
 
