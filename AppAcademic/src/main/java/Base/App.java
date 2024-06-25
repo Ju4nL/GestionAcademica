@@ -6,6 +6,7 @@ package Base;
 
 import View.LoginFrame;
 import com.formdev.flatlaf.FlatLightLaf;
+import javax.swing.UIManager;
 
 /**
  *
@@ -18,6 +19,8 @@ public class App {
      */
     public static void main(String[] args) {
         FlatLightLaf.setup();
+        UIManager.put( "Button.arc", 25 );
+        
         LoginFrame login= new LoginFrame();
         
      
