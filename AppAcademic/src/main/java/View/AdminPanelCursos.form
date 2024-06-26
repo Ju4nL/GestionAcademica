@@ -89,9 +89,9 @@
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/icons/class.png"/>
+              <Image iconType="3" name="/icons/course.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Aulas"/>
+            <Property name="text" type="java.lang.String" value="Cursos"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JPanel" name="panelSearch">

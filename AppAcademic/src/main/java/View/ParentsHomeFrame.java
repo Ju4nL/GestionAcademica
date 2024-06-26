@@ -4,9 +4,9 @@ import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
-public class AdminHomeFrame extends javax.swing.JFrame {
+public class ParentsHomeFrame extends javax.swing.JFrame {
 
-    public AdminHomeFrame() {
+    public ParentsHomeFrame() {
         initComponents();
         initFlat() ;
         initContent();
@@ -19,7 +19,7 @@ public class AdminHomeFrame extends javax.swing.JFrame {
     }
     
     private void initContent(){ 
-        ShowJPanel(new AdminPanelVacantes());
+        ShowJPanel(new ParentsPanelVacantes());
     }
     
     private void ShowJPanel(JPanel panel) {
@@ -39,29 +39,25 @@ public class AdminHomeFrame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         panelBgMenu = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jblName = new javax.swing.JLabel();
         panelBtns = new javax.swing.JPanel();
         btnVacantes = new javax.swing.JButton();
         btnSolicitudes = new javax.swing.JButton();
-        btnDocentes = new javax.swing.JButton();
-        btnAulas = new javax.swing.JButton();
-        btnAlumnos = new javax.swing.JButton();
         btnCerrarSesion = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        btnCursos = new javax.swing.JButton();
         content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setMinimumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(1000, 600));
 
         jPanel1.setBackground(new java.awt.Color(240, 243, 253));
 
         panelBgMenu.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Icon.png"))); // NOI18N
-        jLabel1.setText("Admin");
+        jblName.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jblName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Icon.png"))); // NOI18N
+        jblName.setText("Sr Rex");
 
         panelBtns.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -95,49 +91,6 @@ public class AdminHomeFrame extends javax.swing.JFrame {
             }
         });
 
-        btnDocentes.setBackground(new java.awt.Color(255, 255, 255));
-        btnDocentes.setForeground(new java.awt.Color(51, 51, 51));
-        btnDocentes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/teacher.png"))); // NOI18N
-        btnDocentes.setText("Docentes");
-        btnDocentes.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 30, 1, 1, new java.awt.Color(0, 0, 0)));
-        btnDocentes.setBorderPainted(false);
-        btnDocentes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnDocentes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnDocentes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnDocentesMousePressed(evt);
-            }
-        });
-
-        btnAulas.setBackground(new java.awt.Color(255, 255, 255));
-        btnAulas.setForeground(new java.awt.Color(51, 51, 51));
-        btnAulas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/class.png"))); // NOI18N
-        btnAulas.setText("Aulas");
-        btnAulas.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 30, 1, 1, new java.awt.Color(0, 0, 0)));
-        btnAulas.setBorderPainted(false);
-        btnAulas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAulas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnAulas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnAulasMousePressed(evt);
-            }
-        });
-
-        btnAlumnos.setBackground(new java.awt.Color(255, 255, 255));
-        btnAlumnos.setForeground(new java.awt.Color(51, 51, 51));
-        btnAlumnos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/student.png"))); // NOI18N
-        btnAlumnos.setText("Alumnos");
-        btnAlumnos.setToolTipText("");
-        btnAlumnos.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 30, 1, 1, new java.awt.Color(0, 0, 0)));
-        btnAlumnos.setBorderPainted(false);
-        btnAlumnos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAlumnos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnAlumnos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnAlumnosMousePressed(evt);
-            }
-        });
-
         btnCerrarSesion.setBackground(new java.awt.Color(255, 255, 255));
         btnCerrarSesion.setForeground(new java.awt.Color(51, 51, 51));
         btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Logout.png"))); // NOI18N
@@ -150,38 +103,19 @@ public class AdminHomeFrame extends javax.swing.JFrame {
 
         jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
 
-        btnCursos.setBackground(new java.awt.Color(255, 255, 255));
-        btnCursos.setForeground(new java.awt.Color(51, 51, 51));
-        btnCursos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/course.png"))); // NOI18N
-        btnCursos.setText("Cursos");
-        btnCursos.setToolTipText("");
-        btnCursos.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 30, 1, 1, new java.awt.Color(0, 0, 0)));
-        btnCursos.setBorderPainted(false);
-        btnCursos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCursos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnCursos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnCursosMousePressed(evt);
-            }
-        });
-
         javax.swing.GroupLayout panelBtnsLayout = new javax.swing.GroupLayout(panelBtns);
         panelBtns.setLayout(panelBtnsLayout);
         panelBtnsLayout.setHorizontalGroup(
             panelBtnsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(btnVacantes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnSolicitudes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnDocentes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnAulas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnAlumnos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelBtnsLayout.createSequentialGroup()
                 .addGroup(panelBtnsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                     .addGroup(panelBtnsLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jSeparator1)))
+                        .addComponent(jSeparator1))
+                    .addComponent(btnCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))
                 .addContainerGap())
-            .addComponent(btnCursos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelBtnsLayout.setVerticalGroup(
             panelBtnsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,14 +124,6 @@ public class AdminHomeFrame extends javax.swing.JFrame {
                 .addComponent(btnVacantes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(btnSolicitudes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(btnDocentes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(btnAulas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addComponent(btnAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -212,14 +138,14 @@ public class AdminHomeFrame extends javax.swing.JFrame {
             .addComponent(panelBtns, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelBgMenuLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jblName, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 17, Short.MAX_VALUE))
         );
         panelBgMenuLayout.setVerticalGroup(
             panelBgMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBgMenuLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jblName, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addComponent(panelBtns, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -265,42 +191,22 @@ public class AdminHomeFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSolicitudesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSolicitudesMousePressed
-        ShowJPanel(new AdminPanelSolicitudes());
+        ShowJPanel(new ParentsPanelSolicitudes());
     }//GEN-LAST:event_btnSolicitudesMousePressed
 
     private void btnVacantesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVacantesMousePressed
-         ShowJPanel(new AdminPanelVacantes());
+         ShowJPanel(new ParentsPanelVacantes());
     }//GEN-LAST:event_btnVacantesMousePressed
-
-    private void btnDocentesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDocentesMousePressed
-         ShowJPanel(new AdminPanelDocentes());
-    }//GEN-LAST:event_btnDocentesMousePressed
-
-    private void btnAulasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAulasMousePressed
-        ShowJPanel(new AdminPanelAulas());
-    }//GEN-LAST:event_btnAulasMousePressed
-
-    private void btnAlumnosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlumnosMousePressed
-        ShowJPanel(new AdminPanelAlumnos());
-    }//GEN-LAST:event_btnAlumnosMousePressed
-
-    private void btnCursosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCursosMousePressed
-        ShowJPanel(new AdminPanelCursos());
-    }//GEN-LAST:event_btnCursosMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAlumnos;
-    private javax.swing.JButton btnAulas;
     private javax.swing.JButton btnCerrarSesion;
-    private javax.swing.JButton btnCursos;
-    private javax.swing.JButton btnDocentes;
     private javax.swing.JButton btnSolicitudes;
     private javax.swing.JButton btnVacantes;
     private javax.swing.JPanel content;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel jblName;
     private javax.swing.JPanel panelBgMenu;
     private javax.swing.JPanel panelBtns;
     // End of variables declaration//GEN-END:variables

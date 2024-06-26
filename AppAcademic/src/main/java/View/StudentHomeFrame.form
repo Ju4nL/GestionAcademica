@@ -7,7 +7,7 @@
       <Color blue="ff" green="ff" red="ff" type="rgb"/>
     </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[800, 600]"/>
+      <Dimension value="[1000, 600]"/>
     </Property>
   </Properties>
   <SyntheticProperties>
@@ -111,7 +111,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/icons/Icon.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Admin"/>
+                <Property name="text" type="java.lang.String" value="Alumno"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JPanel" name="panelBtns">
@@ -124,39 +124,24 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnVacantes" max="32767" attributes="0"/>
-                      <Component id="btnSolicitudes" max="32767" attributes="0"/>
-                      <Component id="btnDocentes" max="32767" attributes="0"/>
-                      <Component id="btnAulas" max="32767" attributes="0"/>
-                      <Component id="btnAlumnos" max="32767" attributes="0"/>
+                      <Component id="btnHorario" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnCerrarSesion" pref="154" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jSeparator1" max="32767" attributes="0"/>
                               </Group>
+                              <Component id="btnCerrarSesion" pref="154" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
-                      <Component id="btnCursos" alignment="0" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                          <Component id="btnVacantes" min="-2" pref="40" max="-2" attributes="0"/>
-                          <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                          <Component id="btnSolicitudes" min="-2" pref="40" max="-2" attributes="0"/>
-                          <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                          <Component id="btnDocentes" min="-2" pref="40" max="-2" attributes="0"/>
-                          <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                          <Component id="btnAulas" min="-2" pref="40" max="-2" attributes="0"/>
-                          <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-                          <Component id="btnAlumnos" min="-2" pref="40" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnCursos" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="btnHorario" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="jSeparator1" min="-2" pref="12" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -167,7 +152,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="btnVacantes">
+                <Component class="javax.swing.JButton" name="btnHorario">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -179,9 +164,9 @@
                       <Color blue="33" green="33" red="33" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/icons/Vacantes.png"/>
+                      <Image iconType="3" name="/icons/Reloj.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Vacantes"/>
+                    <Property name="text" type="java.lang.String" value="Horario"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                         <MatteColorBorder bottom="1" left="30" right="1" top="1"/>
@@ -194,118 +179,6 @@
                     <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnVacantesMousePressed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnSolicitudes">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/icons/Solicitudes.png"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Solicitudes"/>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                        <MatteColorBorder bottom="1" left="30" right="1" top="1"/>
-                      </Border>
-                    </Property>
-                    <Property name="borderPainted" type="boolean" value="false"/>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Hand Cursor"/>
-                    </Property>
-                    <Property name="horizontalAlignment" type="int" value="2"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSolicitudesMousePressed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnDocentes">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/icons/teacher.png"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Docentes"/>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                        <MatteColorBorder bottom="1" left="30" right="1" top="1"/>
-                      </Border>
-                    </Property>
-                    <Property name="borderPainted" type="boolean" value="false"/>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Hand Cursor"/>
-                    </Property>
-                    <Property name="horizontalAlignment" type="int" value="2"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnDocentesMousePressed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnAulas">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/icons/class.png"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Aulas"/>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                        <MatteColorBorder bottom="1" left="30" right="1" top="1"/>
-                      </Border>
-                    </Property>
-                    <Property name="borderPainted" type="boolean" value="false"/>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Hand Cursor"/>
-                    </Property>
-                    <Property name="horizontalAlignment" type="int" value="2"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAulasMousePressed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JButton" name="btnAlumnos">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/icons/student.png"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Alumnos"/>
-                    <Property name="toolTipText" type="java.lang.String" value=""/>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                        <MatteColorBorder bottom="1" left="30" right="1" top="1"/>
-                      </Border>
-                    </Property>
-                    <Property name="borderPainted" type="boolean" value="false"/>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Hand Cursor"/>
-                    </Property>
-                    <Property name="horizontalAlignment" type="int" value="2"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAlumnosMousePressed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnCerrarSesion">
                   <Properties>
@@ -339,34 +212,6 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnCursos">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/icons/course.png"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Cursos"/>
-                    <Property name="toolTipText" type="java.lang.String" value=""/>
-                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                      <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                        <MatteColorBorder bottom="1" left="30" right="1" top="1"/>
-                      </Border>
-                    </Property>
-                    <Property name="borderPainted" type="boolean" value="false"/>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Hand Cursor"/>
-                    </Property>
-                    <Property name="horizontalAlignment" type="int" value="2"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCursosMousePressed"/>
-                  </Events>
-                </Component>
               </SubComponents>
             </Container>
           </SubComponents>
@@ -382,6 +227,57 @@
           </Properties>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="jPanel2">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="fd" green="f3" red="f0" type="rgb"/>
+                </Property>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                  <BorderConstraints direction="Center"/>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          <Component id="Titulo" min="-2" pref="162" max="-2" attributes="0"/>
+                          <EmptySpace pref="632" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="Titulo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="531" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="Titulo">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Roboto" size="24" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="33" green="33" red="33" type="rgb"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/icons/Reloj.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Horario"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
         </Container>
       </SubComponents>
     </Container>

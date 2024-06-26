@@ -41,7 +41,7 @@ public class AdminPanelAulas extends javax.swing.JPanel {
         btnSearch = new javax.swing.JButton();
         tblVacantes = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(240, 243, 253));
         setPreferredSize(new java.awt.Dimension(815, 588));
@@ -98,10 +98,10 @@ public class AdminPanelAulas extends javax.swing.JPanel {
         ));
         tblVacantes.setViewportView(jTable1);
 
-        jButton1.setBackground(new java.awt.Color(56, 53, 122));
-        jButton1.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Agregar");
+        btnAgregar.setBackground(new java.awt.Color(56, 53, 122));
+        btnAgregar.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregar.setText("Agregar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -111,11 +111,13 @@ public class AdminPanelAulas extends javax.swing.JPanel {
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tblVacantes, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
-                    .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(panelSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -126,7 +128,7 @@ public class AdminPanelAulas extends javax.swing.JPanel {
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(panelSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(btnAgregar))
                 .addGap(18, 18, 18)
                 .addComponent(tblVacantes, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
                 .addContainerGap())
@@ -147,8 +149,8 @@ public class AdminPanelAulas extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Titulo;
+    private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTable jTable1;
     private javax.swing.JPanel panelSearch;
