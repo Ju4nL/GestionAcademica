@@ -1,10 +1,12 @@
 package View;
 
-import com.formdev.flatlaf.FlatClientProperties; 
+import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
-import javax.swing.JTextField; 
+import javax.swing.JTextField;
 
 public class RegisterFrame extends javax.swing.JFrame {
 
@@ -12,47 +14,72 @@ public class RegisterFrame extends javax.swing.JFrame {
         initComponents();
         initFlat();
     }
-   
-    private void initFlat() { 
+
+    private void initFlat() {
         panelBg.putClientProperty(FlatClientProperties.STYLE, ""
-                + "border:20,2,2,2;" 
+                + "border:20,2,2,2;"
                 + "arc:10");
-        pswPassword1.putClientProperty(FlatClientProperties.STYLE,""+
-                "showRevealButton:true");
-        pswPassword2.putClientProperty(FlatClientProperties.STYLE,""+
-                "showRevealButton:true");
-        txtEmail.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT,"Ingrese su email");
-        pswPassword1.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT,"Ingrese su contraseña");
-        pswPassword2.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT,"Repita su contraseña");
-        
+        pswPassword1.putClientProperty(FlatClientProperties.STYLE, ""
+                + "showRevealButton:true");
+        pswPassword2.putClientProperty(FlatClientProperties.STYLE, ""
+                + "showRevealButton:true");
+        txtEmail.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Ingrese su email");
+        pswPassword1.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Ingrese su contraseña");
+        pswPassword2.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Repita su contraseña");
+
     }
-    
-    public JTextField getTxtUsername() {
+
+    public JButton getBtnRegistrate() {
+        return btnRegistrate;
+    }
+
+    public JComboBox<String> getCbxGender() {
+        return cbxGender;
+    }
+
+    public JPasswordField getPswPassword1() {
+        return pswPassword1;
+    }
+
+    public JPasswordField getPswPassword2() {
+        return pswPassword2;
+    }
+
+    public JTextField getTxtAddress() {
+        return txtAddress;
+    }
+
+    public JTextField getTxtDateNac() {
+        return txtDateNac;
+    }
+
+    public JTextField getTxtDni() {
+        return txtDni;
+    }
+
+    public JTextField getTxtEmail() {
         return txtEmail;
     }
-    
-    public JPasswordField getPswPassword() {
-        return pswContrasena;
+
+    public JTextField getTxtLastName() {
+        return txtLastName;
     }
-    
-    public void setLoginAction(ActionListener action){
-        btnIniciarSesion.addActionListener(action);
+
+    public JTextField getTxtName() {
+        return txtName;
     }
-    
-    public void setRegisterAction(ActionListener action){
-        btnRegistrate.addActionListener(action);
+
+    public JTextField getTxtPhone() {
+        return txtPhone;
     }
-    
-    public void displayErrorMessage(String message){
+
+    public void displayErrorMessage(String message) {
         JOptionPane.showMessageDialog(this, message, "Error Login", JOptionPane.ERROR_MESSAGE);
     }
-    
-    public void displaySucessMessage(String message){
+
+    public void displaySucessMessage(String message) {
         JOptionPane.showMessageDialog(this, message);
     }
-    
-    
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
