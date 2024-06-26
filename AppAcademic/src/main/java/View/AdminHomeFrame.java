@@ -48,11 +48,12 @@ public class AdminHomeFrame extends javax.swing.JFrame {
         btnAlumnos = new javax.swing.JButton();
         btnCerrarSesion = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        btnCursos = new javax.swing.JButton();
         content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setMinimumSize(new java.awt.Dimension(1000, 600));
+        setMinimumSize(new java.awt.Dimension(800, 600));
 
         jPanel1.setBackground(new java.awt.Color(240, 243, 253));
 
@@ -149,6 +150,21 @@ public class AdminHomeFrame extends javax.swing.JFrame {
 
         jSeparator1.setForeground(new java.awt.Color(153, 153, 153));
 
+        btnCursos.setBackground(new java.awt.Color(255, 255, 255));
+        btnCursos.setForeground(new java.awt.Color(51, 51, 51));
+        btnCursos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/course.png"))); // NOI18N
+        btnCursos.setText("Cursos");
+        btnCursos.setToolTipText("");
+        btnCursos.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 30, 1, 1, new java.awt.Color(0, 0, 0)));
+        btnCursos.setBorderPainted(false);
+        btnCursos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCursos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnCursos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnCursosMousePressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelBtnsLayout = new javax.swing.GroupLayout(panelBtns);
         panelBtns.setLayout(panelBtnsLayout);
         panelBtnsLayout.setHorizontalGroup(
@@ -160,11 +176,12 @@ public class AdminHomeFrame extends javax.swing.JFrame {
             .addComponent(btnAlumnos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelBtnsLayout.createSequentialGroup()
                 .addGroup(panelBtnsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                     .addGroup(panelBtnsLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jSeparator1))
-                    .addComponent(btnCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jSeparator1)))
                 .addContainerGap())
+            .addComponent(btnCursos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelBtnsLayout.setVerticalGroup(
             panelBtnsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,6 +196,8 @@ public class AdminHomeFrame extends javax.swing.JFrame {
                 .addComponent(btnAulas, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addComponent(btnAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnCursos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -265,11 +284,16 @@ public class AdminHomeFrame extends javax.swing.JFrame {
         ShowJPanel(new AdminPanelAlumnos());
     }//GEN-LAST:event_btnAlumnosMousePressed
 
+    private void btnCursosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCursosMousePressed
+        ShowJPanel(new AdminPanelCursos());
+    }//GEN-LAST:event_btnCursosMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlumnos;
     private javax.swing.JButton btnAulas;
     private javax.swing.JButton btnCerrarSesion;
+    private javax.swing.JButton btnCursos;
     private javax.swing.JButton btnDocentes;
     private javax.swing.JButton btnSolicitudes;
     private javax.swing.JButton btnVacantes;

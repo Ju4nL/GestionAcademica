@@ -4,16 +4,17 @@ package Base;
 import View.AdminHomeFrame;
 import View.LoginFrame;
 import View.ParentsHomeFrame;
-import com.formdev.flatlaf.FlatDarkLaf;
+import View.RegisterFrame;
+import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import javax.swing.UIManager;
   
 public class App {
  
     public static void main(String[] args) {
-        FlatDarkLaf.setup();
+        FlatMacLightLaf.setup();
         UIManager.put( "Button.arc", 25 );
         
-        ParentsHomeFrame login= new ParentsHomeFrame();
+        AdminHomeFrame login= new AdminHomeFrame();
         
      
         login.setVisible(true);
