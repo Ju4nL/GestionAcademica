@@ -3,6 +3,7 @@ package Base;
  
 import View.AdminHomeFrame;
 import View.LoginFrame;
+import View.ParentsHomeFrame;
 import com.formdev.flatlaf.FlatDarkLaf;
 import javax.swing.UIManager;
   
@@ -12,7 +13,7 @@ public class App {
         FlatDarkLaf.setup();
         UIManager.put( "Button.arc", 25 );
         
-        AdminHomeFrame login= new AdminHomeFrame();
+        ParentsHomeFrame login= new ParentsHomeFrame();
         
      
         login.setVisible(true);
