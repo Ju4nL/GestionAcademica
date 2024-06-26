@@ -19,19 +19,19 @@ public class LoginFrame extends javax.swing.JFrame {
         panelBg.putClientProperty(FlatClientProperties.STYLE, ""
                 + "border:20,2,2,2;" 
                 + "arc:10");
-        pswContrasena.putClientProperty(FlatClientProperties.STYLE,""+
+        pswPassword.putClientProperty(FlatClientProperties.STYLE,""+
                 "showRevealButton:true");
-        txtEmail.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT,"Ingrese su email");
-        pswContrasena.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT,"Ingrese su password");
+        txtUsername.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT,"Ingrese su email");
+        pswPassword.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT,"Ingrese su password");
          
     }
     
     public JTextField getTxtUsername() {
-        return txtEmail;
+        return txtUsername;
     }
     
     public JPasswordField getPswPassword() {
-        return pswContrasena;
+        return pswPassword;
     }
     
     public void setLoginAction(ActionListener action){
@@ -61,8 +61,8 @@ public class LoginFrame extends javax.swing.JFrame {
         loginTitle = new javax.swing.JLabel();
         loginUserLabel = new javax.swing.JLabel();
         loginPasswordLabel = new javax.swing.JLabel();
-        pswContrasena = new javax.swing.JPasswordField();
-        txtEmail = new javax.swing.JTextField();
+        pswPassword = new javax.swing.JPasswordField();
+        txtUsername = new javax.swing.JTextField();
         btnRegistrate = new javax.swing.JButton();
         btnIniciarSesion = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
@@ -95,16 +95,16 @@ public class LoginFrame extends javax.swing.JFrame {
         loginPasswordLabel.setText("Contraseña");
         panelBg.add(loginPasswordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, -1, -1));
 
-        pswContrasena.setBackground(new java.awt.Color(78, 69, 189));
-        pswContrasena.setForeground(new java.awt.Color(255, 255, 255));
-        pswContrasena.setBorder(null);
-        panelBg.add(pswContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 190, -1));
+        pswPassword.setBackground(new java.awt.Color(78, 69, 189));
+        pswPassword.setForeground(new java.awt.Color(255, 255, 255));
+        pswPassword.setBorder(null);
+        panelBg.add(pswPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 190, -1));
 
-        txtEmail.setBackground(new java.awt.Color(78, 69, 189));
-        txtEmail.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        txtEmail.setForeground(new java.awt.Color(255, 255, 255));
-        txtEmail.setBorder(null);
-        panelBg.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 190, -1));
+        txtUsername.setBackground(new java.awt.Color(78, 69, 189));
+        txtUsername.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        txtUsername.setForeground(new java.awt.Color(255, 255, 255));
+        txtUsername.setBorder(null);
+        panelBg.add(txtUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 190, -1));
 
         btnRegistrate.setBackground(new java.awt.Color(56, 53, 122));
         btnRegistrate.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -148,7 +148,7 @@ public class LoginFrame extends javax.swing.JFrame {
     private javax.swing.JLabel loginTitle;
     private javax.swing.JLabel loginUserLabel;
     private javax.swing.JPanel panelBg;
-    private javax.swing.JPasswordField pswContrasena;
-    private javax.swing.JTextField txtEmail;
+    private javax.swing.JPasswordField pswPassword;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }

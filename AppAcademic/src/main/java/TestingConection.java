@@ -1,9 +1,6 @@
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
-
 
 public class TestingConection {
 
@@ -21,17 +18,15 @@ public class TestingConection {
             // Establecer la conexión
             conn = DriverManager.getConnection(url, user, password);
             if (conn != null) {
-                System.out.println("Conexión se ha establecido correctamente");
+                System.out.println("Conexión establecida correctamente");
             }
 
         } catch (ClassNotFoundException e) {
             System.out.println("No se encontró el driver JDBC");
             e.printStackTrace();
-
         } catch (SQLException e) {
             System.out.println("Error al conectar a la base de datos");
             e.printStackTrace();
-
         } finally {
             try {
                 if (conn != null && !conn.isClosed()) {
@@ -42,5 +37,5 @@ public class TestingConection {
             }
         }
     }
-    
+
 }
