@@ -7,6 +7,8 @@ import View.AdminHomeFrame;
 import View.LoginFrame;
 import View.ParentsHomeFrame;
 import View.RegisterFrame;
+import View.StudentHomeFrame;
+import View.TeacherHomeFrame;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import javax.swing.UIManager;
   
@@ -33,7 +35,46 @@ public class App implements AppInterface {
         
     @Override
     public void onLoginSuccess(int usuarioID, String role) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        switch (role) {
+            case "padre":
+                launchParentsInterface(usuarioID);
+                break;
+            case "admin":
+                launchAdminInterface(usuarioID, role);
+                break;
+            case "alumno":
+                launchStudentInterface(usuarioID);
+                break;
+            case "tutor":
+                launchTeacherInterface(usuarioID);
+                break;
+            default:
+                throw new UnsupportedOperationException("Role no encontrado: " + role);
+        }
+    }
+    
+    private void launchParentsInterface(int usuarioID) {
+        ParentsHomeFrame parentsHomeFrame = new ParentsHomeFrame();
+        // Aquí puedes inicializar los controladores y modelos necesarios para la interfaz de los padres
+        parentsHomeFrame.setVisible(true);
+    }
+
+    private void launchAdminInterface(int usuarioID, String role) {
+        AdminHomeFrame adminHomeFrame = new AdminHomeFrame();
+        // Aquí puedes inicializar los controladores y modelos necesarios para la interfaz de los administradores
+        adminHomeFrame.setVisible(true);
+    }
+
+    private void launchStudentInterface(int usuarioID) {
+        StudentHomeFrame alumnoHomeFrame = new StudentHomeFrame();
+        // Aquí puedes inicializar los controladores y modelos necesarios para la interfaz de los alumnos
+        alumnoHomeFrame.setVisible(true);
+    }
+
+    private void launchTeacherInterface(int usuarioID) {
+        TeacherHomeFrame profesorHomeFrame = new TeacherHomeFrame();
+        // Aquí puedes inicializar los controladores y modelos necesarios para la interfaz de los profesores
+        profesorHomeFrame.setVisible(true);
     }
 
     @Override
@@ -55,6 +96,6 @@ public class App implements AppInterface {
     public void onRegisterFailed(String username) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    }
+    
     
 }
