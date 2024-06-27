@@ -4,9 +4,9 @@ import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
-public class TeacherHomeFrame1 extends javax.swing.JFrame {
+public class TeacherHomeFrame extends javax.swing.JFrame {
 
-    public TeacherHomeFrame1() {
+    public TeacherHomeFrame() {
         initComponents();
         initFlat() ;
         initContent();
