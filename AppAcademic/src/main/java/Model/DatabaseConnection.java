@@ -24,4 +24,6 @@ public class DatabaseConnection {
             throw new SQLException("Error al conectar a la base de datos", e);
         }
     }
+
+ 
 }

@@ -1,17 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
+
 package View;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
  
 public class AdminPanelCursos extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PanelAdminVacantes
-     */
     public AdminPanelCursos() {
         initComponents();
        initFlat() ;
@@ -22,7 +19,25 @@ public class AdminPanelCursos extends javax.swing.JPanel {
                 + "border:2,2,2,2;" 
                 + "arc:25");   
     }
- 
+
+    public JButton getBtnAgregar() {
+        return btnAdd;
+    }
+
+    public JButton getBtnSearch() {
+        return btnSearch;
+    }
+
+    public JTable getTblCursos() {
+        return tblCursos;
+    }
+
+    public JTextField getTxtSearch() {
+        return txtSearch;
+    }
+    
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -32,9 +47,9 @@ public class AdminPanelCursos extends javax.swing.JPanel {
         panelSearch = new javax.swing.JPanel();
         txtSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
-        tblVacantes = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        btnAgregar = new javax.swing.JButton();
+        scrollTblCursos = new javax.swing.JScrollPane();
+        tblCursos = new javax.swing.JTable();
+        btnAdd = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(240, 243, 253));
         setPreferredSize(new java.awt.Dimension(815, 588));
@@ -78,7 +93,7 @@ public class AdminPanelCursos extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblCursos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -89,12 +104,12 @@ public class AdminPanelCursos extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblVacantes.setViewportView(jTable1);
+        scrollTblCursos.setViewportView(tblCursos);
 
-        btnAgregar.setBackground(new java.awt.Color(56, 53, 122));
-        btnAgregar.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        btnAgregar.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregar.setText("Agregar");
+        btnAdd.setBackground(new java.awt.Color(56, 53, 122));
+        btnAdd.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        btnAdd.setForeground(new java.awt.Color(255, 255, 255));
+        btnAdd.setText("Agregar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -103,14 +118,14 @@ public class AdminPanelCursos extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tblVacantes, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
+                    .addComponent(scrollTblCursos, javax.swing.GroupLayout.DEFAULT_SIZE, 788, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(panelSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -121,9 +136,9 @@ public class AdminPanelCursos extends javax.swing.JPanel {
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(panelSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAgregar))
+                    .addComponent(btnAdd))
                 .addGap(18, 18, 18)
-                .addComponent(tblVacantes, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
+                .addComponent(scrollTblCursos, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -142,12 +157,12 @@ public class AdminPanelCursos extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Titulo;
-    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnSearch;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel panelSearch;
-    private javax.swing.JScrollPane tblVacantes;
+    private javax.swing.JScrollPane scrollTblCursos;
+    private javax.swing.JTable tblCursos;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
