@@ -58,7 +58,7 @@ public class TeacherHomeFrame1 extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Icon.png"))); // NOI18N
-        jLabel1.setText("Alumno");
+        jLabel1.setText("Profesor");
 
         panelBtns.setBackground(new java.awt.Color(255, 255, 255));
 
