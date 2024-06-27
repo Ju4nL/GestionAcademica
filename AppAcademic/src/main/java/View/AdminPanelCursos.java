@@ -1,6 +1,7 @@
 
 package View;
 
+import Controller.CursoController;
 import com.formdev.flatlaf.FlatClientProperties;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -9,10 +10,12 @@ import javax.swing.JTextField;
 
  
 public class AdminPanelCursos extends javax.swing.JPanel {
-
-    public AdminPanelCursos() {
+    private CursoController controller;
+    
+    public AdminPanelCursos(CursoController controller) {
+        this.controller = controller;   
         initComponents();
-       initFlat() ;
+        initFlat(); 
     }
     
      private void initFlat() { 

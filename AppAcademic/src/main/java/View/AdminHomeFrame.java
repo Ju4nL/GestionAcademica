@@ -1,36 +1,63 @@
 package View;
 
+import Controller.PrincipalController;
 import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.BorderLayout;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class AdminHomeFrame extends javax.swing.JFrame {
 
+    private PrincipalController principalController;
+
     public AdminHomeFrame() {
         initComponents();
-        initFlat() ;
-        initContent();
+        initFlat();
     }
-    
-     private void initFlat() { 
+
+    public void setController(PrincipalController controller) {
+        this.principalController = controller; 
+    }
+
+
+    private void initFlat() {
         panelBgMenu.putClientProperty(FlatClientProperties.STYLE, ""
-                + "border:20,2,2,2;" 
-                + "arc:30");   
+                + "border:20,2,2,2;"
+                + "arc:30");
     }
-    
-    private void initContent(){ 
-        ShowJPanel(new AdminPanelVacantes());
+
+    public JPanel getContentPanel() {
+        return content;
     }
-    
-    private void ShowJPanel(JPanel panel) {
-        panel.setSize(815, 580);
-        panel.setLocation(0,0);
-        
-        content.removeAll();
-        content.add(panel, BorderLayout.CENTER);
-        content.revalidate();
-        content.repaint();
+
+    public JButton getBtnAlumnos() {
+        return btnAlumnos;
     }
+
+    public JButton getBtnAulas() {
+        return btnAulas;
+    }
+
+    public JButton getBtnCerrarSesion() {
+        return btnCerrarSesion;
+    }
+
+    public JButton getBtnCursos() {
+        return btnCursos;
+    }
+
+    public JButton getBtnDocentes() {
+        return btnDocentes;
+    }
+
+    public JButton getBtnSolicitudes() {
+        return btnSolicitudes;
+    }
+
+    public JButton getBtnVacantes() {
+        return btnVacantes;
+    }
+
     
     
     @SuppressWarnings("unchecked")
@@ -75,11 +102,6 @@ public class AdminHomeFrame extends javax.swing.JFrame {
         btnVacantes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVacantes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnVacantes.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnVacantes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnVacantesMousePressed(evt);
-            }
-        });
 
         btnSolicitudes.setBackground(new java.awt.Color(255, 255, 255));
         btnSolicitudes.setForeground(new java.awt.Color(51, 51, 51));
@@ -89,11 +111,6 @@ public class AdminHomeFrame extends javax.swing.JFrame {
         btnSolicitudes.setBorderPainted(false);
         btnSolicitudes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSolicitudes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnSolicitudes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnSolicitudesMousePressed(evt);
-            }
-        });
 
         btnDocentes.setBackground(new java.awt.Color(255, 255, 255));
         btnDocentes.setForeground(new java.awt.Color(51, 51, 51));
@@ -103,11 +120,6 @@ public class AdminHomeFrame extends javax.swing.JFrame {
         btnDocentes.setBorderPainted(false);
         btnDocentes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDocentes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnDocentes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnDocentesMousePressed(evt);
-            }
-        });
 
         btnAulas.setBackground(new java.awt.Color(255, 255, 255));
         btnAulas.setForeground(new java.awt.Color(51, 51, 51));
@@ -117,11 +129,6 @@ public class AdminHomeFrame extends javax.swing.JFrame {
         btnAulas.setBorderPainted(false);
         btnAulas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAulas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnAulas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnAulasMousePressed(evt);
-            }
-        });
 
         btnAlumnos.setBackground(new java.awt.Color(255, 255, 255));
         btnAlumnos.setForeground(new java.awt.Color(51, 51, 51));
@@ -132,11 +139,6 @@ public class AdminHomeFrame extends javax.swing.JFrame {
         btnAlumnos.setBorderPainted(false);
         btnAlumnos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAlumnos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnAlumnos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnAlumnosMousePressed(evt);
-            }
-        });
 
         btnCerrarSesion.setBackground(new java.awt.Color(255, 255, 255));
         btnCerrarSesion.setForeground(new java.awt.Color(51, 51, 51));
@@ -159,11 +161,6 @@ public class AdminHomeFrame extends javax.swing.JFrame {
         btnCursos.setBorderPainted(false);
         btnCursos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCursos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnCursos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnCursosMousePressed(evt);
-            }
-        });
 
         javax.swing.GroupLayout panelBtnsLayout = new javax.swing.GroupLayout(panelBtns);
         panelBtns.setLayout(panelBtnsLayout);
@@ -263,30 +260,6 @@ public class AdminHomeFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnSolicitudesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSolicitudesMousePressed
-        ShowJPanel(new AdminPanelSolicitudes());
-    }//GEN-LAST:event_btnSolicitudesMousePressed
-
-    private void btnVacantesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVacantesMousePressed
-         ShowJPanel(new AdminPanelVacantes());
-    }//GEN-LAST:event_btnVacantesMousePressed
-
-    private void btnDocentesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDocentesMousePressed
-         ShowJPanel(new AdminPanelDocentes());
-    }//GEN-LAST:event_btnDocentesMousePressed
-
-    private void btnAulasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAulasMousePressed
-        ShowJPanel(new AdminPanelAulas());
-    }//GEN-LAST:event_btnAulasMousePressed
-
-    private void btnAlumnosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlumnosMousePressed
-        ShowJPanel(new AdminPanelAlumnos());
-    }//GEN-LAST:event_btnAlumnosMousePressed
-
-    private void btnCursosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCursosMousePressed
-        ShowJPanel(new AdminPanelCursos());
-    }//GEN-LAST:event_btnCursosMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -194,9 +194,6 @@
                     <Property name="horizontalAlignment" type="int" value="2"/>
                     <Property name="horizontalTextPosition" type="int" value="4"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnVacantesMousePressed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnSolicitudes">
                   <Properties>
@@ -221,9 +218,6 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="2"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSolicitudesMousePressed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnDocentes">
                   <Properties>
@@ -248,9 +242,6 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="2"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnDocentesMousePressed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnAulas">
                   <Properties>
@@ -275,9 +266,6 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="2"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAulasMousePressed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnAlumnos">
                   <Properties>
@@ -303,9 +291,6 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="2"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAlumnosMousePressed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnCerrarSesion">
                   <Properties>
@@ -363,9 +348,6 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="2"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCursosMousePressed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
