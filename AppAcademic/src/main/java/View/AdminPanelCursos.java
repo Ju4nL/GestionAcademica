@@ -2,6 +2,7 @@
 package View;
 
 import Controller.CursoController;
+import Controller.PrincipalController;
 import com.formdev.flatlaf.FlatClientProperties;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -9,15 +10,14 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
  
-public class AdminPanelCursos extends javax.swing.JPanel {
-    private CursoController controller;
+public class AdminPanelCursos extends javax.swing.JPanel { 
+    private CursoController controller; 
     
     public AdminPanelCursos(CursoController controller) {
         this.controller = controller;   
         initComponents();
         initFlat(); 
-    }
-    
+    } 
      private void initFlat() { 
         panelSearch.putClientProperty(FlatClientProperties.STYLE, ""
                 + "border:2,2,2,2;" 
@@ -149,16 +149,19 @@ public class AdminPanelCursos extends javax.swing.JPanel {
         btnDelete.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Eliminar");
+        btnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnAdd.setBackground(new java.awt.Color(56, 53, 122));
         btnAdd.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         btnAdd.setForeground(new java.awt.Color(255, 255, 255));
         btnAdd.setText("Agregar");
+        btnAdd.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         btnUpdate.setBackground(new java.awt.Color(255, 204, 51));
         btnUpdate.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
         btnUpdate.setForeground(new java.awt.Color(51, 51, 51));
         btnUpdate.setText("Editar");
+        btnUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

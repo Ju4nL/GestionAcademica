@@ -2,18 +2,23 @@ package Controller;
 
 import Model.Curso; 
 import View.AdminPanelCursos;
+import View.AdminPanelCursosForm;
 import dao.CursoDAOImpl;
 import java.util.List; 
 import javax.swing.table.DefaultTableModel;
 
 public class CursoController {
+    private PrincipalController principalController;
     private CursoDAOImpl cursoDao;
     private AdminPanelCursos adminPanelCursos;
+    private AdminPanelCursosForm adminPanelCursosForm ;
 
-    public CursoController() {
-        cursoDao = new CursoDAOImpl();
-        adminPanelCursos = new AdminPanelCursos(this);
-        loadCursos();
+    public CursoController(PrincipalController principalController) {
+        this.principalController = principalController;
+        this.cursoDao = new CursoDAOImpl();
+        this.adminPanelCursos = new AdminPanelCursos(this);
+        this.adminPanelCursosForm = new AdminPanelCursosForm();
+        initController();
     }
 
     public AdminPanelCursos getAdminPanelCursos() {
@@ -21,10 +26,8 @@ public class CursoController {
     }
     
     private void initController() {
-        /*panel.getBtnAdd().addActionListener(e -> agregarCurso());
-        panel.getBtnUpdate().addActionListener(e -> agregarCurso());
-        panel.getBtnDelete().addActionListener(e -> agregarCurso());
-        panel.getBtnSearch().addActionListener(e -> buscarCursos());*/
+        adminPanelCursos.getBtnAdd().addActionListener(e -> displayformCurso());
+        adminPanelCursosForm.getBtnSave().addActionListener(e -> addCurso());
         loadCursos();
     }
 
@@ -42,7 +45,25 @@ public class CursoController {
             adminPanelCursos.displayErrorMessage( "Error al cargar cursos: " + e.getMessage());
         }
     }
+    private void displayformCurso(){ 
+        this.principalController.showPanel(adminPanelCursosForm);
+    }
     
+    private void addCurso(){
+        this.adminPanelCursosForm.getTxtNombre();
+        this.adminPanelCursosForm.getTxtDescripcion(); 
+        Curso curso = new Curso(0, 
+                                this.adminPanelCursosForm.getTxtNombre().getText(),
+                                this.adminPanelCursosForm.getTxtDescripcion().getText());
+        if (cursoDao.insertCurso(curso)){
+            System.out.println("Se cargo");  // Recargar la lista de cursos
+        } else {
+            System.out.println("No se cargo"); 
+        }
+        
+    }
+    
+     
 /*
     private void agregarCurso() {
         String nombre = JOptionPane.showInputDialog(panel, "Ingrese el nombre del curso:", "Agregar Curso", JOptionPane.PLAIN_MESSAGE);

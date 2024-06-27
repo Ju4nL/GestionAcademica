@@ -13,9 +13,9 @@ public class PrincipalController {
         this.view = view;
         initControllers();
     }
-
+    
     private void initControllers() { 
-        cursoController = new CursoController();
+        cursoController = new CursoController(this);
     }
 
     // Método para mostrar paneles específicos

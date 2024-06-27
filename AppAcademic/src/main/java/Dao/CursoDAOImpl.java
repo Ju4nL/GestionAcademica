@@ -49,7 +49,7 @@ public class CursoDAOImpl implements CursoDAO
     @Override
     public boolean insertCurso(Curso curso) {
         try (Connection connection = DatabaseConnection.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO cursos (Nombre, Descripcion) VALUES (?, ?)")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO Curso (Nombre, Descripcion) VALUES (?, ?)")) {
             preparedStatement.setString(1, curso.getNombre());
             preparedStatement.setString(2, curso.getDescripcion());
             int affectedRows = preparedStatement.executeUpdate();
