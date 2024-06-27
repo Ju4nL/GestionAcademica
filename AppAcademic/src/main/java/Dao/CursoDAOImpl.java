@@ -32,14 +32,17 @@ public class CursoDAOImpl implements CursoDAO
         List<Curso> cursos = new ArrayList<>();
         try (Connection connection = DatabaseConnection.getConnection();
              Statement statement = connection.createStatement();
-             ResultSet rs = statement.executeQuery("SELECT * FROM cursos")) {
+             ResultSet rs = statement.executeQuery("SELECT ID,Nombre,Descripcion FROM Curso")) {
             while (rs.next()) {
                 Curso curso = new Curso(rs.getInt("ID"), rs.getString("Nombre"), rs.getString("Descripcion"));
                 cursos.add(curso);
             }
+            rs.close();
+            statement.close();
+            
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        } 
         return cursos;
     }
 
