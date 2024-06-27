@@ -10,13 +10,13 @@ import javax.swing.JPanel;
 public class AdminHomeFrame extends javax.swing.JFrame {
 
     private PrincipalController principalController;
-    private CursoController cursoController;
+    //private CursoController cursoController;
 
     public AdminHomeFrame() {
         initComponents();
         initFlat();
-        this.cursoController = new CursoController(); // Inicializar CursoController
-        this.principalController = new PrincipalController(this);
+        //this.cursoController = new CursoController(); // Inicializar CursoController
+        //this.principalController = new PrincipalController(this);
     }
 
     public void setController(PrincipalController controller) {

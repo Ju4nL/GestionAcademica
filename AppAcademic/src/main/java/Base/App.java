@@ -4,6 +4,8 @@ package Base;
 import Controller.CursoController;
 import Controller.LoginController;
 import Controller.PrincipalController;
+import Controller.StudentController;
+import Model.HorarioModel;
 import Model.LoginModel;
 import View.AdminHomeFrame;
 import View.LoginFrame;
@@ -73,9 +75,10 @@ public class App implements AppInterface {
     }
 
     private void launchStudentInterface(int usuarioID) {
-        StudentHomeFrame alumnoHomeFrame = new StudentHomeFrame();
-        // Aquí puedes inicializar los controladores y modelos necesarios para la interfaz de los alumnos
-        alumnoHomeFrame.setVisible(true);
+        HorarioModel horarioModel = new HorarioModel();
+        StudentHomeFrame studentHomeFrame = new StudentHomeFrame();
+        new StudentController(studentHomeFrame, horarioModel, usuarioID);
+        studentHomeFrame.setVisible(true);
     }
 
     private void launchTeacherInterface(int usuarioID) {
