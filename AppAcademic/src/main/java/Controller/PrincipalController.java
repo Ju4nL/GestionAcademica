@@ -14,9 +14,9 @@ public class PrincipalController {
         this.cursoController = cursoController; // Asignar el cursoController recibido
         initControllers();
     }
-
+    
     private void initControllers() { 
-        cursoController = new CursoController();
+        cursoController = new CursoController(this);
     }
 
     // Método para mostrar paneles específicos

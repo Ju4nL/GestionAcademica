@@ -22,7 +22,16 @@ public class AdminHomeFrame extends javax.swing.JFrame {
     public void setController(PrincipalController controller) {
         this.principalController = controller; 
     }
+    
+     private void ShowJPanel(JPanel panel) {
+        panel.setSize(815, 580);
+        panel.setLocation(0, 0);
 
+        content.removeAll();
+        content.add(panel, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+     }
 
     private void initFlat() {
         panelBgMenu.putClientProperty(FlatClientProperties.STYLE, ""
@@ -143,6 +152,11 @@ public class AdminHomeFrame extends javax.swing.JFrame {
         btnAlumnos.setBorderPainted(false);
         btnAlumnos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAlumnos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnAlumnos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnAlumnosMousePressed(evt);
+            }
+        });
 
         btnCerrarSesion.setBackground(new java.awt.Color(255, 255, 255));
         btnCerrarSesion.setForeground(new java.awt.Color(51, 51, 51));
@@ -165,6 +179,11 @@ public class AdminHomeFrame extends javax.swing.JFrame {
         btnCursos.setBorderPainted(false);
         btnCursos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCursos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnCursos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnCursosMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelBtnsLayout = new javax.swing.GroupLayout(panelBtns);
         panelBtns.setLayout(panelBtnsLayout);
@@ -264,6 +283,14 @@ public class AdminHomeFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCursosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCursosMousePressed
+        principalController.showCursoPanel();
+    }//GEN-LAST:event_btnCursosMousePressed
+
+    private void btnAlumnosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlumnosMousePressed
+        ShowJPanel(new AdminPanelAlumnos());
+    }//GEN-LAST:event_btnAlumnosMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
