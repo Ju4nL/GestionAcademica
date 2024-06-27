@@ -2,6 +2,7 @@ package View;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.BorderLayout;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class StudentHomeFrame extends javax.swing.JFrame {
@@ -21,6 +22,16 @@ public class StudentHomeFrame extends javax.swing.JFrame {
     private void initContent(){ 
         ShowJPanel(new AdminPanelVacantes());
     }
+
+    public JButton getBtnCerrarSesion() {
+        return btnCerrarSesion;
+    }
+
+    public JButton getBtnHorario() {
+        return btnHorario;
+    }
+    
+    
     
     private void ShowJPanel(JPanel panel) {
         panel.setSize(815, 580);

@@ -1,7 +1,9 @@
- 
 package Base;
 //Controller
+
+import Controller.CursoController;
 import Controller.LoginController;
+import Controller.PrincipalController;
 import Model.LoginModel;
 import View.AdminHomeFrame;
 import View.LoginFrame;
@@ -11,28 +13,28 @@ import View.StudentHomeFrame;
 import View.TeacherHomeFrame;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import javax.swing.UIManager;
-  
+
 public class App implements AppInterface {
-        
-        private static App instancia = new App();
-        
-        public static App getInstancia() {
-            return instancia;
-        }
-        
-        public static void main(String[] args) {
+
+    private static App instancia = new App();
+
+    public static App getInstancia() {
+        return instancia;
+    }
+
+    public static void main(String[] args) {
         FlatMacLightLaf.setup();
-        UIManager.put( "Button.arc", 25 );
-        
+        UIManager.put("Button.arc", 25);
+
         java.awt.EventQueue.invokeLater(() -> {
             LoginFrame loginFrame = new LoginFrame();
             LoginModel loginModel = new LoginModel();
-            new LoginController (loginFrame, loginModel, new App());
+            new LoginController(loginFrame, loginModel, new App());
             loginFrame.setVisible(true);
         });
-                
+
     }
-        
+
     @Override
     public void onLoginSuccess(int usuarioID, String role) {
         switch (role) {
@@ -56,13 +58,18 @@ public class App implements AppInterface {
     private void launchParentsInterface(int usuarioID) {
         ParentsHomeFrame parentsHomeFrame = new ParentsHomeFrame();
         // Aquí puedes inicializar los controladores y modelos necesarios para la interfaz de los padres
+
         parentsHomeFrame.setVisible(true);
+
     }
 
     private void launchAdminInterface(int usuarioID, String role) {
         AdminHomeFrame adminHomeFrame = new AdminHomeFrame();
-        // Aquí puedes inicializar los controladores y modelos necesarios para la interfaz de los administradores
+        System.out.println("iniciar admin");
+        PrincipalController principalController = new PrincipalController(adminHomeFrame);
+        adminHomeFrame.setController(principalController); // Asignar el controlador principal a la ventana
         adminHomeFrame.setVisible(true);
+        principalController.showCursoPanel(); // Mostrar el panel de cursos al iniciar sesión
     }
 
     private void launchStudentInterface(int usuarioID) {
@@ -96,6 +103,5 @@ public class App implements AppInterface {
     public void onRegisterFailed(String username) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
-    
+
 }

@@ -21,6 +21,7 @@ public class LoginController {
         this.loginView = loginView;
         this.loginmodel = loginmodel;
         this.appInterface = appInterface;
+        this.loginView.setLoginAction(new LoginAction());
     }
 
     private boolean validarUsuario(String username) {
@@ -31,10 +32,11 @@ public class LoginController {
         return password != null && password.length() >=6;
     }
     
-    class LoginListener implements ActionListener {
+    class LoginAction implements ActionListener {
         
         @Override
         public void actionPerformed(ActionEvent e) {
+            System.out.println("Validar ingreso");
             String username = loginView.getTxtUsername().getText();
             char[] passwordArray = loginView.getPswPassword().getPassword();
             

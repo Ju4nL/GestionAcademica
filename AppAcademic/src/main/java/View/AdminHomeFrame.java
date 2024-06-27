@@ -1,5 +1,6 @@
 package View;
 
+import Controller.CursoController;
 import Controller.PrincipalController;
 import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.BorderLayout;
@@ -9,10 +10,13 @@ import javax.swing.JPanel;
 public class AdminHomeFrame extends javax.swing.JFrame {
 
     private PrincipalController principalController;
+    private CursoController cursoController;
 
     public AdminHomeFrame() {
         initComponents();
         initFlat();
+        this.cursoController = new CursoController(); // Inicializar CursoController
+        this.principalController = new PrincipalController(this);
     }
 
     public void setController(PrincipalController controller) {

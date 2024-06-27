@@ -11,6 +11,7 @@ public class PrincipalController {
 
     public PrincipalController(AdminHomeFrame view) {
         this.view = view;
+        this.cursoController = cursoController; // Asignar el cursoController recibido
         initControllers();
     }
 
