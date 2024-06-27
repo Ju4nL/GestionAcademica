@@ -33,7 +33,7 @@ public class CursoController {
             List<Curso> cursos = cursoDao.getAllCursos();
             
             DefaultTableModel model = (DefaultTableModel) adminPanelCursos.getTblCursos().getModel();
-            
+            model.setRowCount(0); 
             for (Curso curso : cursos) {
                 System.out.println(curso.getNombre());
                 model.addRow(new Object[]{curso.getID(), curso.getNombre(), curso.getDescripcion()});
