@@ -1,26 +1,27 @@
 package View;
 
 import Controller.CursoController;
-import Controller.PrincipalController;
+import Controller.AdminController;
 import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class AdminHomeFrame extends javax.swing.JFrame {
 
-    private PrincipalController principalController;
+    private AdminController principalController;
     //private CursoController cursoController;
 
     public AdminHomeFrame() {
         initComponents();
         initFlat();
         //this.cursoController = new CursoController(); // Inicializar CursoController
-        //this.principalController = new PrincipalController(this);
+        //this.principalController = new AdminController(this);
     }
 
-    public void setController(PrincipalController controller) {
+    public void setController(AdminController controller) {
         this.principalController = controller; 
     }
     
@@ -293,13 +294,15 @@ public class AdminHomeFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCursosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCursosMousePressed
-        principalController.showCursoPanel();
-    }//GEN-LAST:event_btnCursosMousePressed
-
     private void btnAlumnosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlumnosMousePressed
         ShowJPanel(new AdminPanelAlumnos());
+        btnCursos.setBackground(new Color(255, 255, 255));
     }//GEN-LAST:event_btnAlumnosMousePressed
+
+    private void btnCursosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCursosMousePressed
+        principalController.showCursoPanel();
+        
+    }//GEN-LAST:event_btnCursosMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

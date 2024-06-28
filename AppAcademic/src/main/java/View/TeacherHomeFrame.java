@@ -19,7 +19,7 @@ public class TeacherHomeFrame extends javax.swing.JFrame {
     }
     
     private void initContent(){ 
-        ShowJPanel(new AdminPanelVacantes());
+        ShowJPanel(new AdminPanelAulas());
     }
     
     private void ShowJPanel(JPanel panel) {

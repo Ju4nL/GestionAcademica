@@ -3,7 +3,7 @@ package Base;
 
 import Controller.CursoController;
 import Controller.LoginController;
-import Controller.PrincipalController;
+import Controller.AdminController;
 import Controller.StudentController;
 import Model.HorarioModel;
 import Model.LoginModel;
@@ -68,7 +68,7 @@ public class App implements AppInterface {
     private void launchAdminInterface(int usuarioID, String role) {
         AdminHomeFrame adminHomeFrame = new AdminHomeFrame();
         System.out.println("iniciar admin");
-        PrincipalController principalController = new PrincipalController(adminHomeFrame);
+        AdminController principalController = new AdminController(adminHomeFrame);
         adminHomeFrame.setController(principalController); // Asignar el controlador principal a la ventana
         adminHomeFrame.setVisible(true);
         principalController.showCursoPanel(); // Mostrar el panel de cursos al iniciar sesión

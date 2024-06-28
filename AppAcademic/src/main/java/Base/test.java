@@ -1,7 +1,7 @@
 
 package Base;
  
-import Controller.PrincipalController;
+import Controller.AdminController;
 import View.AdminHomeFrame;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import javax.swing.SwingUtilities;
@@ -20,7 +20,7 @@ public class test {
         AdminHomeFrame mainFrame = new AdminHomeFrame();
         
         // Crear el controlador principal, pasando la vista
-        PrincipalController principalController = new PrincipalController(mainFrame);
+        AdminController principalController = new AdminController(mainFrame);
         
         // Establecer el controlador en la vista
         mainFrame.setController(principalController);

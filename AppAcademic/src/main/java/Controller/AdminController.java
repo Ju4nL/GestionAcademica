@@ -3,32 +3,32 @@ package Controller;
 
 import View.AdminHomeFrame;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import javax.swing.JPanel;
 
-public class PrincipalController {
-    private AdminHomeFrame adminHomeFrame; // La ventana principal
-    private CursoController cursoController; // Controlador para el panel de cursos
+public class AdminController {
+    private AdminHomeFrame adminHomeFrame;  
+    private CursoController cursoController;  
 
-    public PrincipalController(AdminHomeFrame adminHomeFrame) {
+    public AdminController(AdminHomeFrame adminHomeFrame) {
         this.adminHomeFrame = adminHomeFrame;
-        this.cursoController = cursoController; // Asignar el cursoController recibido
+        this.cursoController = cursoController;  
         initControllers();
     }
     
-    private void initControllers() { 
-        initCourse();
-    }
-    
-    private void initCourse(){
+    private void initControllers() {  
         cursoController = new CursoController(this);
         adminHomeFrame.getBtnCursos().addActionListener(e -> cursoController.loadCursos());
+        
     }
+     
     
-    // Método para mostrar paneles específicos
-   
+ 
     
     public void showCursoPanel() {
+        
         showPanel(cursoController.getAdminPanelCursos());
+        adminHomeFrame.getBtnCursos().setBackground(new Color(240, 243, 253));
     }
     
     

@@ -2,7 +2,7 @@
 package View;
 
 import Controller.CursoController;
-import Controller.PrincipalController;
+import Controller.AdminController;
 import com.formdev.flatlaf.FlatClientProperties;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;

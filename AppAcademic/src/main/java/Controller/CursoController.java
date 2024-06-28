@@ -9,11 +9,11 @@ import javax.swing.table.DefaultTableModel;
 
 public class CursoController {
 
-    private PrincipalController principalController;
+    private AdminController principalController;
     private CursoDAOImpl cursoDao;
     private AdminPanelCursos adminPanelCursos; 
 
-    public CursoController(PrincipalController principalController) {
+    public CursoController(AdminController principalController) {
         this.principalController = principalController;
         this.cursoDao = new CursoDAOImpl();
         this.adminPanelCursos = new AdminPanelCursos(this); 
