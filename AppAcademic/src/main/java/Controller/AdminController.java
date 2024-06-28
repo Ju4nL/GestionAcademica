@@ -20,6 +20,10 @@ public class AdminController {
         cursoController = new CursoController(this);
         adminHomeFrame.getBtnCursos().addActionListener(e -> cursoController.loadCursos());
         
+        
+        //Cerrar sesion
+        adminHomeFrame.getBtnCerrarSesion().addActionListener(e -> cerrarSesion());
+        
     }
      
     
@@ -45,6 +49,11 @@ public class AdminController {
     
     public void displaySucessMessage(String message){
         adminHomeFrame.displaySucessMessage(message);
+    }
+    
+    public void cerrarSesion() {
+        adminHomeFrame.dispose();
+        
     }
     
 }
