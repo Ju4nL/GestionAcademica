@@ -17,8 +17,7 @@ public class AdminHomeFrame extends javax.swing.JFrame {
     public AdminHomeFrame() {
         initComponents();
         initFlat();
-        //this.cursoController = new CursoController(); // Inicializar CursoController
-        //this.principalController = new AdminController(this);
+        setLocationRelativeTo(null); 
     }
 
     public void setController(AdminController controller) {

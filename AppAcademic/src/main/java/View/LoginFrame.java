@@ -13,6 +13,7 @@ public class LoginFrame extends javax.swing.JFrame {
     public LoginFrame() {
         initComponents();
         initFlat();
+        setLocationRelativeTo(null);
     }
    
     private void initFlat() { 
