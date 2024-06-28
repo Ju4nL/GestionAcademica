@@ -6,43 +6,45 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
 public class PrincipalController {
-    private AdminHomeFrame view; // La ventana principal
+    private AdminHomeFrame adminHomeFrame; // La ventana principal
     private CursoController cursoController; // Controlador para el panel de cursos
 
-    public PrincipalController(AdminHomeFrame view) {
-        this.view = view;
+    public PrincipalController(AdminHomeFrame adminHomeFrame) {
+        this.adminHomeFrame = adminHomeFrame;
         this.cursoController = cursoController; // Asignar el cursoController recibido
         initControllers();
     }
     
     private void initControllers() { 
+        initCourse();
+    }
+    
+    private void initCourse(){
         cursoController = new CursoController(this);
+        adminHomeFrame.getBtnCursos().addActionListener(e -> cursoController.loadCursos());
     }
-
+    
     // Método para mostrar paneles específicos
-    public void showPanel(JPanel panel) {
-        view.getContentPanel().removeAll();
-        view.getContentPanel().add(panel, BorderLayout.CENTER);
-        view.getContentPanel().revalidate();
-        view.getContentPanel().repaint();
-    }
-
-    /*
-        private void ShowJPanel(JPanel panel) {
-        panel.setSize(815, 580);
-        panel.setLocation(0, 0);
-
-        content.removeAll();
-        content.add(panel, BorderLayout.CENTER);
-        content.revalidate();
-        content.repaint();
-    }
-        private void btnCursosMousePressed(java.awt.event.MouseEvent evt) {                                       
-        principalController.showVacantesPanel(); 
-    }        
-    */
-    // Ejemplo de método para mostrar el panel de cursos
+   
+    
     public void showCursoPanel() {
         showPanel(cursoController.getAdminPanelCursos());
     }
+    
+    
+    public void showPanel(JPanel panel) { 
+        adminHomeFrame.getContentPanel().removeAll();
+        adminHomeFrame.getContentPanel().add(panel, BorderLayout.CENTER);
+        adminHomeFrame.getContentPanel().revalidate();
+        adminHomeFrame.getContentPanel().repaint();
+    }
+    
+   public void displayErrorMessage(String message){
+        adminHomeFrame.displayErrorMessage(message);
+    }
+    
+    public void displaySucessMessage(String message){
+        adminHomeFrame.displaySucessMessage(message);
+    }
+    
 }

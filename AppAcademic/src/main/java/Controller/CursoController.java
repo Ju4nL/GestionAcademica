@@ -1,101 +1,146 @@
 package Controller;
 
-import Model.Curso; 
+import Model.Curso;
 import View.AdminPanelCursos;
 import View.AdminPanelCursosForm;
 import dao.CursoDAOImpl;
-import java.util.List; 
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 public class CursoController {
+
     private PrincipalController principalController;
     private CursoDAOImpl cursoDao;
-    private AdminPanelCursos adminPanelCursos;
-    private AdminPanelCursosForm adminPanelCursosForm ;
+    private AdminPanelCursos adminPanelCursos; 
 
     public CursoController(PrincipalController principalController) {
         this.principalController = principalController;
         this.cursoDao = new CursoDAOImpl();
-        this.adminPanelCursos = new AdminPanelCursos(this);
-        this.adminPanelCursosForm = new AdminPanelCursosForm();
+        this.adminPanelCursos = new AdminPanelCursos(this); 
         initController();
     }
 
     public AdminPanelCursos getAdminPanelCursos() {
         return adminPanelCursos;
     }
-    
+
     private void initController() {
-        adminPanelCursos.getBtnAdd().addActionListener(e -> displayformCurso());
-        adminPanelCursosForm.getBtnSave().addActionListener(e -> addCurso());
+        adminPanelCursos.getBtnAdd().addActionListener(e -> displayformCursoCreate());
+        adminPanelCursos.getBtnUpdate().addActionListener(e -> displayformCursoUpdate()); 
+        adminPanelCursos.getBtnDelete().addActionListener(e -> deleteCurso()); 
+        adminPanelCursos.getBtnSearch().addActionListener(e -> searchCurso()); 
         loadCursos();
     }
 
-    private void loadCursos() {
+    public void loadCursos() {
         try {
             List<Curso> cursos = cursoDao.getAllCursos();
-            
+
             DefaultTableModel model = (DefaultTableModel) adminPanelCursos.getTblCursos().getModel();
-            model.setRowCount(0); 
+            model.setRowCount(0);
             for (Curso curso : cursos) {
-                System.out.println(curso.getNombre());
                 model.addRow(new Object[]{curso.getID(), curso.getNombre(), curso.getDescripcion()});
             }
         } catch (Exception e) {
-            adminPanelCursos.displayErrorMessage( "Error al cargar cursos: " + e.getMessage());
-        }
-    }
-    private void displayformCurso(){ 
-        this.principalController.showPanel(adminPanelCursosForm);
-    }
-    
-    private void addCurso(){
-        this.adminPanelCursosForm.getTxtNombre();
-        this.adminPanelCursosForm.getTxtDescripcion(); 
-        Curso curso = new Curso(0, 
-                                this.adminPanelCursosForm.getTxtNombre().getText(),
-                                this.adminPanelCursosForm.getTxtDescripcion().getText());
-        if (cursoDao.insertCurso(curso)){
-            System.out.println("Se cargo");  // Recargar la lista de cursos
-        } else {
-            System.out.println("No se cargo"); 
-        }
-        
-    }
-    
-     
-/*
-    private void agregarCurso() {
-        String nombre = JOptionPane.showInputDialog(panel, "Ingrese el nombre del curso:", "Agregar Curso", JOptionPane.PLAIN_MESSAGE);
-        String descripcion = JOptionPane.showInputDialog(panel, "Ingrese la descripción del curso:", "Agregar Curso", JOptionPane.PLAIN_MESSAGE);
-        if (nombre != null && descripcion != null && !nombre.isEmpty() && !descripcion.isEmpty()) {
-            Curso curso = new Curso(0, nombre, descripcion);
-            try {
-                if (cursoDaoImpl.insertCurso(curso)) {
-                    JOptionPane.showMessageDialog(panel, "Curso agregado correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                    cargarCursos();  // Recargar la lista de cursos
-                } else {
-                    JOptionPane.showMessageDialog(panel, "No se pudo agregar el curso", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(panel, "Error al agregar curso: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            adminPanelCursos.displayErrorMessage("Error al cargar cursos: " + e.getMessage());
         }
     }
 
-    private void buscarCursos() {
-        String searchTerm = panel.getTxtSearch().getText();
-        if (searchTerm != null && !searchTerm.trim().isEmpty()) {
-            try {
-                List<Curso> filteredCursos = cursoDaoImpl.searchCursosByName(searchTerm);
-                DefaultTableModel model = (DefaultTableModel) panel.getJTable1().getModel();
-                model.setRowCount(0);  // Limpiar la tabla
-                for (Curso curso : filteredCursos) {
-                    model.addRow(new Object[]{curso.getID(), curso.getNombre(), curso.getDescripcion()});
-                }
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(panel, "Error al buscar cursos: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
+    private void displayformCursoCreate() {
+        AdminPanelCursosForm formCreate = new AdminPanelCursosForm(false);
+        this.principalController.showPanel(formCreate);
+        formCreate.getBtnSave().addActionListener(e -> addCurso(formCreate));
+    }
+
+    private void displayformCursoUpdate() {
+        System.out.println("Iniciando");
+        int rowIndex = this.adminPanelCursos.getTblCursos().getSelectedRow();
+        if (rowIndex == -1) {
+            System.out.println("No row selected");
+            return;
         }
-    }*/
+
+        try {
+            
+            int idCourse = Integer.parseInt(adminPanelCursos.getTblCursos().getValueAt(rowIndex, 0).toString());
+            Curso curso = cursoDao.getCursoById(idCourse);
+
+            if (curso != null) {
+                AdminPanelCursosForm formUpdate = new AdminPanelCursosForm(true);
+                System.out.println(idCourse);
+                this.principalController.showPanel(formUpdate);
+                System.out.println(idCourse);
+                formUpdate.getTxtNombre().setText(curso.getNombre());
+                formUpdate.getTxtDescripcion().setText(curso.getDescripcion());
+                this.principalController.showPanel(formUpdate); 
+                formUpdate.getBtnSave().addActionListener(e -> updateCurso(formUpdate,idCourse));
+                
+            } else {
+                System.out.println("Curso not found with ID: " + idCourse);
+            }
+        } catch (Exception e) {
+            adminPanelCursos.displayErrorMessage("Error al actualizar curso: " + e.getMessage());
+        } 
+    }
+
+    private void addCurso(AdminPanelCursosForm form) { 
+        Curso curso = new Curso(0,
+                                form.getTxtNombre().getText(),
+                             form.getTxtDescripcion().getText());
+        if (cursoDao.insertCurso(curso)) {
+            this.principalController.displaySucessMessage("Se creo el curso " + curso.getNombre()); 
+            this.principalController.showCursoPanel();
+            loadCursos();
+        } else {
+            this.principalController.displayErrorMessage("No se creo el curso " + curso.getNombre());
+        }
+    }
+
+    private void updateCurso(AdminPanelCursosForm form,int id) {
+        form.getTxtNombre();
+        form.getTxtDescripcion();
+        Curso curso = new Curso(0,
+                            form.getTxtNombre().getText(),
+                            form.getTxtDescripcion().getText());
+        curso.setID(id);
+        if (cursoDao.updateCurso(curso)) {
+            this.principalController.displaySucessMessage("Se actualizo el curso " + curso.getNombre());
+            this.principalController.showCursoPanel();
+            loadCursos();
+        } else {
+            this.principalController.displayErrorMessage("No se actualizo el curso " + curso.getNombre());
+        }
+    }
+    
+    private void deleteCurso(){
+        try {
+            for (int row : this.adminPanelCursos.getTblCursos().getSelectedRows()) {
+                int id = (int) this.adminPanelCursos.getTblCursos().getValueAt(row, 0);
+                if (cursoDao.deleteCurso(id)){ 
+                    this.principalController.displaySucessMessage("Se elimino el id "+id);
+                }else{
+                    this.principalController.displayErrorMessage("Falló al eliminar el id "+ id);
+                }
+            }
+        } catch (Exception e) {
+            this.principalController.displayErrorMessage("Ocurrio un error");
+        } finally{
+            loadCursos();
+        }
+    }
+    
+    private void searchCurso() {
+        String searchTerm = this.adminPanelCursos.getTxtSearch().getText(); 
+        try {
+            List<Curso> cursos = cursoDao.getCursosByName(searchTerm);
+
+            DefaultTableModel model = (DefaultTableModel) adminPanelCursos.getTblCursos().getModel();
+            model.setRowCount(0);
+            for (Curso curso : cursos) {
+                model.addRow(new Object[]{curso.getID(), curso.getNombre(), curso.getDescripcion()});
+            }
+        } catch (Exception e) {
+            adminPanelCursos.displayErrorMessage("Error al cargar cursos: " + e.getMessage());
+        }
+    }
 }

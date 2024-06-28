@@ -5,6 +5,7 @@ import Controller.PrincipalController;
 import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class AdminHomeFrame extends javax.swing.JFrame {
@@ -71,6 +72,14 @@ public class AdminHomeFrame extends javax.swing.JFrame {
         return btnVacantes;
     }
 
+       
+    public void displayErrorMessage(String message){
+        JOptionPane.showMessageDialog(this, message, "Error Login", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    public void displaySucessMessage(String message){
+        JOptionPane.showMessageDialog(this, message);
+    }
     
     
     @SuppressWarnings("unchecked")

@@ -21,6 +21,7 @@ public class StudentController {
         this.usuarioID = usuarioID;
         this.horarioModel = horarioModel;
          initController();
+         verHorario();
     }
     
     public void initController() {
