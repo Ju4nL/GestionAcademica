@@ -144,6 +144,9 @@ public class AdminPanelCursos extends javax.swing.JPanel {
             }
         });
         scrollTblCursos.setViewportView(tblCursos);
+        if (tblCursos.getColumnModel().getColumnCount() > 0) {
+            tblCursos.getColumnModel().getColumn(0).setMaxWidth(100);
+        }
 
         btnDelete.setBackground(new java.awt.Color(255, 102, 102));
         btnDelete.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N

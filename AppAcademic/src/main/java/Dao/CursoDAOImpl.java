@@ -1,4 +1,4 @@
-package dao;
+package Dao;
 
 import Interface.CursoDAO;
 import Model.Curso;

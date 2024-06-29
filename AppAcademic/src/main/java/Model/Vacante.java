@@ -1,16 +1,15 @@
-
 package Model;
- 
+
 public class Vacante {
     private int ID;
-    private String Grado;
-    private String Seccion;
+    private Grado grado;
+    private Seccion seccion;
     private int cupoDisponible;
 
-    public Vacante(int ID, String Grado, String Seccion, int cupoDisponible) {
+    public Vacante(int ID, Grado grado, Seccion seccion, int cupoDisponible) {
         this.ID = ID;
-        this.Grado = Grado;
-        this.Seccion = Seccion;
+        this.grado = grado;
+        this.seccion = seccion;
         this.cupoDisponible = cupoDisponible;
     }
 
@@ -25,20 +24,20 @@ public class Vacante {
         this.ID = ID;
     }
 
-    public String getGrado() {
-        return Grado;
+    public Grado getGrado() {
+        return grado;
     }
 
-    public void setGrado(String Grado) {
-        this.Grado = Grado;
+    public void setGrado(Grado grado) {
+        this.grado = grado;
     }
 
-    public String getSeccion() {
-        return Seccion;
+    public Seccion getSeccion() {
+        return seccion;
     }
 
-    public void setSeccion(String Seccion) {
-        this.Seccion = Seccion;
+    public void setSeccion(Seccion seccion) {
+        this.seccion = seccion;
     }
 
     public int getCupoDisponible() {
@@ -48,5 +47,4 @@ public class Vacante {
     public void setCupoDisponible(int cupoDisponible) {
         this.cupoDisponible = cupoDisponible;
     }
-    
 }

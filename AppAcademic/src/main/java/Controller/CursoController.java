@@ -1,9 +1,9 @@
 package Controller;
 
+import Dao.CursoDAOImpl;
 import Model.Curso;
 import View.AdminPanelCursos;
 import View.AdminPanelCursosForm;
-import dao.CursoDAOImpl;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
