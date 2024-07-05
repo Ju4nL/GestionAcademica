@@ -5,7 +5,9 @@ import Controller.CursoController;
 import Controller.LoginController;
 import Controller.AdminController;
 import Controller.StudentController;
-import Model.HorarioModel;
+import Controller.TeacherController;
+import Model.HorarioStudentModel;
+import Model.HorarioTeacherModel;
 import Model.LoginModel;
 import View.AdminHomeFrame;
 import View.LoginFrame;
@@ -47,9 +49,11 @@ public class App implements AppInterface {
                 launchAdminInterface(usuarioID, role);
                 break;
             case "alumno":
+                System.out.println("Lanzando interfaz para alumno");
                 launchStudentInterface(usuarioID);
                 break;
-            case "tutor":
+            case "docente":
+                System.out.println("Lanzando interfaz para docente");
                 launchTeacherInterface(usuarioID);
                 break;
             default:
@@ -75,16 +79,17 @@ public class App implements AppInterface {
     }
 
     private void launchStudentInterface(int usuarioID) {
-        HorarioModel horarioModel = new HorarioModel();
+        HorarioStudentModel horarioModel = new HorarioStudentModel();
         StudentHomeFrame studentHomeFrame = new StudentHomeFrame();
         new StudentController(studentHomeFrame, horarioModel, usuarioID);
         studentHomeFrame.setVisible(true);
     }
 
     private void launchTeacherInterface(int usuarioID) {
-        TeacherHomeFrame profesorHomeFrame = new TeacherHomeFrame();
-        // Aquí puedes inicializar los controladores y modelos necesarios para la interfaz de los profesores
-        profesorHomeFrame.setVisible(true);
+        HorarioTeacherModel horarioModel = new HorarioTeacherModel();
+        TeacherHomeFrame teacherHomeFrame = new TeacherHomeFrame();
+        new TeacherController(teacherHomeFrame, horarioModel, usuarioID);
+        teacherHomeFrame.setVisible(true);
     }
 
     @Override
@@ -96,15 +101,4 @@ public class App implements AppInterface {
     public void onLogout(int usuarioID) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
-    @Override
-    public void onRegisterSuccess(int usuarioID, String role) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void onRegisterFailed(String username) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
 }

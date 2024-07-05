@@ -33,7 +33,7 @@ public class LoginModel {
                             role = "alumno";
                             break;
                         case 4:
-                            role = "tutor";
+                            role = "docente";
                             break;
                         default:
                             role = "unknown";
