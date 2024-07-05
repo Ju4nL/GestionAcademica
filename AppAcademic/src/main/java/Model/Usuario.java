@@ -1,38 +1,32 @@
 package Model;
 
-public class Usuario {
-    private int id;
-    private String email;
+import java.time.LocalDate;
+
+public abstract class Usuario extends Persona {
+    private String username;
     private String password;
-    private boolean isAdmin;
-    private int roleId;
+    private String rol;
+    private boolean isActive;
 
-    public Usuario(int id, String email, String password, boolean isAdmin, int roleId) {
-        this.id = id;
-        this.email = email;
+    public Usuario(int id, String nombre, String apellidos, String dni, String sexo, LocalDate fechaNacimiento, String telefono, String direccion, String email, String username, String password, String rol, boolean isActive) {
+        super(id, nombre, apellidos, dni, sexo, fechaNacimiento, telefono, direccion, email);
+        this.username = username;
         this.password = password;
-        this.isAdmin = isAdmin;
-        this.roleId = roleId;
+        this.rol = rol;
+        this.isActive = isActive;
     }
 
-    public Usuario() {}
-
-    // Getters y Setters
-
-    public int getId() {
-        return id;
+    public Usuario() {
+        super();
     }
 
-    public void setId(int id) {
-        this.id = id;
+    // Getters y setters
+    public String getUsername() {
+        return username;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -43,20 +37,19 @@ public class Usuario {
         this.password = password;
     }
 
-    public boolean isIsAdmin() {
-        return isAdmin;
+    public String getRol() {
+        return rol;
     }
 
-    public void setIsAdmin(boolean isAdmin) {
-        this.isAdmin = isAdmin;
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
-    public int getRoleId() {
-        return roleId;
+    public boolean isActive() {
+        return isActive;
     }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
+    public void setActive(boolean isActive) {
+        this.isActive = isActive;
     }
-    
 }

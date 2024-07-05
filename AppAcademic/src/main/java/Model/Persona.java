@@ -1,6 +1,6 @@
 package Model;
 
-import java.time.LocalDate; 
+import java.time.LocalDate;
 
 public class Persona {
     private int id;
@@ -27,6 +27,7 @@ public class Persona {
 
     public Persona() {}
 
+    // Getters y setters
     public int getId() {
         return id;
     }
@@ -98,6 +99,4 @@ public class Persona {
     public void setEmail(String email) {
         this.email = email;
     }
-    
-    
 }
