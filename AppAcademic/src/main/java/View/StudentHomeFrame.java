@@ -4,15 +4,12 @@ import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Font;
-import java.awt.Insets;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
-import Model.HorarioModel;
+import Model.HorarioStudentModel;
 import javax.swing.JLabel;
 
 public class StudentHomeFrame extends javax.swing.JFrame {
@@ -42,7 +39,7 @@ public class StudentHomeFrame extends javax.swing.JFrame {
     
     
     private void cargarHorarios() {
-        HorarioModel model = new HorarioModel();
+        HorarioStudentModel model = new HorarioStudentModel();
         List<String[]> horarios = model.getHorarios();
         reporteHorario.setRowCount(0);
 

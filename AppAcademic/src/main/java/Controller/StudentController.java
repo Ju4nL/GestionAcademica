@@ -3,7 +3,7 @@ package Controller;
 import Base.App;
 
 //Model
-import Model.HorarioModel;
+import Model.HorarioStudentModel;
 
 //View
 import View.StudentHomeFrame;
@@ -13,10 +13,10 @@ import java.util.List;
 
 public class StudentController {
     private StudentHomeFrame studentFrame;
-    private HorarioModel horarioModel;
+    private HorarioStudentModel horarioModel;
     private int usuarioID;
 
-    public StudentController(StudentHomeFrame studentFrame, HorarioModel horarioModel, int usuarioID) {
+    public StudentController(StudentHomeFrame studentFrame, HorarioStudentModel horarioModel, int usuarioID) {
         this.studentFrame = studentFrame;
         this.usuarioID = usuarioID;
         this.horarioModel = horarioModel;
