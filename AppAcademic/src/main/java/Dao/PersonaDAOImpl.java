@@ -4,6 +4,7 @@ import Interface.PersonaDAO;
 import Model.Persona;
 import Model.DatabaseConnection;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,16 +18,18 @@ public class PersonaDAOImpl implements PersonaDAO {
             preparedStatement.setInt(1, id);
             try (ResultSet rs = preparedStatement.executeQuery()) {
                 if (rs.next()) {
+                    java.sql.Date sqlFechaNacimiento = rs.getDate("fechaNacimiento");
+                    LocalDate fechaNacimiento = sqlFechaNacimiento != null ? sqlFechaNacimiento.toLocalDate() : null;
                     persona = new Persona(
-                        rs.getInt("id"),
-                        rs.getString("nombre"),
-                        rs.getString("apellidos"),
-                        rs.getString("dni"),
-                        rs.getString("sexo"),
-                        rs.getDate("fechaNacimiento"),
-                        rs.getString("telefono"),
-                        rs.getString("direccion"),
-                        rs.getString("email")
+                            rs.getInt("id"),
+                            rs.getString("nombre"),
+                            rs.getString("apellidos"),
+                            rs.getString("dni"),
+                            rs.getString("sexo"),
+                            fechaNacimiento,
+                            rs.getString("telefono"),
+                            rs.getString("direccion"),
+                            rs.getString("email")
                     );
                 }
             }
@@ -42,16 +45,18 @@ public class PersonaDAOImpl implements PersonaDAO {
         String sql = "SELECT id, nombre, apellidos, dni, sexo, fechaNacimiento, telefono, direccion, email FROM Persona";
         try (Connection connection = DatabaseConnection.getConnection(); Statement statement = connection.createStatement(); ResultSet rs = statement.executeQuery(sql)) {
             while (rs.next()) {
+                java.sql.Date sqlFechaNacimiento = rs.getDate("fechaNacimiento");
+                LocalDate fechaNacimiento = sqlFechaNacimiento != null ? sqlFechaNacimiento.toLocalDate() : null;
                 Persona persona = new Persona(
-                    rs.getInt("id"),
-                    rs.getString("nombre"),
-                    rs.getString("apellidos"),
-                    rs.getString("dni"),
-                    rs.getString("sexo"),
-                    rs.getDate("fechaNacimiento"),
-                    rs.getString("telefono"),
-                    rs.getString("direccion"),
-                    rs.getString("email")
+                        rs.getInt("id"),
+                        rs.getString("nombre"),
+                        rs.getString("apellidos"),
+                        rs.getString("dni"),
+                        rs.getString("sexo"),
+                        fechaNacimiento,
+                        rs.getString("telefono"),
+                        rs.getString("direccion"),
+                        rs.getString("email")
                 );
                 personas.add(persona);
             }
@@ -69,12 +74,12 @@ public class PersonaDAOImpl implements PersonaDAO {
             preparedStatement.setString(2, persona.getApellidos());
             preparedStatement.setString(3, persona.getDni());
             preparedStatement.setString(4, persona.getSexo());
-            preparedStatement.setDate(5, new java.sql.Date(persona.getFechaNacimiento().getTime()));
+            preparedStatement.setDate(5, java.sql.Date.valueOf(persona.getFechaNacimiento()));
             preparedStatement.setString(6, persona.getTelefono());
             preparedStatement.setString(7, persona.getDireccion());
             preparedStatement.setString(8, persona.getEmail());
             int affectedRows = preparedStatement.executeUpdate();
-            
+
             if (affectedRows > 0) {
                 try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
                     if (generatedKeys.next()) {
@@ -97,7 +102,7 @@ public class PersonaDAOImpl implements PersonaDAO {
             preparedStatement.setString(2, persona.getApellidos());
             preparedStatement.setString(3, persona.getDni());
             preparedStatement.setString(4, persona.getSexo());
-            preparedStatement.setDate(5, new java.sql.Date(persona.getFechaNacimiento().getTime()));
+            preparedStatement.setDate(5, java.sql.Date.valueOf(persona.getFechaNacimiento()));
             preparedStatement.setString(6, persona.getTelefono());
             preparedStatement.setString(7, persona.getDireccion());
             preparedStatement.setString(8, persona.getEmail());
