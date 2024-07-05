@@ -13,7 +13,7 @@ public class DocenteDAOImpl  implements DocenteDAO {
     @Override
     public Docente getDocenteById(int id) {
         Docente docente = null;
-        String sql = "SELECT p.*, u.username, u.password, u.rol, u.isActive, a.nombre AS tutorAulaNombre FROM Persona p " +
+        String sql = "SELECT p.*, u.rol, u.isActive, a.nombre AS tutorAulaNombre FROM Persona p " +
                      "JOIN Usuario u ON p.id = u.id " +
                      "LEFT JOIN Aula a ON u.id = a.tutor_id WHERE p.id = ? AND u.rol = 'Docente'";
         try (Connection connection = DatabaseConnection.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -47,9 +47,10 @@ public class DocenteDAOImpl  implements DocenteDAO {
     @Override
     public List<Docente> getAllDocentes() {
         List<Docente> docentes = new ArrayList<>();
-        String sql = "SELECT p.*, u.username, u.password, u.rol, u.isActive, a.nombre AS tutorAulaNombre FROM Persona p " +
+        String sql = "SELECT p.*,u.email as username, r.nombre as rol, u.is_active, a.nombre AS tutorAulaNombre FROM Persona p   " +
                      "JOIN Usuario u ON p.id = u.id " +
-                     "LEFT JOIN Aula a ON u.id = a.tutor_id WHERE u.rol = 'Docente'";
+                     "LEFT JOIN Rol r ON u.role_id = r.id "+
+                     "LEFT JOIN Aula a ON u.id = a.tutor_id WHERE r.nombre = 'docente'";
         try (Connection connection = DatabaseConnection.getConnection(); Statement statement = connection.createStatement(); ResultSet rs = statement.executeQuery(sql)) {
             while (rs.next()) {
                 Docente docente = new Docente(

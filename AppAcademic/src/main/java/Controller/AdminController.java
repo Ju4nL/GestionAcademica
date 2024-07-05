@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 public class AdminController {
     private AdminHomeFrame adminHomeFrame;  
     private CursoController cursoController;  
+    private DocenteController docenteController;
     private VacanteController vacanteController;  
 
     public AdminController(AdminHomeFrame adminHomeFrame) {
@@ -23,6 +24,9 @@ public class AdminController {
         cursoController = new CursoController(this);
         adminHomeFrame.getBtnCursos().addActionListener(e -> cursoController.loadCursos());
         
+        
+        docenteController = new DocenteController(this);
+        adminHomeFrame.getBtnDocentes().addActionListener(e -> docenteController.loadDocentes());
         
         //Cerrar sesion
         adminHomeFrame.getBtnCerrarSesion().addActionListener(e -> cerrarSesion());

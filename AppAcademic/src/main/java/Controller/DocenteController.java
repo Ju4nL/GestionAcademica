@@ -42,13 +42,13 @@ public class DocenteController {
             List<Docente> docentes = docenteDao.getAllDocentes();
 
             DefaultTableModel model = (DefaultTableModel) adminPanelDocentes.getTblDocentes().getModel();
-            model.setColumnIdentifiers(new Object[]{"ID", "Grado", "Seccion", "cupoDisponible"});
+            model.setColumnIdentifiers(new Object[]{"ID", "Nombre", "Email", "Telefono", "Tutor Aula"});
             TableColumnModel columnModel = adminPanelDocentes.getTblDocentes().getColumnModel();
             columnModel.getColumn(0).setMaxWidth(100);
 
             model.setRowCount(0);
             for (Docente docente : docentes) {
-                model.addRow(new Object[]{docente.getId(), docente.get().getNombre(), docente.getSeccion().getNombre(), docente.getCupoDisponible()});
+                model.addRow(new Object[]{docente.getId(), docente.getNombre(),docente.getEmail(), docente.getTelefono(), docente.getTutorAulaNombre()});
             }
         } catch (Exception e) {
             principalController.displayErrorMessage("Error al cargar docentes: " + e.getMessage());
