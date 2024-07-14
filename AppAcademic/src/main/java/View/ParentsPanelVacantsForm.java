@@ -21,24 +21,24 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
     private String seccion;
     private AlumnoDAOImpl registrarAlumnoDAO;
 
-    public ParentsPanelVacantsForm(int vacanteId, String grado,String seccion) {
+    public ParentsPanelVacantsForm(int vacanteId, String grado, String seccion) {
         this.vacanteId = vacanteId;
         this.grado = grado;
-        this.seccion=seccion;
+        this.seccion = seccion;
         registrarAlumnoDAO = new AlumnoDAOImpl();
 
         initComponents();
         initFlat();
-        lblGradoSeccion.setText( "Grado: "+grado+" Seccion: "+seccion);
+        lblGradoSeccion.setText("Grado: " + grado + " Seccion: " + seccion);
     }
-    
-     public ParentsPanelVacantsForm() {
-        
+
+    public ParentsPanelVacantsForm() {
+
         initComponents();
         initFlat();
         lblTitulo.setText("Vista Solicitud");
     }
-     
+
     private void initFlat() {
         panelSolicitar.putClientProperty(FlatClientProperties.STYLE, ""
                 + "border:2,2,2,2;"
@@ -88,17 +88,21 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
     public String getGrado() {
         return grado;
     }
-    
+
     public String getSeccion() {
         return seccion;
     }
-    
+
     public void displayErrorMessage(String message) {
         JOptionPane.showMessageDialog(this, message, "Error Vacantes", JOptionPane.ERROR_MESSAGE);
     }
 
     public void displaySucessMessage(String message) {
         JOptionPane.showMessageDialog(this, message);
+    }
+
+    public void setEmailFieldEnabled(boolean enabled) {
+        txtEmail.setEnabled(enabled);
     }
 
     @SuppressWarnings("unchecked")

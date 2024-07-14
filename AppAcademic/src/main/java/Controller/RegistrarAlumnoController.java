@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 public class RegistrarAlumnoController {
 
@@ -20,15 +22,62 @@ public class RegistrarAlumnoController {
         this.principalController = principalController;
     }
 
-    public void displayRegistrarAlumnoForm(int vacanteId, String grado , String seccion) {
+    public void displayRegistrarAlumnoForm(int vacanteId, String grado, String seccion) {
         // Crear una nueva instancia del formulario de registro
-        parentsPanelVacantsForm = new ParentsPanelVacantsForm(vacanteId, grado,seccion);
+        parentsPanelVacantsForm = new ParentsPanelVacantsForm(vacanteId, grado, seccion);
+
+        // Deshabilitar el campo de texto del correo
+        parentsPanelVacantsForm.setEmailFieldEnabled(false);
 
         // Mostrar el formulario de registro
         principalController.showPanel(parentsPanelVacantsForm);
 
         // Agregar el action listener para el botón de registro
         parentsPanelVacantsForm.getBtnRegistrarSolicitud().addActionListener(e -> registerAlumno());
+
+        parentsPanelVacantsForm.getTxtName().getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                updateEmail();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                updateEmail();
+            }
+
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                updateEmail();
+            }
+        });
+
+        parentsPanelVacantsForm.getTxtLastName().getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                updateEmail();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                updateEmail();
+            }
+
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                updateEmail();
+            }
+        });
+    }
+
+    private void updateEmail() {
+        String nombre = parentsPanelVacantsForm.getTxtName().getText().trim();
+        String apellidos = parentsPanelVacantsForm.getTxtLastName().getText().trim();
+        if (!nombre.isEmpty() && !apellidos.isEmpty()) {
+            String email = nombre.toLowerCase() + "." + apellidos.toLowerCase().replace(" ", "") + "@jgp.edu.pe";
+            parentsPanelVacantsForm.getTxtEmail().setText(email);
+        }
+
     }
 
     public void registerAlumno() {
@@ -36,7 +85,7 @@ public class RegistrarAlumnoController {
             String dni = parentsPanelVacantsForm.getTxtDni().getText();
 
             // Verificar la longitud del DNI
-            if (dni.length() > 8) { 
+            if (dni.length() > 8) {
                 parentsPanelVacantsForm.displayErrorMessage("El DNI es demasiado largo.");
                 return;
             }
@@ -52,10 +101,10 @@ public class RegistrarAlumnoController {
             String grado = parentsPanelVacantsForm.getGrado();
             String seccion = parentsPanelVacantsForm.getSeccion();
 
-            RegistrarAlumno alumno = new RegistrarAlumno(dni, nombre, apellidos, fechaNacimiento, sexo, direccion, telefono, correo, contraseña, grado,seccion);
+            RegistrarAlumno alumno = new RegistrarAlumno(dni, nombre, apellidos, fechaNacimiento, sexo, direccion, telefono, correo, contraseña, grado, seccion);
 
             if (registrarAlumnoDAO.insertAlumno(alumno)) {
-                
+
                 parentsPanelVacantsForm.displaySucessMessage("Alumno registrado con éxito.");
                 principalController.showVacantePanel();
             } else {
