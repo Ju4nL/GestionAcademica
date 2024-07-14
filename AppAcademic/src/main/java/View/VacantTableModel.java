@@ -1,7 +1,6 @@
 
 package View;
 
-import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
 public class VacantTableModel extends DefaultTableModel {
