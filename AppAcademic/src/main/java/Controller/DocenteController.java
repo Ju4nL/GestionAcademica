@@ -131,7 +131,11 @@ public class DocenteController {
     private void addDocente(AdminPanelDocentesForm form) {
         Date date = form.getJdcFechaNac().getDate();
         LocalDate fechaNacimiento = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-
+        String contrasena = new String(form.getPswPassword().getPassword());
+        
+        if (contrasena.length() < 6) {
+                throw new IllegalArgumentException("La contraseña debe tener al menos 6 caracteres.");
+            }
         Docente docente = new Docente(0,
                 form.getTxtName().getText(),
                 form.getTxtLastName().getText(),
