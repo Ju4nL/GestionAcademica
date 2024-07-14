@@ -29,6 +29,7 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
 
         initComponents();
         initFlat();
+        lblGradoSeccion.setText( "Grado: "+grado+" Seccion: "+seccion);
     }
     
      public ParentsPanelVacantsForm() {
@@ -109,7 +110,7 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
         panelSolicitar = new javax.swing.JPanel();
         btnRegistrarSolicitud = new javax.swing.JButton();
         Titulo1 = new javax.swing.JLabel();
-        Titulo2 = new javax.swing.JLabel();
+        lblGradoSeccion = new javax.swing.JLabel();
         Titulo3 = new javax.swing.JLabel();
         Titulo4 = new javax.swing.JLabel();
         Titulo5 = new javax.swing.JLabel();
@@ -146,9 +147,9 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
         Titulo1.setForeground(new java.awt.Color(51, 51, 51));
         Titulo1.setText("Nombre");
 
-        Titulo2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        Titulo2.setForeground(new java.awt.Color(51, 51, 51));
-        Titulo2.setText("1° Grado");
+        lblGradoSeccion.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        lblGradoSeccion.setForeground(new java.awt.Color(51, 51, 51));
+        lblGradoSeccion.setText("1° Grado");
 
         Titulo3.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         Titulo3.setForeground(new java.awt.Color(51, 51, 51));
@@ -236,7 +237,7 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(txtName))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelSolicitarLayout.createSequentialGroup()
-                                .addComponent(Titulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblGradoSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelSolicitarLayout.createSequentialGroup()
                                 .addComponent(Titulo7, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -267,7 +268,7 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
             panelSolicitarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSolicitarLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(Titulo2)
+                .addComponent(lblGradoSeccion)
                 .addGap(26, 26, 26)
                 .addGroup(panelSolicitarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Titulo4)
@@ -349,7 +350,6 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
     private javax.swing.JLabel Titulo1;
     private javax.swing.JLabel Titulo10;
     private javax.swing.JLabel Titulo11;
-    private javax.swing.JLabel Titulo2;
     private javax.swing.JLabel Titulo3;
     private javax.swing.JLabel Titulo4;
     private javax.swing.JLabel Titulo5;
@@ -360,6 +360,7 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cbxSexo;
     private javax.swing.JPanel jPanel2;
     private com.toedter.calendar.JDateChooser jdcFechaNac;
+    private javax.swing.JLabel lblGradoSeccion;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel panelSolicitar;
     private javax.swing.JPasswordField pswPassword;
