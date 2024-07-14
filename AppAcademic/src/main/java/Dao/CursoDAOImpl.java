@@ -12,7 +12,8 @@ public class CursoDAOImpl implements CursoDAO {
     @Override
     public Curso getCursoById(int id) {
         Curso curso = null;
-        try (Connection connection = DatabaseConnection.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Curso WHERE ID = ?")) {
+        try (Connection connection = DatabaseConnection.getConnection(); 
+                PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM Curso WHERE ID = ?")) {
             preparedStatement.setInt(1, id);
             try (ResultSet rs = preparedStatement.executeQuery()) {
                 if (rs.next()) {
@@ -28,7 +29,8 @@ public class CursoDAOImpl implements CursoDAO {
     @Override
     public List<Curso> getAllCursos() {
         List<Curso> cursos = new ArrayList<>();
-        try (Connection connection = DatabaseConnection.getConnection(); Statement statement = connection.createStatement(); ResultSet rs = statement.executeQuery("SELECT ID,Nombre,Descripcion FROM Curso")) {
+        try (Connection connection = DatabaseConnection.getConnection(); 
+                Statement statement = connection.createStatement(); ResultSet rs = statement.executeQuery("SELECT ID,Nombre,Descripcion FROM Curso")) {
             while (rs.next()) {
                 Curso curso = new Curso(rs.getInt("ID"), rs.getString("Nombre"), rs.getString("Descripcion"));
                 cursos.add(curso);
@@ -41,10 +43,10 @@ public class CursoDAOImpl implements CursoDAO {
         }
         return cursos;
     }
-    
+
     @Override
     public List<Curso> getCursosByName(String name) {
-        List<Curso> filteredCursos = new ArrayList<>(); 
+        List<Curso> filteredCursos = new ArrayList<>();
         String sql = "SELECT * FROM Curso WHERE nombre LIKE ?";
         try (Connection connection = DatabaseConnection.getConnection(); PreparedStatement pstmt = connection.prepareStatement(sql)) {
 
