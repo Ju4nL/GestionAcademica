@@ -30,7 +30,7 @@ public class StudentController {
     }
     
     public void verHorario() {
-        List<String[]> data = horarioModel.getHorarios();
+        List<String[]> data = horarioModel.getHorarios(this.usuarioID);
         studentFrame.getTblHorario().setModel(new View.ReporteHorario());  
         for (String[] row : data) {
             ((View.ReporteHorario) studentFrame.getTblHorario().getModel()).addHorario(
