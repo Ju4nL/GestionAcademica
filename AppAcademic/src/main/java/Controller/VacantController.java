@@ -5,6 +5,7 @@ import Model.VacantModel;
 
 // View
 import View.ParentsPanelVacants;
+import View.ParentsPanelVacantsForm;
 import View.VacantTableModel;
 
 // Utils
@@ -14,26 +15,32 @@ public class VacantController {
 
     private ParentController principalController;
     private VacantModel vacantModel;
-    private ParentsPanelVacants parentsVacants;
+    private ParentsPanelVacants parentsPanelVacants;
 
-    public VacantController(ParentController principalController, VacantModel vacanteModel, ParentsPanelVacants parentsVacants) {
+    public VacantController(ParentController principalController) {
         this.principalController = principalController;
-        this.vacantModel = vacanteModel;
-        this.parentsVacants = parentsVacants;
+        this.vacantModel = new VacantModel();
+        this.parentsPanelVacants = new ParentsPanelVacants();
         initController();
+    }
+    
+    public ParentsPanelVacants getParentsPanelVacants(){
+        return parentsPanelVacants;
     }
 
     public void initController() {
-        parentsVacants.getBtnActualizar().addActionListener(e -> actualizarVacantes());
-        parentsVacants.getBtnBuscar().addActionListener(e -> buscarPorGrado());
-        parentsVacants.getBtnSolicitar().addActionListener(e -> solicitarVacante());
+        parentsPanelVacants.getBtnActualizar().addActionListener(e -> actualizarVacantes());
+        parentsPanelVacants.getBtnBuscar().addActionListener(e -> buscarPorGrado());
+        parentsPanelVacants.getBtnSolicitar().addActionListener(e -> displayformCursoCreate());
         loadVacantes();
     }
 
     public void loadVacantes() {
         List<String[]> data = vacantModel.getVacantes();
-        parentsVacants.cargarVacantes(data); // Llama a cargarVacantes en ParentsPanelVacants
-        // Mensaje de depuración
+        parentsPanelVacants.cargarVacantes(data); // Llama a cargarVacantes en ParentsPanelVacants
+        
+
+    // Mensaje de depuración
         System.out.println("Datos cargados en la tabla: " + data.size() + " registros.");
     }
 
@@ -44,23 +51,23 @@ public class VacantController {
     private void buscarPorGrado() {
 
     }
-
-    private void solicitarVacante() {
-        int selectedRow = parentsVacants.getTblVacantes().getSelectedRow();
+    
+    private void displayformCursoCreate() {
+        int selectedRow = parentsPanelVacants.getTblVacantes().getSelectedRow();
         if (selectedRow == -1) {
-            parentsVacants.displayErrorMessage("Por favor, selecciona una vacante");
+            parentsPanelVacants.displayErrorMessage("Por favor, selecciona una vacante");
             return;
         }
 
-        int vacanteId = Integer.parseInt(parentsVacants.getTblVacantes().getValueAt(selectedRow, 0).toString());
-        String grado = parentsVacants.getTblVacantes().getValueAt(selectedRow, 1).toString();
-        String seccion   = parentsVacants.getTblVacantes().getValueAt(selectedRow, 2).toString();
-
+        int vacanteId = Integer.parseInt(parentsPanelVacants.getTblVacantes().getValueAt(selectedRow, 0).toString());
+        String grado = parentsPanelVacants.getTblVacantes().getValueAt(selectedRow, 1).toString();
+        String seccion   = parentsPanelVacants.getTblVacantes().getValueAt(selectedRow, 2).toString();
+        
         principalController.showRegistrarAlumnoForm(vacanteId, grado,seccion);
     }
 
     public ParentsPanelVacants getVacanteSelectionPanel() {
-        return parentsVacants;
+        return parentsPanelVacants;
     }
 
 }

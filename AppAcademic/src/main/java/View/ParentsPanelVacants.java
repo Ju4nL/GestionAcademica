@@ -49,14 +49,14 @@ public class ParentsPanelVacants extends javax.swing.JPanel {
     }
 
     public void cargarVacantes(List<String[]> vacantes) {
-        vacantTableModel.setRowCount(0); // Limpiar la tabla antes de añadir nuevos datos
+        vacantTableModel.setRowCount(0); 
 
         for (String[] vacante : vacantes) {
             vacantTableModel.addVacant(
-                    Integer.parseInt(vacante[0]), // id
+                    Integer.parseInt(vacante[0]), 
                     vacante[1], // grado
                     vacante[2], // grado
-                    Integer.parseInt(vacante[3]), // vacantesDisponibles
+                    Integer.parseInt(vacante[3]), 
                     Integer.parseInt(vacante[4]) // solicitudes
             );
             // Mensaje de depuración

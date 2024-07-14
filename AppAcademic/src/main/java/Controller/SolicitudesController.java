@@ -90,10 +90,13 @@ public class SolicitudesController {
                 this.principalController.displayErrorMessage("Error al procesar la aprobación de la solicitud");
             }
         } else {
+            
             if (solicitudDao.updateEstadoSolicitud(id, valor)) {
-                this.principalController.displaySucessMessage("Se actualizó la solicitud");
+                this.panelsolicitudes.displaySucessMessage("Se actualizó la solicitud");
+                
+                
             } else {
-                this.principalController.displayErrorMessage("Error al actualizar la solicitud");
+                this.panelsolicitudes.displayErrorMessage("Error al actualizar la solicitud");
             }
         }
         loadSolicitudes();
