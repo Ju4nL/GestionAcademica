@@ -48,8 +48,8 @@ public class ParentController {
         principalFrame.revalidate();
     }
     
-    public void showRegistrarAlumnoForm(int vacanteId, String grado) {
-        registrarAlumnoController.displayRegistrarAlumnoForm(vacanteId, grado);
+    public void showRegistrarAlumnoForm(int vacanteId, String grado,String seccion) {
+        registrarAlumnoController.displayRegistrarAlumnoForm(vacanteId, grado,seccion);
     }
 
     public void cerrarSesion() {

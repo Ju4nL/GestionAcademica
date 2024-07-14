@@ -20,9 +20,9 @@ public class RegistrarAlumnoController {
         this.principalController = principalController;
     }
 
-    public void displayRegistrarAlumnoForm(int vacanteId, String grado) {
+    public void displayRegistrarAlumnoForm(int vacanteId, String grado , String seccion) {
         // Crear una nueva instancia del formulario de registro
-        parentsPanelVacantsForm = new ParentsPanelVacantsForm(vacanteId, grado);
+        parentsPanelVacantsForm = new ParentsPanelVacantsForm(vacanteId, grado,seccion);
 
         // Mostrar el formulario de registro
         principalController.showPanel(parentsPanelVacantsForm);
@@ -50,8 +50,9 @@ public class RegistrarAlumnoController {
             String correo = parentsPanelVacantsForm.getTxtEmail().getText();
             String contraseña = new String(parentsPanelVacantsForm.getPswPassword().getPassword());
             String grado = parentsPanelVacantsForm.getGrado();
+            String seccion = parentsPanelVacantsForm.getSeccion();
 
-            RegistrarAlumno alumno = new RegistrarAlumno(dni, nombre, apellidos, fechaNacimiento, sexo, direccion, telefono, correo, contraseña, grado);
+            RegistrarAlumno alumno = new RegistrarAlumno(dni, nombre, apellidos, fechaNacimiento, sexo, direccion, telefono, correo, contraseña, grado,seccion);
 
             if (registrarAlumnoDAO.insertAlumno(alumno)) {
                 parentsPanelVacantsForm.displaySucessMessage("Alumno registrado con éxito.");

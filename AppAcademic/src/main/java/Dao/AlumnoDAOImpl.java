@@ -63,7 +63,7 @@ public class AlumnoDAOImpl implements RegistrarAlumnoDAO {
                                 solicitudVacanteStmt.setInt(1, 1); // 1 = rol de padre
                                 solicitudVacanteStmt.setInt(2, personaId);
                                 solicitudVacanteStmt.setInt(3, getGradoId(alumno.getGrado())); // Actualizado para usar getGrado()
-                                solicitudVacanteStmt.setInt(4, getRandomSeccionId()); // Asumir cualquier seccion
+                                solicitudVacanteStmt.setInt(4, getSeccionId(alumno.getSeccion())); // Asumir cualquier seccion
                                 solicitudVacanteStmt.setDate(5, new Date(System.currentTimeMillis()));
                                 solicitudVacanteStmt.setString(6, "Pendiente");
 
@@ -104,28 +104,21 @@ public class AlumnoDAOImpl implements RegistrarAlumnoDAO {
         }
         return gradoId;
     }
-
-    private int getRandomSeccionId() throws SQLException {
-        String[] secciones = {"A", "B", "C"}; // Incluye la sección 'C'
-        Random random = new Random();
-        String randomSeccion = secciones[random.nextInt(secciones.length)];
-        System.out.println("Obteniendo ID de Sección para: " + randomSeccion);
-
-        int seccionId = 0;
-        try (Connection connection = DatabaseConnection.getConnection(); PreparedStatement stmt = connection.prepareStatement("SELECT id FROM Seccion WHERE nombre = ? LIMIT 1")) {
-            stmt.setString(1, randomSeccion);
+    
+     private int getSeccionId(String seccion) throws SQLException { 
+        int seccionid = 0;
+        try (Connection connection = DatabaseConnection.getConnection(); PreparedStatement stmt = connection.prepareStatement("SELECT id FROM Seccion WHERE nombre = ?")) {
+            stmt.setString(1, seccion);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    seccionId = rs.getInt("id");
-                    System.out.println("ID de Sección obtenido: " + seccionId);
-                } else {
-                    throw new SQLException("No se encontró un ID para la sección " + randomSeccion);
+                    seccionid = rs.getInt("id");
+                     
                 }
             }
         }
-        return seccionId;
+        return seccionid;
     }
-
+ 
     @Override
     public List<RegistrarAlumno> getAllAlumnos() {
         throw new UnsupportedOperationException("Not supported yet.");

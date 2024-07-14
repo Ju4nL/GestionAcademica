@@ -18,11 +18,13 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
 
     private int vacanteId;
     private String grado;
+    private String seccion;
     private AlumnoDAOImpl registrarAlumnoDAO;
 
-    public ParentsPanelVacantsForm(int vacanteId, String grado) {
+    public ParentsPanelVacantsForm(int vacanteId, String grado,String seccion) {
         this.vacanteId = vacanteId;
         this.grado = grado;
+        this.seccion=seccion;
         registrarAlumnoDAO = new AlumnoDAOImpl();
 
         initComponents();
@@ -85,7 +87,11 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
     public String getGrado() {
         return grado;
     }
-
+    
+    public String getSeccion() {
+        return seccion;
+    }
+    
     public void displayErrorMessage(String message) {
         JOptionPane.showMessageDialog(this, message, "Error Vacantes", JOptionPane.ERROR_MESSAGE);
     }

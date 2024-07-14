@@ -54,9 +54,9 @@ public class VacantController {
 
         int vacanteId = Integer.parseInt(parentsVacants.getTblVacantes().getValueAt(selectedRow, 0).toString());
         String grado = parentsVacants.getTblVacantes().getValueAt(selectedRow, 1).toString();
-        String seccion   = parentsVacants.getTblVacantes().getValueAt(selectedRow, 1).toString();
+        String seccion   = parentsVacants.getTblVacantes().getValueAt(selectedRow, 2).toString();
 
-        principalController.showRegistrarAlumnoForm(vacanteId, grado);
+        principalController.showRegistrarAlumnoForm(vacanteId, grado,seccion);
     }
 
     public ParentsPanelVacants getVacanteSelectionPanel() {

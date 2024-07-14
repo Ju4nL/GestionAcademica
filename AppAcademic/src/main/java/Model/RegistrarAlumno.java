@@ -16,7 +16,7 @@ public class RegistrarAlumno {
     private String grado; 
     private String seccion; 
 
-    public RegistrarAlumno(String dni, String nombre, String apellidos, LocalDate fechaNacimiento, String sexo, String direccion, String telefono, String correo, String contraseña, String grado) {
+    public RegistrarAlumno(String dni, String nombre, String apellidos, LocalDate fechaNacimiento, String sexo, String direccion, String telefono, String correo, String contraseña, String grado,String seccion) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -27,6 +27,7 @@ public class RegistrarAlumno {
         this.correo = correo;
         this.contraseña = contraseña;
         this.grado = grado; 
+        this.seccion = seccion; 
     }
 
     public RegistrarAlumno() {
@@ -74,6 +75,14 @@ public class RegistrarAlumno {
 
     public String getDireccion() {
         return direccion;
+    }
+
+    public String getSeccion() {
+        return seccion;
+    }
+
+    public void setSeccion(String seccion) {
+        this.seccion = seccion;
     }
 
     public void setDireccion(String direccion) {
