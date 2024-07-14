@@ -20,9 +20,11 @@ public class TestParents {
                 // Crear el modelo
                 VacantModel model = new VacantModel();
                 // Crear el controlador
-                ParentController controller = new ParentController( frame, model, 0);
+                ParentController controller = new ParentController( frame, model, 1);
+                
                 // Hacer el frame visible
                 frame.setVisible(true);
+                controller.showVacantePanel();
             }
         });
 

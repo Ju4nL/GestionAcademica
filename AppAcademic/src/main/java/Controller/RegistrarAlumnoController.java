@@ -31,7 +31,7 @@ public class RegistrarAlumnoController {
         parentsPanelVacantsForm.getBtnRegistrarSolicitud().addActionListener(e -> registerAlumno());
     }
 
-    private void registerAlumno() {
+    public void registerAlumno() {
         try {
             String dni = parentsPanelVacantsForm.getTxtDni().getText();
 
@@ -55,7 +55,9 @@ public class RegistrarAlumnoController {
             RegistrarAlumno alumno = new RegistrarAlumno(dni, nombre, apellidos, fechaNacimiento, sexo, direccion, telefono, correo, contraseña, grado,seccion);
 
             if (registrarAlumnoDAO.insertAlumno(alumno)) {
+                
                 parentsPanelVacantsForm.displaySucessMessage("Alumno registrado con éxito.");
+                principalController.showVacantePanel();
             } else {
                 parentsPanelVacantsForm.displayErrorMessage("Error al registrar alumno.");
             }

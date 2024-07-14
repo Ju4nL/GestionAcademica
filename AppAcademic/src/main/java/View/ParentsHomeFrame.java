@@ -5,8 +5,10 @@ import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import Controller.ParentController;
 
 public class ParentsHomeFrame extends javax.swing.JFrame {
+    private ParentController parentController;
 
     public ParentsHomeFrame() {
         initComponents();
@@ -20,10 +22,13 @@ public class ParentsHomeFrame extends javax.swing.JFrame {
                 + "border:20,2,2,2;"
                 + "arc:30");
     }
-
-    private void initListeners() {
-        //btnVacantes.addActionListener(e -> cargarVacantes());   
-
+    
+    public void setController(ParentController parentController){
+        this.parentController = parentController;
+    }
+    
+    public JPanel getContentPanel() {
+        return content;
     }
 
     public JButton getBtnCerrarSesion() {
@@ -214,11 +219,11 @@ public class ParentsHomeFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVacantesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVacantesMousePressed
-        ShowJPanel(new ParentsPanelVacants());
+        this.parentController.showVacantePanel();
     }//GEN-LAST:event_btnVacantesMousePressed
 
     private void btnSolicitudesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSolicitudesMousePressed
-        ShowJPanel(new ParentsPanelSolicitudes());
+        this.parentController.showSolicitudesPanel();
     }//GEN-LAST:event_btnSolicitudesMousePressed
 
 
