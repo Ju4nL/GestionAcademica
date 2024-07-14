@@ -14,6 +14,7 @@ public class RegistrarAlumno {
     private String correo;
     private String contraseña;
     private String grado; 
+    private String seccion; 
 
     public RegistrarAlumno(String dni, String nombre, String apellidos, LocalDate fechaNacimiento, String sexo, String direccion, String telefono, String correo, String contraseña, String grado) {
         this.dni = dni;

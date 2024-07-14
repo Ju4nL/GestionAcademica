@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.List;
 import java.util.Random;
 
-public class RegistrarAlumnoDAOImpl implements RegistrarAlumnoDAO {
+public class AlumnoDAOImpl implements RegistrarAlumnoDAO {
 
     @Override
     public boolean insertAlumno(RegistrarAlumno alumno) {

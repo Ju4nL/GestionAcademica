@@ -55,8 +55,9 @@ public class ParentsPanelVacants extends javax.swing.JPanel {
             vacantTableModel.addVacant(
                     Integer.parseInt(vacante[0]), // id
                     vacante[1], // grado
-                    Integer.parseInt(vacante[2]), // vacantesDisponibles
-                    Integer.parseInt(vacante[3]) // solicitudes
+                    vacante[2], // grado
+                    Integer.parseInt(vacante[3]), // vacantesDisponibles
+                    Integer.parseInt(vacante[4]) // solicitudes
             );
             // Mensaje de depuración
             System.out.println("Vacante añadida: " + vacante[0]

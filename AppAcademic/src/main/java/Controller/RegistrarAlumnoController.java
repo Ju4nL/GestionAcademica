@@ -1,6 +1,6 @@
 package Controller;
 
-import Dao.RegistrarAlumnoDAOImpl;
+import Dao.AlumnoDAOImpl;
 import Model.RegistrarAlumno;
 import Model.VacantModel;
 import View.ParentsPanelVacantsForm;
@@ -11,12 +11,12 @@ import java.util.List;
 
 public class RegistrarAlumnoController {
 
-    private RegistrarAlumnoDAOImpl registrarAlumnoDAO;
+    private AlumnoDAOImpl registrarAlumnoDAO;
     private ParentController principalController;
     private ParentsPanelVacantsForm parentsPanelVacantsForm;
 
     public RegistrarAlumnoController(ParentController principalController) {
-        this.registrarAlumnoDAO = new RegistrarAlumnoDAOImpl();
+        this.registrarAlumnoDAO = new AlumnoDAOImpl();
         this.principalController = principalController;
     }
 

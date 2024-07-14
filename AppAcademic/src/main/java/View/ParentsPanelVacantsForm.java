@@ -11,27 +11,29 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import Dao.RegistrarAlumnoDAOImpl;
+import Dao.AlumnoDAOImpl;
 import Model.RegistrarAlumno;
 
 public class ParentsPanelVacantsForm extends javax.swing.JPanel {
 
     private int vacanteId;
     private String grado;
-    private RegistrarAlumnoDAOImpl registrarAlumnoDAO;
+    private AlumnoDAOImpl registrarAlumnoDAO;
 
     public ParentsPanelVacantsForm(int vacanteId, String grado) {
         this.vacanteId = vacanteId;
         this.grado = grado;
-        registrarAlumnoDAO = new RegistrarAlumnoDAOImpl();
+        registrarAlumnoDAO = new AlumnoDAOImpl();
 
         initComponents();
         initFlat();
     }
     
-     public ParentsPanelVacantsForm() { 
+     public ParentsPanelVacantsForm() {
+        
         initComponents();
         initFlat();
+        lblTitulo.setText("Vista Solicitud");
     }
      
     private void initFlat() {
@@ -97,7 +99,7 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        Titulo = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
         panelSolicitar = new javax.swing.JPanel();
         btnRegistrarSolicitud = new javax.swing.JButton();
         Titulo1 = new javax.swing.JLabel();
@@ -124,10 +126,10 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(240, 243, 253));
 
-        Titulo.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
-        Titulo.setForeground(new java.awt.Color(51, 51, 51));
-        Titulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Vacantes.png"))); // NOI18N
-        Titulo.setText("Solicitar vacante");
+        lblTitulo.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(51, 51, 51));
+        lblTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Vacantes.png"))); // NOI18N
+        lblTitulo.setText("Solicitar vacante");
 
         panelSolicitar.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -308,7 +310,7 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(panelSolicitar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -318,7 +320,7 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(Titulo)
+                .addComponent(lblTitulo)
                 .addGap(29, 29, 29)
                 .addComponent(panelSolicitar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(28, 28, 28))
@@ -338,7 +340,6 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Titulo;
     private javax.swing.JLabel Titulo1;
     private javax.swing.JLabel Titulo10;
     private javax.swing.JLabel Titulo11;
@@ -353,6 +354,7 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cbxSexo;
     private javax.swing.JPanel jPanel2;
     private com.toedter.calendar.JDateChooser jdcFechaNac;
+    private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel panelSolicitar;
     private javax.swing.JPasswordField pswPassword;
     private javax.swing.JTextField txtAddress;

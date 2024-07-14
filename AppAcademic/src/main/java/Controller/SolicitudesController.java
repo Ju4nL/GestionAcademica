@@ -115,6 +115,18 @@ public class SolicitudesController {
             formView.getTxtPhone().setText(detalle[4]);
             formView.getTxtEmail().setText(detalle[7]);
             formView.getPswPassword().setText(detalle[8]);
+            
+            formView.getTxtDni().setEnabled(false);
+            formView.getTxtName().setEnabled(false);
+            formView.getTxtLastName().setEnabled(false);
+            formView.getJdcFechaNac().setEnabled(false);
+            formView.getCbxSexo().setEnabled(false);
+            formView.getTxtAddress().setEnabled(false);
+            formView.getTxtPhone().setEnabled(false);
+            formView.getTxtEmail().setEnabled(false);
+            formView.getPswPassword().setEnabled(false);
+            
+            formView.getBtnRegistrarSolicitud().setVisible(false);
         } else {
             System.out.println("Curso not found with ID: " + id);
         }

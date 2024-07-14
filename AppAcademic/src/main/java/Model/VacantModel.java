@@ -11,21 +11,23 @@ public class VacantModel {
 
     public List<String[]> getVacantes() {
         List<String[]> vacantes = new ArrayList<>();
-        String query = "SELECT v.id, g.nombre AS grado, v.cupoDisponible, COUNT(s.id) AS solicitudes "
-                + "FROM Vacante v "
-                + "JOIN Grado g ON v.grado_id = g.id "
-                + "LEFT JOIN SolicitudVacante s ON v.grado_id = s.grado_id AND v.seccion_id = s.seccion_id "
-                + "GROUP BY v.id, g.nombre, v.cupoDisponible";
+        String query = "SELECT v.id, g.nombre AS grado,sc.nombre  as seccion, v.cupoDisponible, COUNT(s.id) AS solicitudes  \n" +
+                        " FROM Vacante v  \n" +
+                        " JOIN Grado g ON v.grado_id = g.id \n" +
+                        " JOIN Seccion sc ON v.seccion_id = sc.id \n" +
+                        " LEFT JOIN SolicitudVacante s ON v.grado_id = s.grado_id AND v.seccion_id = s.seccion_id  \n" +
+                        " GROUP BY v.id, g.nombre, v.cupoDisponible ";
 
         try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement stmt = conn.prepareStatement(query)) {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                String[] row = new String[4];
+                String[] row = new String[5];
                 row[0] = String.valueOf(rs.getInt("id"));
                 row[1] = rs.getString("grado"); // Mostrar nombre del grado
-                row[2] = String.valueOf(rs.getInt("cupoDisponible"));
-                row[3] = String.valueOf(rs.getInt("solicitudes"));
+                row[2] = rs.getString("seccion");
+                row[3] = String.valueOf(rs.getInt("cupoDisponible"));
+                row[4] = String.valueOf(rs.getInt("solicitudes"));
 
                 vacantes.add(row);
                 // Mensaje de depuración
