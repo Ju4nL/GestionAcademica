@@ -119,4 +119,141 @@ public class SolicitudVacanteDAOImpl implements SolicitudVacanteDAO {
         }
         return detalles;
     }
+    
+     @Override
+    public int insertarYBuscarAula(int solicitudId) {
+        String insertQuery = "INSERT INTO Aula (nombre, anio, grado_id, seccion_id) " +
+                             "SELECT B.nombre, B.anio, B.grado_id, B.seccion_id " +
+                             "FROM (SELECT CONCAT(g.nombre, ' ', s.nombre) AS nombre, YEAR(CURDATE()) AS anio, sv.grado_id, sv.seccion_id " +
+                             "FROM SolicitudVacante sv " +
+                             "JOIN Grado g ON sv.grado_id = g.id " +
+                             "JOIN Seccion s ON sv.seccion_id = s.id " +
+                             "WHERE sv.id = ?) B " +
+                             "LEFT JOIN Aula a ON B.nombre = a.nombre " +
+                             "WHERE a.id IS NULL";
+
+        String selectQuery = "SELECT id FROM Aula WHERE nombre = (SELECT CONCAT(g.nombre, ' ', s.nombre) " +
+                             "FROM SolicitudVacante sv " +
+                             "JOIN Grado g ON sv.grado_id = g.id " +
+                             "JOIN Seccion s ON sv.seccion_id = s.id " +
+                             "WHERE sv.id = ?)";
+
+        int aulaId = -1;
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
+             PreparedStatement selectStatement = connection.prepareStatement(selectQuery)) {
+
+            // Insertar el aula
+            insertStatement.setInt(1, solicitudId);
+            insertStatement.executeUpdate();
+
+            // Buscar el aula_id
+            selectStatement.setInt(1, solicitudId);
+            ResultSet rs = selectStatement.executeQuery();
+            if (rs.next()) {
+                aulaId = rs.getInt("id");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return aulaId;
+    }
+    
+    @Override
+    public boolean insertarPersonaAula(int personaId, int aulaId) {
+        String query = "INSERT INTO PersonaAula (persona_id, aula_id) VALUES (?, ?)";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, personaId);
+            preparedStatement.setInt(2, aulaId);
+            int rowsInserted = preparedStatement.executeUpdate();
+
+            return rowsInserted > 0;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    @Override
+public boolean procesarAprobacionSolicitud(int solicitudId) {
+    Connection connection = null;
+    PreparedStatement updateStatement = null;
+    PreparedStatement getAlumnoStatement = null;
+    boolean result = false;
+
+    try {
+        connection = DatabaseConnection.getConnection();
+        connection.setAutoCommit(false);
+
+        // Actualizar el estado de la solicitud
+        String updateQuery = "UPDATE SolicitudVacante SET estado = 'Aprobada' WHERE id = ?";
+        updateStatement = connection.prepareStatement(updateQuery);
+        updateStatement.setInt(1, solicitudId);
+        int rowsUpdated = updateStatement.executeUpdate();
+
+        if (rowsUpdated > 0) {
+            // Obtener el alumno_id (persona_id) de la solicitud
+            String getAlumnoQuery = "SELECT alumno_id FROM SolicitudVacante WHERE id = ?";
+            getAlumnoStatement = connection.prepareStatement(getAlumnoQuery);
+            getAlumnoStatement.setInt(1, solicitudId);
+            ResultSet rs = getAlumnoStatement.executeQuery();
+            int personaId = -1;
+            if (rs.next()) {
+                personaId = rs.getInt("alumno_id");
+            }
+
+            if (personaId != -1) {
+                // Insertar y buscar el aula
+                int aulaId = insertarYBuscarAula(solicitudId);
+
+                if (aulaId != -1) {
+                    // Insertar en PersonaAula
+                    if (insertarPersonaAula(personaId, aulaId)) {
+                        connection.commit();
+                        result = true;
+                    } else {
+                        connection.rollback();
+                    }
+                } else {
+                    connection.rollback();
+                }
+            } else {
+                connection.rollback();
+            }
+        } else {
+            connection.rollback();
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        if (connection != null) {
+            try {
+                connection.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    } finally {
+        try {
+            if (updateStatement != null) {
+                updateStatement.close();
+            }
+            if (getAlumnoStatement != null) {
+                getAlumnoStatement.close();
+            }
+            if (connection != null) {
+                connection.setAutoCommit(true);
+                connection.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    return result;
+}
 }

@@ -1,6 +1,6 @@
 package Controller;
 
-import Dao.AulaDAOImpl;
+//import Dao.AulaDAOImpl;
 import Model.Grado;
 import Model.Seccion;
 import Model.Aula;
@@ -13,12 +13,12 @@ import javax.swing.table.TableColumnModel;
 public class AulaController {
 
     private AdminController principalController;
-    private AulaDAOImpl aulaDao;
+    //private AulaDAOImpl aulaDao;
     private AdminPanelAulas adminPanelAulas;
 
     public AulaController(AdminController principalController) {
         this.principalController = principalController;
-        this.aulaDao = new AulaDAOImpl();
+       // this.aulaDao = new AulaDAOImpl();
         this.adminPanelAulas = new AdminPanelAulas(this);
         initController();
     }
@@ -34,10 +34,10 @@ public class AulaController {
         
         adminPanelAulas.getBtnSearch().addActionListener(e -> searchAula());  
         adminPanelAulas.getBtnDelete().addActionListener(e -> deleteAula());*/
-        loadAulas();
+        //loadAulas();
     }
 
-    public void loadAulas() {
+   /* public void loadAulas() {
         try {
             List<Aula> aulas = aulaDao.getAllAulas();
 
@@ -53,7 +53,7 @@ public class AulaController {
         } catch (Exception e) {
             principalController.displayErrorMessage("Error al cargar aulas: " + e.getMessage());
         }
-    }
+    }*/
     /*
     private void displayformAulaCreate() {
         AdminPanelAulasForm formCreate = new AdminPanelAulasForm(false);

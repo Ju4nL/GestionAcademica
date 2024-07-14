@@ -5,7 +5,7 @@ import java.sql.SQLException;
 public class TestingConection {
 
     public static void main(String[] args) {
-        String url = "jdbc:mysql://roundhouse.proxy.rlwy.net:58769/DbAcademic";
+        String url = "jdbc:mysql://db-projects.cn62022agaif.us-east-2.rds.amazonaws.com:3306/DbAcademic";
         String user = "root";
         String password = "bjNCKeZEamuJIGdNAmPrjgwvaYkTkriA";
 

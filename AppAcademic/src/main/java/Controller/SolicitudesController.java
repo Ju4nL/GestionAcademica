@@ -83,12 +83,20 @@ public class SolicitudesController {
 
         int id = Integer.parseInt(panelsolicitudes.getTblSolicitudes().getValueAt(rowIndex, 0).toString());
 
-        if (solicitudDao.updateEstadoSolicitud(id, valor)) {
-            this.principalController.displaySucessMessage("Se actualizo la solicitud ");
-            loadSolicitudes();
+        if (valor.equals("Aprobada")) {
+            if (solicitudDao.procesarAprobacionSolicitud(id)) {
+                this.principalController.displaySucessMessage("Se aprobó y procesó la solicitud correctamente");
+            } else {
+                this.principalController.displayErrorMessage("Error al procesar la aprobación de la solicitud");
+            }
         } else {
-            this.principalController.displayErrorMessage("No se actualizo la solicitud ");
+            if (solicitudDao.updateEstadoSolicitud(id, valor)) {
+                this.principalController.displaySucessMessage("Se actualizó la solicitud");
+            } else {
+                this.principalController.displayErrorMessage("Error al actualizar la solicitud");
+            }
         }
+        loadSolicitudes();
     }
 
     private void displayformSolicitud() {
@@ -105,7 +113,7 @@ public class SolicitudesController {
             String[] detalle = detailSolicitud.get(0); // Obtener el primer elemento de la lista
             ParentsPanelVacantsForm formView = new ParentsPanelVacantsForm();
             this.principalController.showPanel(formView);
-            
+
             formView.getTxtDni().setText(detalle[0]);
             formView.getTxtName().setText(detalle[1]);
             formView.getTxtLastName().setText(detalle[2]);
@@ -115,7 +123,7 @@ public class SolicitudesController {
             formView.getTxtPhone().setText(detalle[4]);
             formView.getTxtEmail().setText(detalle[7]);
             formView.getPswPassword().setText(detalle[8]);
-            
+
             formView.getTxtDni().setEnabled(false);
             formView.getTxtName().setEnabled(false);
             formView.getTxtLastName().setEnabled(false);
@@ -125,7 +133,7 @@ public class SolicitudesController {
             formView.getTxtPhone().setEnabled(false);
             formView.getTxtEmail().setEnabled(false);
             formView.getPswPassword().setEnabled(false);
-            
+
             formView.getBtnRegistrarSolicitud().setVisible(false);
         } else {
             System.out.println("Curso not found with ID: " + id);

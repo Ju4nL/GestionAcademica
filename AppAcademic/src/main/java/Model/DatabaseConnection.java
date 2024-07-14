@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DatabaseConnection {
 
-    private static final String URL = "jdbc:mysql://roundhouse.proxy.rlwy.net:58769/DbAcademic";
+    private static final String URL = "jdbc:mysql://db-projects.cn62022agaif.us-east-2.rds.amazonaws.com:3306/DbAcademic";
     private static final String USER = "root";
     private static final String PASSWORD = "bjNCKeZEamuJIGdNAmPrjgwvaYkTkriA";
 
@@ -27,3 +27,7 @@ public class DatabaseConnection {
 
  
 }
+/*
+roundhouse.proxy.rlwy.net:58769
+database-1.cn62022agaif.us-east-2.rds.amazonaws.com
+*/
