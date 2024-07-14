@@ -74,6 +74,8 @@ public class App implements AppInterface {
         System.out.println("iniciar admin");
         AdminController principalController = new AdminController(adminHomeFrame);
         adminHomeFrame.setController(principalController); // Asignar el controlador principal a la ventana
+        adminHomeFrame.setDefaultCloseOperation(AdminHomeFrame.EXIT_ON_CLOSE);
+        adminHomeFrame.pack();
         adminHomeFrame.setVisible(true);
         principalController.showCursoPanel(); // Mostrar el panel de cursos al iniciar sesión
     }
