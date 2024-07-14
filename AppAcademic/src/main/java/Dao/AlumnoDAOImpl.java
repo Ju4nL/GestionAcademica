@@ -145,11 +145,10 @@ public class AlumnoDAOImpl implements AlumnoDAO {
         List<String[]> alumnosInfo = new ArrayList<>();
         String query = "SELECT p.*, au.nombre AS Aula "
                 + "FROM Persona p "
-                + "JOIN Usuario u ON p.id = u.id "
-                + "JOIN Rol r ON u.role_id = r.id "
+                + "JOIN Usuario u ON p.id = u.id " 
                 + "JOIN PersonaAula pa ON p.id = pa.persona_id "
                 + "JOIN Aula au ON pa.aula_id = au.id "
-                + "WHERE r.nombre = 'alumno'";
+                + "WHERE u.role_id = 3";
         try (Connection connection = DatabaseConnection.getConnection(); PreparedStatement stmt = connection.prepareStatement(query); ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
@@ -179,10 +178,9 @@ public class AlumnoDAOImpl implements AlumnoDAO {
         String query = "SELECT p.*, au.nombre AS Aula "
                 + "FROM Persona p "
                 + "JOIN Usuario u ON p.id = u.id "
-                + "JOIN Rol r ON u.role_id = r.id "
                 + "JOIN PersonaAula pa ON p.id = pa.persona_id "
                 + "JOIN Aula au ON pa.aula_id = au.id "
-                + "WHERE r.nombre = 'alumno' AND p.nombre LIKE ?";
+                + "WHERE u.role_id = 3 AND p.nombre LIKE ?";
         try (Connection connection = DatabaseConnection.getConnection(); PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setString(1, "%" + nombre + "%");
             try (ResultSet rs = stmt.executeQuery()) {

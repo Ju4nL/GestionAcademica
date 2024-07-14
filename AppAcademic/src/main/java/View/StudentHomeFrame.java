@@ -19,7 +19,6 @@ public class StudentHomeFrame extends javax.swing.JFrame {
         initComponents();
         initFlat() ;
         initTable();
-        initListeners();
     }
     
      private void initFlat() { 
@@ -37,20 +36,8 @@ public class StudentHomeFrame extends javax.swing.JFrame {
         tblHorario.setRowHeight(100);  // Ajusta esto según necesites
     }
     
+   
     
-    private void cargarHorarios() {
-        HorarioStudentModel model = new HorarioStudentModel();
-        List<String[]> horarios = model.getHorarios();
-        reporteHorario.setRowCount(0);
-
-        for (String[] horario : horarios) {
-            reporteHorario.addHorario(horario[0], horario[1], horario[2], horario[3], horario[4], horario[5]);
-        }
-    }
-    
-    private void initListeners() {
-        btnHorario.addActionListener(e -> cargarHorarios());
-    }
 
     public JButton getBtnCerrarSesion() {
         return btnCerrarSesion;

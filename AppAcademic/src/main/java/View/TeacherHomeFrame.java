@@ -19,8 +19,7 @@ public class TeacherHomeFrame extends javax.swing.JFrame {
     public TeacherHomeFrame() {
         initComponents();
         initFlat();
-        initTable();
-        initListeners();
+        initTable(); 
     }
 
     private void initFlat() {
@@ -39,22 +38,9 @@ public class TeacherHomeFrame extends javax.swing.JFrame {
         tblHorarioTeacher.setRowHeight(100);
 
     }
+ 
 
-    private void cargarHorarios() {
-        HorarioTeacherModel model = new HorarioTeacherModel();
-        List<String[]> horarios = model.getHorarios();
-        reporteHorario.setRowCount(0);
-
-        for (String[] horario : horarios) {
-            reporteHorario.addHorario(horario[0], horario[1],
-                    horario[2], horario[3], horario[4], horario[5]);
-        }
-    }
-
-    private void initListeners() {
-        btnHorario.addActionListener(e -> cargarHorarios());
-    }
-
+     
     private void ShowJPanel(JPanel panel) {
         panel.setSize(815, 580);
         panel.setLocation(0, 0);

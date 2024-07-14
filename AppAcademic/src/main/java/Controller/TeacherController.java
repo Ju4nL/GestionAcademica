@@ -29,7 +29,7 @@ public class TeacherController {
     }
 
     public void verHorario() {
-        List<String[]> data = horarioModel.getHorarios();
+        List<String[]> data = horarioModel.getHorarios(usuarioID);
         teacherFrame.getTblHorarioTeacher().setModel(new View.ReporteHorario());
         for (String[] row : data) {
             ((View.ReporteHorario) teacherFrame.getTblHorarioTeacher().getModel()).addHorario(
