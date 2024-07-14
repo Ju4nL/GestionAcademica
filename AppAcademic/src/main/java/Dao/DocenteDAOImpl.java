@@ -55,7 +55,7 @@ public class DocenteDAOImpl implements DocenteDAO {
     @Override
     public List<Docente> getAllDocentes() {
         List<Docente> docentes = new ArrayList<>();
-        String sql = "SELECT p.*,u.email as username,'pass' as password, r.nombre as rol, u.is_active, a.nombre AS tutorAulaNombre FROM Persona p   \n"
+        String sql = "SELECT p.*,u.email as username, u.password, r.nombre as rol, u.is_active, a.nombre AS tutorAulaNombre FROM Persona p   \n"
                 + "JOIN Usuario u ON p.id = u.id  \n"
                 + "LEFT JOIN Rol r ON u.role_id = r.id  \n"
                 + "LEFT JOIN Aula a ON u.id = a.tutor_id WHERE r.nombre = 'docente' ";
@@ -91,7 +91,7 @@ public class DocenteDAOImpl implements DocenteDAO {
     @Override
     public boolean insertDocente(Docente docente) {
         String sqlPersona = "INSERT INTO Persona (nombre, apellidos, dni, sexo, fechaNacimiento, telefono, direccion, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        String sqlUsuario = "INSERT INTO Usuario (id, username, password, rol, is_active) VALUES (?, ?, ?, ?, ?)";
+        String sqlUsuario = "INSERT INTO Usuario (id, email, password, role_id, is_active) VALUES (?, ?, ?, ?, ?)";
         try (Connection connection = DatabaseConnection.getConnection()) {
             connection.setAutoCommit(false);
             try (PreparedStatement preparedStatementPersona = connection.prepareStatement(sqlPersona, Statement.RETURN_GENERATED_KEYS); PreparedStatement preparedStatementUsuario = connection.prepareStatement(sqlUsuario)) {
@@ -142,7 +142,7 @@ public class DocenteDAOImpl implements DocenteDAO {
     @Override
     public boolean updateDocente(Docente docente) {
         String sqlPersona = "UPDATE Persona SET nombre = ?, apellidos = ?, dni = ?, sexo = ?, fechaNacimiento = ?, telefono = ?, direccion = ?, email = ? WHERE id = ?";
-        String sqlUsuario = "UPDATE Usuario SET username = ?, password = ?, rol = ?, isActive = ? WHERE id = ?";
+        String sqlUsuario = "UPDATE Usuario SET email = ?, role_id = ?, is_active = ? WHERE id = ?";
         try (Connection connection = DatabaseConnection.getConnection()) {
             connection.setAutoCommit(false);
             try (PreparedStatement preparedStatementPersona = connection.prepareStatement(sqlPersona); PreparedStatement preparedStatementUsuario = connection.prepareStatement(sqlUsuario)) {
@@ -161,10 +161,9 @@ public class DocenteDAOImpl implements DocenteDAO {
                 if (affectedRowsPersona > 0) {
                     // Actualizar en Usuario
                     preparedStatementUsuario.setString(1, docente.getUsername());
-                    preparedStatementUsuario.setString(2, docente.getPassword());
-                    preparedStatementUsuario.setString(3, docente.getRol());
-                    preparedStatementUsuario.setBoolean(4, docente.isActive());
-                    preparedStatementUsuario.setInt(5, docente.getId());
+                    preparedStatementUsuario.setInt(2, 4); // Asumiendo que 4 es el role_id para 'docente'
+                    preparedStatementUsuario.setInt(3, 1);
+                    preparedStatementUsuario.setInt(4, docente.getId());
                     int affectedRowsUsuario = preparedStatementUsuario.executeUpdate();
 
                     if (affectedRowsUsuario > 0) {

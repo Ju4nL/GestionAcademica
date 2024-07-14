@@ -1,12 +1,12 @@
 package Controller;
 
 import Dao.DocenteDAOImpl;
-import Model.Grado;
-import Model.Seccion;
 import Model.Docente;
 import View.AdminPanelDocentes;
 import View.AdminPanelDocentesForm;
 import java.time.LocalDate;
+import java.util.Date;
+import java.time.ZoneId;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -81,32 +81,30 @@ public class DocenteController {
     }
 
     private void addDocente(AdminPanelDocentesForm form) {
-        Docente docente = new Docente(0,  
-                                        form.getTxtName().getText(), 
-                                        form.getTxtLastName().getText(),  
-                                        form.getTxtDni().getText(), 
-                                        form.getCbxSexo().getSelectedItem(), 
-                                        LocalDate.MIN, 
-                                        form.getTxtPhone().getText(), 
-                                        form.getTxtAddress().getText(), 
-                                        form.getTxtEmail().getText(), 
-                                        form.getTxtEmail().getText(), 
-                                        form.getPswPassword().getPassword(), 
-                                        'Docente', 
-                                        true, tutorAulaNombre);
-        try {
-            form.getTxtDni().getText();
-            form.getTxtName().setText(docente.getNombre());
-            form.getTxtLastName().setText(docente.getApellidos());
-            form.getJdcFechaNac().setDate(java.sql.Date.valueOf(docente.getFechaNacimiento()));
-            form.getCbxSexo().setSelectedItem(docente.getSexo());
-            form.getTxtAddress().setText(docente.getDireccion());
-            form.getTxtPhone().setText(docente.getTelefono());
-            form.getTxtEmail().setText(docente.getEmail());
-            form.getPswPassword().setText(docente.getPassword());
+        Date date = form.getJdcFechaNac().getDate();
+        LocalDate fechaNacimiento = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        Docente docente = new Docente(0,
+                form.getTxtName().getText(),
+                form.getTxtLastName().getText(),
+                form.getTxtDni().getText(),
+                form.getCbxSexo().getSelectedItem().toString(),
+                fechaNacimiento,
+                form.getTxtPhone().getText(),
+                form.getTxtAddress().getText(),
+                form.getTxtEmail().getText(),
+                form.getTxtEmail().getText(),
+                new String(form.getPswPassword().getPassword()),
+                "docente",
+                true,
+                "-");
+
+        if (docenteDao.insertDocente(docente)) {
+            this.principalController.displaySucessMessage("Se creo el docente " + docente.getNombre());
+            this.principalController.showDocentesPanel();
             loadDocentes();
-        } catch (Exception e) {
-            principalController.displayErrorMessage("Error al añadir docente: " + e.getMessage());
+        } else {
+            this.principalController.displayErrorMessage("No se creo el docente " + docente.getNombre());
         }
     }
 
@@ -137,7 +135,8 @@ public class DocenteController {
             formUpdate.getTxtPhone().setText(docente.getTelefono());
             formUpdate.getTxtEmail().setText(docente.getEmail());
             formUpdate.getPswPassword().setText(docente.getPassword());
-
+            
+            formUpdate.getPswPassword().setEnabled(false);
             this.principalController.showPanel(formUpdate);
             formUpdate.getBtnGuardar().addActionListener(e -> updateDocente(formUpdate, docente.getId()));
 
@@ -147,6 +146,32 @@ public class DocenteController {
     }
 
     private void updateDocente(AdminPanelDocentesForm form, int docenteId) {
+        Date date = form.getJdcFechaNac().getDate();
+        LocalDate fechaNacimiento = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        Docente docente = new Docente(docenteId,
+                form.getTxtName().getText(),
+                form.getTxtLastName().getText(),
+                form.getTxtDni().getText(),
+                form.getCbxSexo().getSelectedItem().toString(),
+                fechaNacimiento,
+                form.getTxtPhone().getText(),
+                form.getTxtAddress().getText(),
+                form.getTxtEmail().getText(),
+                form.getTxtEmail().getText(),
+                new String(form.getPswPassword().getPassword()),
+                "docente",
+                true,
+                "-");
+
+        try {
+            docenteDao.updateDocente(docente);
+            principalController.displaySucessMessage("Docente actualizada con éxito");
+            principalController.showDocentesPanel();
+            loadDocentes();
+        } catch (Exception e) {
+            principalController.displayErrorMessage("Error al actualizar docente: " + e.getMessage());
+        }
     }
 
     private void searchDocente() {
@@ -168,27 +193,4 @@ public class DocenteController {
         }
     }
 
-    /*
-    
-
- 
-    private void updateDocente(AdminPanelDocentesForm form, int docenteId) {
-        try {
-            Grado grado = (Grado) form.getCbxGrado().getSelectedItem();
-            Seccion seccion = (Seccion) form.getCbxSeccion().getSelectedItem();
-            int cupoDisponible = (int) form.getSpCupoDisponible().getValue();
-
-            Docente docente = new Docente(docenteId, grado, seccion, cupoDisponible);
-            docenteDao.updateDocente(docente);
-            principalController.displaySucessMessage("Docente actualizada con éxito");
-            principalController.showDocentePanel();
-            loadDocentes();        } catch (Exception e) {
-            principalController.displayErrorMessage("Error al actualizar docente: " + e.getMessage());
-        }
-    }
-
-    
-
-    /*
-     */
 }
