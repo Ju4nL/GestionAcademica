@@ -2,12 +2,14 @@ package Controller;
 //Base
 
 import Base.AppInterface;
+import Dao.ApoderadoDAOImpl;
 
 //Model
 import Model.LoginModel;
 
 //View
 import View.LoginFrame;
+import View.RegisterFrame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +20,8 @@ public class LoginController {
     private LoginFrame loginView;
     private LoginModel loginmodel;
     private AppInterface appInterface;
+    private RegistrarApoderadoController registrarApoderadoController;
+
     private static final Pattern EMAIL_PATTERN = Pattern.compile(
             "^[A-Za-z0-9._%+-]+@jgp\\.edu\\.pe$");
 
@@ -26,6 +30,7 @@ public class LoginController {
         this.loginmodel = loginmodel;
         this.appInterface = appInterface;
         this.loginView.setLoginAction(new LoginAction());
+        this.loginView.setRegisterAction(new RegisterAction());
     }
 
     private boolean validarUsuario(String username) {
@@ -82,5 +87,19 @@ public class LoginController {
             }
         }
 
+    }
+
+    class RegisterAction implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            loginView.setVisible(false);
+
+
+            RegisterFrame registerFrame = new RegisterFrame();
+            RegistrarApoderadoController registrarApoderadoController = new RegistrarApoderadoController(registerFrame, new ApoderadoDAOImpl(), 0, loginView);
+            registerFrame.setVisible(true);
+        }
     }
 }

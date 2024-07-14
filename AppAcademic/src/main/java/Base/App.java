@@ -4,11 +4,13 @@ package Base;
 import Controller.CursoController;
 import Controller.LoginController;
 import Controller.AdminController;
+import Controller.ParentController;
 import Controller.StudentController;
 import Controller.TeacherController;
 import Model.HorarioStudentModel;
 import Model.HorarioTeacherModel;
 import Model.LoginModel;
+import Model.VacantModel;
 import View.AdminHomeFrame;
 import View.LoginFrame;
 import View.ParentsHomeFrame;
@@ -63,8 +65,10 @@ public class App implements AppInterface {
     
     private void launchParentsInterface(int usuarioID) {
         ParentsHomeFrame parentsHomeFrame = new ParentsHomeFrame();
-        // Aquí puedes inicializar los controladores y modelos necesarios para la interfaz de los padres
-
+        VacantModel vacantModel = new VacantModel();
+        ParentController parentController = new ParentController(parentsHomeFrame, vacantModel, usuarioID);
+        parentsHomeFrame.setController(parentController);
+        parentController.showVacantePanel();
         parentsHomeFrame.setVisible(true);
 
     }
@@ -84,6 +88,7 @@ public class App implements AppInterface {
         HorarioStudentModel horarioModel = new HorarioStudentModel();
         StudentHomeFrame studentHomeFrame = new StudentHomeFrame();
         new StudentController(studentHomeFrame, horarioModel, usuarioID);
+        
         studentHomeFrame.setVisible(true);
     }
 

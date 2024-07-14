@@ -86,7 +86,7 @@ public class RegistrarAlumnoController {
 
             // Verificar la longitud del DNI
             if (dni.length() > 8) {
-                parentsPanelVacantsForm.displayErrorMessage("El DNI es demasiado largo.");
+                parentsPanelVacantsForm.displayErrorMessage("El DNI debe ser de 8 dígitos.");
                 return;
             }
 
@@ -97,11 +97,14 @@ public class RegistrarAlumnoController {
             String direccion = parentsPanelVacantsForm.getTxtAddress().getText();
             String telefono = parentsPanelVacantsForm.getTxtPhone().getText();
             String correo = parentsPanelVacantsForm.getTxtEmail().getText();
-            String contraseña = new String(parentsPanelVacantsForm.getPswPassword().getPassword());
+            String contrasena = new String(parentsPanelVacantsForm.getPswPassword().getPassword());
+            if (contrasena.length() < 6) {
+                throw new IllegalArgumentException("La contraseña debe tener al menos 6 caracteres.");
+            }
             String grado = parentsPanelVacantsForm.getGrado();
             String seccion = parentsPanelVacantsForm.getSeccion();
 
-            RegistrarAlumno alumno = new RegistrarAlumno(dni, nombre, apellidos, fechaNacimiento, sexo, direccion, telefono, correo, contraseña, grado, seccion);
+            RegistrarAlumno alumno = new RegistrarAlumno(dni, nombre, apellidos, fechaNacimiento, sexo, direccion, telefono, correo, contrasena, grado, seccion);
 
             if (registrarAlumnoDAO.insertAlumno(alumno)) {
 

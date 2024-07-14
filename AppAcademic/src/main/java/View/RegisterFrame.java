@@ -1,6 +1,7 @@
 package View;
 
 import com.formdev.flatlaf.FlatClientProperties;
+import com.toedter.calendar.JDateChooser;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -13,6 +14,7 @@ public class RegisterFrame extends javax.swing.JFrame {
     public RegisterFrame() {
         initComponents();
         initFlat();
+        setLocationRelativeTo(null);
     }
 
     private void initFlat() {
@@ -21,11 +23,10 @@ public class RegisterFrame extends javax.swing.JFrame {
                 + "arc:10");
         pswPassword1.putClientProperty(FlatClientProperties.STYLE, ""
                 + "showRevealButton:true");
-        pswPassword2.putClientProperty(FlatClientProperties.STYLE, ""
-                + "showRevealButton:true");
+
         txtEmail.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Ingrese su email");
         pswPassword1.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Ingrese su contraseña");
-        pswPassword2.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Repita su contraseña");
+        txtEmail.setEnabled(false);
 
     }
 
@@ -41,17 +42,15 @@ public class RegisterFrame extends javax.swing.JFrame {
         return pswPassword1;
     }
 
-    public JPasswordField getPswPassword2() {
-        return pswPassword2;
-    }
 
     public JTextField getTxtAddress() {
         return txtAddress;
     }
 
-    public JTextField getTxtDateNac() {
-        return txtDateNac;
+    public JDateChooser getJdcFechaNac() {
+        return jdcFechaNac;
     }
+
 
     public JTextField getTxtDni() {
         return txtDni;
@@ -74,7 +73,7 @@ public class RegisterFrame extends javax.swing.JFrame {
     }
 
     public void displayErrorMessage(String message) {
-        JOptionPane.showMessageDialog(this, message, "Error Login", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, message, "Error Registrate", JOptionPane.ERROR_MESSAGE);
     }
 
     public void displaySucessMessage(String message) {
@@ -95,8 +94,6 @@ public class RegisterFrame extends javax.swing.JFrame {
         txtDni = new javax.swing.JTextField();
         separador4 = new javax.swing.JSeparator();
         rgFechaNacLb = new javax.swing.JLabel();
-        txtDateNac = new javax.swing.JTextField();
-        separador5 = new javax.swing.JSeparator();
         rgEmailLb = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         separador10 = new javax.swing.JSeparator();
@@ -114,9 +111,7 @@ public class RegisterFrame extends javax.swing.JFrame {
         rgDirLb = new javax.swing.JLabel();
         txtAddress = new javax.swing.JTextField();
         separador11 = new javax.swing.JSeparator();
-        rgPassword2Lb = new javax.swing.JLabel();
-        pswPassword2 = new javax.swing.JPasswordField();
-        separador12 = new javax.swing.JSeparator();
+        jdcFechaNac = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -173,17 +168,6 @@ public class RegisterFrame extends javax.swing.JFrame {
         rgFechaNacLb.setForeground(new java.awt.Color(255, 255, 255));
         rgFechaNacLb.setText("FechaNacimiento");
         panelBg.add(rgFechaNacLb, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
-
-        txtDateNac.setBackground(new java.awt.Color(78, 69, 189));
-        txtDateNac.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        txtDateNac.setForeground(new java.awt.Color(255, 255, 255));
-        txtDateNac.setToolTipText("");
-        txtDateNac.setBorder(null);
-        panelBg.add(txtDateNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 160, -1));
-
-        separador5.setBackground(new java.awt.Color(78, 69, 189));
-        separador5.setForeground(new java.awt.Color(255, 255, 255));
-        panelBg.add(separador5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 160, -1));
 
         rgEmailLb.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         rgEmailLb.setForeground(new java.awt.Color(255, 255, 255));
@@ -276,21 +260,7 @@ public class RegisterFrame extends javax.swing.JFrame {
         separador11.setBackground(new java.awt.Color(78, 69, 189));
         separador11.setForeground(new java.awt.Color(255, 255, 255));
         panelBg.add(separador11, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, 160, -1));
-
-        rgPassword2Lb.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        rgPassword2Lb.setForeground(new java.awt.Color(255, 255, 255));
-        rgPassword2Lb.setText("Repetir contraseña");
-        panelBg.add(rgPassword2Lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, -1, -1));
-
-        pswPassword2.setBackground(new java.awt.Color(78, 69, 189));
-        pswPassword2.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        pswPassword2.setForeground(new java.awt.Color(255, 255, 255));
-        pswPassword2.setBorder(null);
-        panelBg.add(pswPassword2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 160, -1));
-
-        separador12.setBackground(new java.awt.Color(78, 69, 189));
-        separador12.setForeground(new java.awt.Color(255, 255, 255));
-        panelBg.add(separador12, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 400, 160, -1));
+        panelBg.add(jdcFechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 140, -1));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/RegisterImage.png"))); // NOI18N
@@ -318,9 +288,9 @@ public class RegisterFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrate;
     private javax.swing.JComboBox<String> cbxGender;
     private javax.swing.JLabel jLabel1;
+    private com.toedter.calendar.JDateChooser jdcFechaNac;
     private javax.swing.JPanel panelBg;
     private javax.swing.JPasswordField pswPassword1;
-    private javax.swing.JPasswordField pswPassword2;
     private javax.swing.JLabel rgApellidosLb;
     private javax.swing.JLabel rgDirLb;
     private javax.swing.JLabel rgDniLb;
@@ -328,21 +298,17 @@ public class RegisterFrame extends javax.swing.JFrame {
     private javax.swing.JLabel rgFechaNacLb;
     private javax.swing.JLabel rgGeneroLb;
     private javax.swing.JLabel rgNombreLb;
-    private javax.swing.JLabel rgPassword2Lb;
     private javax.swing.JLabel rgPasswordLb;
     private javax.swing.JLabel rgTelLb;
     private javax.swing.JLabel rgTitle;
     private javax.swing.JSeparator separador10;
     private javax.swing.JSeparator separador11;
-    private javax.swing.JSeparator separador12;
     private javax.swing.JSeparator separador2;
     private javax.swing.JSeparator separador3;
     private javax.swing.JSeparator separador4;
-    private javax.swing.JSeparator separador5;
     private javax.swing.JSeparator separador7;
     private javax.swing.JSeparator separador9;
     private javax.swing.JTextField txtAddress;
-    private javax.swing.JTextField txtDateNac;
     private javax.swing.JTextField txtDni;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtLastName;
