@@ -237,9 +237,6 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(txtName))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelSolicitarLayout.createSequentialGroup()
-                                .addComponent(lblGradoSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelSolicitarLayout.createSequentialGroup()
                                 .addComponent(Titulo7, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(pswPassword))
@@ -261,7 +258,10 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(Titulo8, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(94, 94, 94)
-                                .addComponent(cbxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(cbxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelSolicitarLayout.createSequentialGroup()
+                                .addComponent(lblGradoSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(38, 38, 38))))
         );
         panelSolicitarLayout.setVerticalGroup(
