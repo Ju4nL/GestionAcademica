@@ -14,10 +14,11 @@ public class RegistrarAlumno {
     private String telefono;
     private String correo;
     private String contraseña;
-    private String grado; 
-    private String seccion; 
+    private String grado;
+    private String seccion;
+    private int padre_id;
 
-    public RegistrarAlumno(String dni, String nombre, String apellidos, LocalDate fechaNacimiento, String sexo, String direccion, String telefono, String correo, String contraseña, String grado,String seccion) {
+    public RegistrarAlumno(String dni, String nombre, String apellidos, LocalDate fechaNacimiento, String sexo, String direccion, String telefono, String correo, String contraseña, String grado, String seccion) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -27,11 +28,19 @@ public class RegistrarAlumno {
         this.telefono = telefono;
         this.correo = correo;
         this.contraseña = PasswordUtils.hashPassword(contraseña);
-        this.grado = grado; 
-        this.seccion = seccion; 
+        this.grado = grado;
+        this.seccion = seccion;
     }
 
     public RegistrarAlumno() {
+    }
+
+    public int getPadre_id() {
+        return padre_id;
+    }
+
+    public void setPadre_id(int padre_id) {
+        this.padre_id = padre_id;
     }
 
     public String getDni() {

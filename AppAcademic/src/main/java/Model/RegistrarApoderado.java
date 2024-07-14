@@ -1,6 +1,7 @@
 
 package Model;
     
+import Security.PasswordUtils;
 import java.time.LocalDate;
 
 public class RegistrarApoderado {
@@ -23,7 +24,7 @@ public class RegistrarApoderado {
         this.telefono = telefono;
         this.email = email;
         this.direccion = direccion;
-        this.contrasena = contrasena;
+        this.contrasena = PasswordUtils.hashPassword(contrasena);
     }
 
     public RegistrarApoderado() {
@@ -98,7 +99,7 @@ public class RegistrarApoderado {
     }
 
     public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+        this.contrasena = PasswordUtils.hashPassword(contrasena);
     }
     
     

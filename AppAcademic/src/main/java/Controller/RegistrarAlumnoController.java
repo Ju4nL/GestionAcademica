@@ -105,7 +105,7 @@ public class RegistrarAlumnoController {
             String seccion = parentsPanelVacantsForm.getSeccion();
 
             RegistrarAlumno alumno = new RegistrarAlumno(dni, nombre, apellidos, fechaNacimiento, sexo, direccion, telefono, correo, contrasena, grado, seccion);
-
+            alumno.setPadre_id(principalController.getId());
             if (registrarAlumnoDAO.insertAlumno(alumno)) {
 
                 parentsPanelVacantsForm.displaySucessMessage("Alumno registrado con éxito.");

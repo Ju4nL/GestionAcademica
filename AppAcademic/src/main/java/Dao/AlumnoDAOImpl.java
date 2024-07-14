@@ -61,7 +61,7 @@ public class AlumnoDAOImpl implements AlumnoDAO {
                             // Insert into SolicitudVacante table
                             String insertSolicitudVacanteSql = "INSERT INTO SolicitudVacante (padre_id, alumno_id, grado_id, seccion_id, fechaSolicitud, estado) VALUES (?, ?, ?, ?, ?, ?)";
                             try (PreparedStatement solicitudVacanteStmt = connection.prepareStatement(insertSolicitudVacanteSql)) {
-                                solicitudVacanteStmt.setInt(1, 1); // 1 = rol de padre
+                                solicitudVacanteStmt.setInt(1, alumno.getPadre_id()); 
                                 solicitudVacanteStmt.setInt(2, personaId);
                                 solicitudVacanteStmt.setInt(3, getGradoId(alumno.getGrado())); // Actualizado para usar getGrado()
                                 solicitudVacanteStmt.setInt(4, getSeccionId(alumno.getSeccion())); // Asumir cualquier seccion

@@ -35,6 +35,10 @@ public class ParentController {
         initController();
     }
 
+    public int getId() {
+        return id;
+    }
+
     public void initController() {
         vacantController = new VacantController(this);
         principalFrame.getBtnVacantes().addActionListener(e -> vacantController.loadVacantes());
