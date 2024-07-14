@@ -132,7 +132,7 @@ public class ParentsPanelSolicitudes extends javax.swing.JPanel {
                         .addGap(76, 76, 76)
                         .addComponent(btnAgregar)))
                 .addGap(18, 18, 18)
-                .addComponent(tblSolicitudes, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
+                .addComponent(tblSolicitudes, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

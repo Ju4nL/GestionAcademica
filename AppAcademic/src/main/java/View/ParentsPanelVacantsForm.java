@@ -28,7 +28,12 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
         initComponents();
         initFlat();
     }
-
+    
+     public ParentsPanelVacantsForm() { 
+        initComponents();
+        initFlat();
+    }
+     
     private void initFlat() {
         panelSolicitar.putClientProperty(FlatClientProperties.STYLE, ""
                 + "border:2,2,2,2;"
@@ -91,6 +96,7 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
         Titulo = new javax.swing.JLabel();
         panelSolicitar = new javax.swing.JPanel();
         btnRegistrarSolicitud = new javax.swing.JButton();
@@ -108,7 +114,6 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
         jdcFechaNac = new com.toedter.calendar.JDateChooser();
         Titulo8 = new javax.swing.JLabel();
         cbxSexo = new javax.swing.JComboBox<>();
-        Titulo9 = new javax.swing.JLabel();
         pswPassword = new javax.swing.JPasswordField();
         Titulo10 = new javax.swing.JLabel();
         Titulo11 = new javax.swing.JLabel();
@@ -116,6 +121,8 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
         txtPhone = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(240, 243, 253));
+
+        jPanel2.setBackground(new java.awt.Color(240, 243, 253));
 
         Titulo.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         Titulo.setForeground(new java.awt.Color(51, 51, 51));
@@ -179,11 +186,6 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
         cbxSexo.setForeground(new java.awt.Color(51, 51, 51));
         cbxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "F", "M" }));
 
-        Titulo9.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        Titulo9.setForeground(new java.awt.Color(153, 153, 153));
-        Titulo9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/exclamacion.png"))); // NOI18N
-        Titulo9.setText("La seccion se le asignará el coordinador");
-
         pswPassword.setBackground(new java.awt.Color(240, 243, 253));
         pswPassword.setForeground(new java.awt.Color(51, 51, 51));
 
@@ -227,8 +229,7 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
                                 .addComponent(txtName))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelSolicitarLayout.createSequentialGroup()
                                 .addComponent(Titulo2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Titulo9, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelSolicitarLayout.createSequentialGroup()
                                 .addComponent(Titulo7, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
@@ -248,7 +249,7 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
                                 .addComponent(Titulo3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jdcFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(Titulo8, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(94, 94, 94)
                                 .addComponent(cbxSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -258,9 +259,7 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
             panelSolicitarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSolicitarLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addGroup(panelSolicitarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Titulo2)
-                    .addComponent(Titulo9))
+                .addComponent(Titulo2)
                 .addGap(26, 26, 26)
                 .addGroup(panelSolicitarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(Titulo4)
@@ -273,7 +272,7 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
                 .addGroup(panelSolicitarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Titulo6)
                     .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 37, Short.MAX_VALUE)
+                .addGap(18, 24, Short.MAX_VALUE)
                 .addGroup(panelSolicitarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Titulo10)
                     .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -296,28 +295,44 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
                 .addGroup(panelSolicitarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Titulo7)
                     .addComponent(pswPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(btnRegistrarSolicitud, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(panelSolicitar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(19, 19, 19))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(Titulo)
+                .addGap(29, 29, 29)
+                .addComponent(panelSolicitar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(28, 28, 28))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelSolicitar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(Titulo)
-                .addGap(18, 18, 18)
-                .addComponent(panelSolicitar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -334,9 +349,9 @@ public class ParentsPanelVacantsForm extends javax.swing.JPanel {
     private javax.swing.JLabel Titulo6;
     private javax.swing.JLabel Titulo7;
     private javax.swing.JLabel Titulo8;
-    private javax.swing.JLabel Titulo9;
     private javax.swing.JButton btnRegistrarSolicitud;
     private javax.swing.JComboBox<String> cbxSexo;
+    private javax.swing.JPanel jPanel2;
     private com.toedter.calendar.JDateChooser jdcFechaNac;
     private javax.swing.JPanel panelSolicitar;
     private javax.swing.JPasswordField pswPassword;

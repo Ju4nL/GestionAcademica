@@ -85,4 +85,38 @@ public class SolicitudVacanteDAOImpl implements SolicitudVacanteDAO {
         }
         return false;
     }
+    
+     @Override
+    public List<String[]> getDetailsSolicitud(int solicitudId) {
+        List<String[]> detalles = new ArrayList<>();
+        String query = "SELECT p.dni, p.nombre, p.apellidos, p.direccion, p.telefono, p.fechaNacimiento, p.sexo, p.email, '-' as contraseña " +
+                       "FROM SolicitudVacante sv " +
+                       "LEFT JOIN Persona p ON sv.alumno_id = p.id " +
+                       "WHERE sv.id = ?";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, solicitudId);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                String[] detalle = new String[9];
+                detalle[0] = rs.getString("dni");
+                detalle[1] = rs.getString("nombre");
+                detalle[2] = rs.getString("apellidos");
+                detalle[3] = rs.getString("direccion");
+                detalle[4] = rs.getString("telefono");
+                detalle[5] = rs.getString("fechaNacimiento").toString();
+                detalle[6] = rs.getString("sexo");
+                detalle[7] = rs.getString("email");
+                detalle[8] = rs.getString("contraseña");
+                detalles.add(detalle);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return detalles;
+    }
 }

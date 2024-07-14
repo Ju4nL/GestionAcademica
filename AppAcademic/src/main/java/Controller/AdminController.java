@@ -11,6 +11,7 @@ public class AdminController {
     private CursoController cursoController;  
     private DocenteController docenteController;
     private VacanteController vacanteController;  
+    private SolicitudesController solicitudController; 
 
     public AdminController(AdminHomeFrame adminHomeFrame) {
         this.adminHomeFrame = adminHomeFrame; 
@@ -20,6 +21,9 @@ public class AdminController {
     private void initControllers() {
         vacanteController = new VacanteController(this);
         adminHomeFrame.getBtnVacantes().addActionListener(e -> vacanteController.loadVacantes());
+        
+        solicitudController = new SolicitudesController(this);
+        adminHomeFrame.getBtnSolicitudes().addActionListener(e -> solicitudController.loadSolicitudes());
         
         cursoController = new CursoController(this);
         adminHomeFrame.getBtnCursos().addActionListener(e -> cursoController.loadCursos());
@@ -46,6 +50,15 @@ public class AdminController {
         showPanel(vacanteController.getAdminPanelVacantes());
         adminHomeFrame.getBtnVacantes().setBackground(new Color(240, 243, 253));
         adminHomeFrame.getBtnCursos().setBackground(new Color(255, 255, 255));
+        adminHomeFrame.getBtnSolicitudes().setBackground(new Color(255, 255, 255));
+         
+    }
+    
+     public void showSolicitudesPanel() { 
+        showPanel(solicitudController.getPanelSolicitudes());
+        adminHomeFrame.getBtnVacantes().setBackground(new Color(255, 255, 255));
+        adminHomeFrame.getBtnCursos().setBackground(new Color(255, 255, 255));
+        adminHomeFrame.getBtnSolicitudes().setBackground(new Color(240, 243, 253));
          
     }
     
@@ -53,6 +66,7 @@ public class AdminController {
         showPanel(cursoController.getAdminPanelCursos());
         adminHomeFrame.getBtnVacantes().setBackground(new Color(255, 255, 255));
         adminHomeFrame.getBtnCursos().setBackground(new Color(240, 243, 253));
+        adminHomeFrame.getBtnSolicitudes().setBackground(new Color(255, 255, 255));
     }
      
    public void displayErrorMessage(String message){
