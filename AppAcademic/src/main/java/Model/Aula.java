@@ -6,9 +6,9 @@ public class Aula {
     private int anio;
     private Grado grado;
     private Seccion seccion;
-    private Docente tutor;
+    private String tutor;  
 
-    public Aula(int ID, String nombre, int anio, Grado grado, Seccion seccion, Docente tutor) {
+    public Aula(int ID, String nombre, int anio, Grado grado, Seccion seccion, String tutor) {
         this.ID = ID;
         this.nombre = nombre;
         this.anio = anio;
@@ -58,12 +58,11 @@ public class Aula {
         this.seccion = seccion;
     }
 
-    public Docente getTutor() {
+    public String getTutor() {
         return tutor;
     }
 
-    public void setTutor(Docente tutor) {
+    public void setTutor(String tutor) {
         this.tutor = tutor;
-    } 
-     
+    }
 }

@@ -8,6 +8,8 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.time.ZoneId;
 import java.util.List;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
@@ -75,9 +77,55 @@ public class DocenteController {
     }
 
     private void displayformDocenteCreate() {
-        AdminPanelDocentesForm formCreate = new AdminPanelDocentesForm(true);
+        AdminPanelDocentesForm formCreate = new AdminPanelDocentesForm(true); 
+        formCreate.setEmailFieldEnabled(false);
         this.principalController.showPanel(formCreate);
+        
         formCreate.getBtnGuardar().addActionListener(e -> addDocente(formCreate));
+        
+        formCreate.getTxtName().getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                updateEmail(formCreate);
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                updateEmail(formCreate);
+            }
+
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                updateEmail(formCreate);
+            }
+        });
+
+        formCreate.getTxtLastName().getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                updateEmail(formCreate);
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                updateEmail(formCreate);
+            }
+
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                updateEmail(formCreate);
+            }
+        });
+    }
+    
+    private void updateEmail(AdminPanelDocentesForm formCreate) {
+        String nombre = formCreate.getTxtName().getText().trim();
+        String apellidos = formCreate.getTxtLastName().getText().trim();
+        if (!nombre.isEmpty() && !apellidos.isEmpty()) {
+            String email = nombre.toLowerCase() + "." + apellidos.toLowerCase().replace(" ", "") + "@jgp.edu.pe";
+            formCreate.getTxtEmail().setText(email);
+        }
+
     }
 
     private void addDocente(AdminPanelDocentesForm form) {

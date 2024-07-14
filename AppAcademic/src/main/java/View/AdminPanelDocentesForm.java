@@ -78,7 +78,11 @@ public class AdminPanelDocentesForm extends javax.swing.JPanel {
     public JTextField getTxtName() {
         return txtName;
     }
-
+    
+    
+    public void setEmailFieldEnabled(boolean enabled) {
+        txtEmail.setEnabled(enabled);
+    }
     
     
     public void displayErrorMessage(String message) {

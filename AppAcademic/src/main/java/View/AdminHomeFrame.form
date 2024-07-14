@@ -275,6 +275,9 @@
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="2"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAulasMousePressed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnAlumnos">
                   <Properties>
