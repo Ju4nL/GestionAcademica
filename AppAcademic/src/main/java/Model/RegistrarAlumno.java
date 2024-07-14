@@ -1,5 +1,6 @@
 package Model;
 
+import Security.PasswordUtils;
 import java.time.LocalDate;
 
 public class RegistrarAlumno {
@@ -25,7 +26,7 @@ public class RegistrarAlumno {
         this.direccion = direccion;
         this.telefono = telefono;
         this.correo = correo;
-        this.contraseña = contraseña;
+        this.contraseña = PasswordUtils.hashPassword(contraseña);
         this.grado = grado; 
         this.seccion = seccion; 
     }
