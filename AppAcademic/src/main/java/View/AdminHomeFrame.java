@@ -152,6 +152,11 @@ public class AdminHomeFrame extends javax.swing.JFrame {
         btnDocentes.setBorderPainted(false);
         btnDocentes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDocentes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnDocentes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnDocentesMousePressed(evt);
+            }
+        });
 
         btnAulas.setBackground(new java.awt.Color(255, 255, 255));
         btnAulas.setForeground(new java.awt.Color(51, 51, 51));
@@ -304,7 +309,7 @@ public class AdminHomeFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAlumnosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlumnosMousePressed
-        ShowJPanel(new AdminPanelAlumnos());
+        principalController.showAlumnosPanel();
     }//GEN-LAST:event_btnAlumnosMousePressed
 
     private void btnCursosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCursosMousePressed
@@ -318,6 +323,10 @@ public class AdminHomeFrame extends javax.swing.JFrame {
     private void btnSolicitudesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSolicitudesMousePressed
         principalController.showSolicitudesPanel();
     }//GEN-LAST:event_btnSolicitudesMousePressed
+
+    private void btnDocentesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDocentesMousePressed
+        principalController.showDocentesPanel();
+    }//GEN-LAST:event_btnDocentesMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

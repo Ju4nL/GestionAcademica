@@ -1,6 +1,7 @@
 package Model;
 
 import java.time.LocalDate;
+import org.mindrot.jbcrypt.BCrypt;
 
 public abstract class Usuario extends Persona {
     private String username;
@@ -11,7 +12,7 @@ public abstract class Usuario extends Persona {
     public Usuario(int id, String nombre, String apellidos, String dni, String sexo, LocalDate fechaNacimiento, String telefono, String direccion, String email, String username, String password, String rol, boolean isActive) {
         super(id, nombre, apellidos, dni, sexo, fechaNacimiento, telefono, direccion, email);
         this.username = username;
-        this.password = password;
+        this.password = hashPassword(password);
         this.rol = rol;
         this.isActive = isActive;
     }
@@ -34,7 +35,7 @@ public abstract class Usuario extends Persona {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = hashPassword(password);
     }
 
     public String getRol() {
@@ -51,5 +52,10 @@ public abstract class Usuario extends Persona {
 
     public void setActive(boolean isActive) {
         this.isActive = isActive;
+    }
+
+    // Método para hashear la contraseña
+    private String hashPassword(String plainTextPassword) {
+        return BCrypt.hashpw(plainTextPassword, BCrypt.gensalt());
     }
 }

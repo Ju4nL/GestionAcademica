@@ -5,7 +5,8 @@ import Model.Grado;
 import Model.Seccion;
 import Model.Docente;
 import View.AdminPanelDocentes;
-/*import View.AdminPanelDocentesForm;*/
+import View.AdminPanelDocentesForm;
+import java.time.LocalDate;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -28,12 +29,12 @@ public class DocenteController {
     }
 
     private void initController() {
-/*
+
         adminPanelDocentes.getBtnAdd().addActionListener(e -> displayformDocenteCreate());
         adminPanelDocentes.getBtnUpdate().addActionListener(e -> displayformDocenteUpdate());
-        
-        adminPanelDocentes.getBtnSearch().addActionListener(e -> searchDocente()); 
-        adminPanelDocentes.getBtnDelete().addActionListener(e -> deleteDocente());*/
+        adminPanelDocentes.getBtnSearch().addActionListener(e -> searchDocente());
+        adminPanelDocentes.getBtnActivar().addActionListener(e -> setDocenteActive(true));
+        adminPanelDocentes.getBtnDesactivate().addActionListener(e -> setDocenteActive(false));
         loadDocentes();
     }
 
@@ -42,25 +43,71 @@ public class DocenteController {
             List<Docente> docentes = docenteDao.getAllDocentes();
 
             DefaultTableModel model = (DefaultTableModel) adminPanelDocentes.getTblDocentes().getModel();
-            model.setColumnIdentifiers(new Object[]{"ID", "Nombre", "Email", "Telefono", "Tutor Aula"});
+            model.setColumnIdentifiers(new Object[]{"ID", "Nombre", "Activo?", "Email", "Telefono", "Tutor Aula"});
             TableColumnModel columnModel = adminPanelDocentes.getTblDocentes().getColumnModel();
             columnModel.getColumn(0).setMaxWidth(100);
 
             model.setRowCount(0);
             for (Docente docente : docentes) {
-                model.addRow(new Object[]{docente.getId(), docente.getNombre(),docente.getEmail(), docente.getTelefono(), docente.getTutorAulaNombre()});
+                model.addRow(new Object[]{docente.getId(), docente.getNombre(), docente.isActive(), docente.getEmail(), docente.getTelefono(), docente.getTutorAulaNombre()});
             }
         } catch (Exception e) {
             principalController.displayErrorMessage("Error al cargar docentes: " + e.getMessage());
         }
     }
-    
-    /*
+
+    private void setDocenteActive(boolean is_Active) {
+        int rowIndex = this.adminPanelDocentes.getTblDocentes().getSelectedRow();
+        if (rowIndex == -1) {
+            System.out.println("No row selected");
+            return;
+        }
+
+        try {
+            int docenteId = Integer.parseInt(adminPanelDocentes.getTblDocentes().getValueAt(rowIndex, 0).toString());
+            docenteDao.setDocenteActive(docenteId, is_Active);
+            principalController.displaySucessMessage("Se actualizo el estado del docente: ");
+            loadDocentes();
+
+        } catch (Exception e) {
+            principalController.displayErrorMessage("Error al actualizar docente: " + e.getMessage());
+        }
+    }
+
     private void displayformDocenteCreate() {
-        AdminPanelDocentesForm formCreate = new AdminPanelDocentesForm(false);
-        fillComboBoxes(formCreate);
+        AdminPanelDocentesForm formCreate = new AdminPanelDocentesForm(true);
         this.principalController.showPanel(formCreate);
-        formCreate.getBtnSave().addActionListener(e -> addDocente(formCreate));
+        formCreate.getBtnGuardar().addActionListener(e -> addDocente(formCreate));
+    }
+
+    private void addDocente(AdminPanelDocentesForm form) {
+        Docente docente = new Docente(0,  
+                                        form.getTxtName().getText(), 
+                                        form.getTxtLastName().getText(),  
+                                        form.getTxtDni().getText(), 
+                                        form.getCbxSexo().getSelectedItem(), 
+                                        LocalDate.MIN, 
+                                        form.getTxtPhone().getText(), 
+                                        form.getTxtAddress().getText(), 
+                                        form.getTxtEmail().getText(), 
+                                        form.getTxtEmail().getText(), 
+                                        form.getPswPassword().getPassword(), 
+                                        'Docente', 
+                                        true, tutorAulaNombre);
+        try {
+            form.getTxtDni().getText();
+            form.getTxtName().setText(docente.getNombre());
+            form.getTxtLastName().setText(docente.getApellidos());
+            form.getJdcFechaNac().setDate(java.sql.Date.valueOf(docente.getFechaNacimiento()));
+            form.getCbxSexo().setSelectedItem(docente.getSexo());
+            form.getTxtAddress().setText(docente.getDireccion());
+            form.getTxtPhone().setText(docente.getTelefono());
+            form.getTxtEmail().setText(docente.getEmail());
+            form.getPswPassword().setText(docente.getPassword());
+            loadDocentes();
+        } catch (Exception e) {
+            principalController.displayErrorMessage("Error al añadir docente: " + e.getMessage());
+        }
     }
 
     private void displayformDocenteUpdate() {
@@ -80,53 +127,51 @@ public class DocenteController {
             }
 
             AdminPanelDocentesForm formUpdate = new AdminPanelDocentesForm(true);
-            fillComboBoxes(formUpdate);
 
-            formUpdate.getCbxGrado().setSelectedItem(docente.getGrado());
-            formUpdate.getCbxSeccion().setSelectedItem(docente.getSeccion());
-            formUpdate.getSpCupoDisponible().setValue(docente.getCupoDisponible());
+            formUpdate.getTxtDni().setText(docente.getDni());
+            formUpdate.getTxtName().setText(docente.getNombre());
+            formUpdate.getTxtLastName().setText(docente.getApellidos());
+            formUpdate.getJdcFechaNac().setDate(java.sql.Date.valueOf(docente.getFechaNacimiento()));
+            formUpdate.getCbxSexo().setSelectedItem(docente.getSexo());
+            formUpdate.getTxtAddress().setText(docente.getDireccion());
+            formUpdate.getTxtPhone().setText(docente.getTelefono());
+            formUpdate.getTxtEmail().setText(docente.getEmail());
+            formUpdate.getPswPassword().setText(docente.getPassword());
 
             this.principalController.showPanel(formUpdate);
-            formUpdate.getBtnSave().addActionListener(e -> updateDocente(formUpdate, docente.getID()));
+            formUpdate.getBtnGuardar().addActionListener(e -> updateDocente(formUpdate, docente.getId()));
 
         } catch (Exception e) {
             principalController.displayErrorMessage("Error al actualizar docente: " + e.getMessage());
         }
     }
 
-    private void fillComboBoxes(AdminPanelDocentesForm form) {
-        List<Grado> grados = docenteDao.getAllGrados();
-        List<Seccion> secciones = docenteDao.getAllSecciones();
-
-        form.getCbxGrado().removeAllItems();
-        form.getCbxSeccion().removeAllItems();
-
-        for (Grado grado : grados) {
-            form.getCbxGrado().addItem(grado);
-        }
-
-        for (Seccion seccion : secciones) {
-            form.getCbxSeccion().addItem(seccion);
-        }
+    private void updateDocente(AdminPanelDocentesForm form, int docenteId) {
     }
 
-    private void addDocente(AdminPanelDocentesForm form) {
+    private void searchDocente() {
+        String searchTerm = this.adminPanelDocentes.getTxtSearch().getText();
         try {
-            Grado grado = (Grado) form.getCbxGrado().getSelectedItem();
-            Seccion seccion = (Seccion) form.getCbxSeccion().getSelectedItem();
-            int cupoDisponible = (int) form.getSpCupoDisponible().getValue();
+            List<Docente> docentes = docenteDao.getDocentesByName(searchTerm);
 
-            Docente docente = new Docente(0, grado, seccion, cupoDisponible);
-            docenteDao.insertDocente(docente);
+            DefaultTableModel model = (DefaultTableModel) adminPanelDocentes.getTblDocentes().getModel();
+            model.setColumnIdentifiers(new Object[]{"ID", "Nombre", "Activo?", "Email", "Telefono", "Tutor Aula"});
+            TableColumnModel columnModel = adminPanelDocentes.getTblDocentes().getColumnModel();
+            columnModel.getColumn(0).setMaxWidth(100);
 
-            principalController.displaySucessMessage("Docente añadida con éxito");
-            principalController.showDocentePanel();
-            loadDocentes();
+            model.setRowCount(0);
+            for (Docente docente : docentes) {
+                model.addRow(new Object[]{docente.getId(), docente.getNombre(), docente.isActive(), docente.getEmail(), docente.getTelefono(), docente.getTutorAulaNombre()});
+            }
         } catch (Exception e) {
-            principalController.displayErrorMessage("Error al añadir docente: " + e.getMessage());
+            principalController.displayErrorMessage("Error al cargar docentes: " + e.getMessage());
         }
     }
 
+    /*
+    
+
+ 
     private void updateDocente(AdminPanelDocentesForm form, int docenteId) {
         try {
             Grado grado = (Grado) form.getCbxGrado().getSelectedItem();
@@ -142,37 +187,8 @@ public class DocenteController {
         }
     }
 
-    private void deleteDocente() {
-        System.out.println("Delete");
-        try {
-            for (int row : this.adminPanelDocentes.getTblDocentes().getSelectedRows()) {
-                int id = (int) this.adminPanelDocentes.getTblDocentes().getValueAt(row, 0);
-                if (docenteDao.deleteDocente(id)) {
-                    this.principalController.displaySucessMessage("Se elimino el id " + id);
-                } else {
-                    this.principalController.displayErrorMessage("Falló al eliminar el id " + id);
-                }
-            }
-        } catch (Exception e) {
-            this.principalController.displayErrorMessage("Ocurrio un error");
-        } finally {
-            loadDocentes();
-        }
-    }
+    
 
     /*
-    private void searchDocente() {
-        String searchTerm = this.adminPanelDocentes.getTxtSearch().getText(); 
-        try {
-            List<Docente> docentes = docenteDao.getDocentesByName(searchTerm);
-
-            DefaultTableModel model = (DefaultTableModel) adminPanelDocentes.getTblDocentes().getModel();
-            model.setRowCount(0);
-            for (Docente docente : docentes) {
-                model.addRow(new Object[]{docente.getID(), docente.getNombre(), docente.getDescripcion()});
-            }
-        } catch (Exception e) {
-            principalController.displayErrorMessage("Error al cargar docentes: " + e.getMessage());
-        }
-    }*/
+     */
 }

@@ -1,13 +1,14 @@
 package Dao;
 
-import Interface.RegistrarAlumnoDAO;
 import Model.RegistrarAlumno;
 import Model.DatabaseConnection;
 import java.sql.*;
 import java.util.List;
 import java.util.Random;
+import Interface.AlumnoDAO;
+import java.util.ArrayList;
 
-public class AlumnoDAOImpl implements RegistrarAlumnoDAO {
+public class AlumnoDAOImpl implements AlumnoDAO {
 
     @Override
     public boolean insertAlumno(RegistrarAlumno alumno) {
@@ -104,21 +105,21 @@ public class AlumnoDAOImpl implements RegistrarAlumnoDAO {
         }
         return gradoId;
     }
-    
-     private int getSeccionId(String seccion) throws SQLException { 
+
+    private int getSeccionId(String seccion) throws SQLException {
         int seccionid = 0;
         try (Connection connection = DatabaseConnection.getConnection(); PreparedStatement stmt = connection.prepareStatement("SELECT id FROM Seccion WHERE nombre = ?")) {
             stmt.setString(1, seccion);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     seccionid = rs.getInt("id");
-                     
+
                 }
             }
         }
         return seccionid;
     }
- 
+
     @Override
     public List<RegistrarAlumno> getAllAlumnos() {
         throw new UnsupportedOperationException("Not supported yet.");
@@ -137,5 +138,74 @@ public class AlumnoDAOImpl implements RegistrarAlumnoDAO {
     @Override
     public boolean deleteAlumno(String dni) {
         throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public List<String[]> getAlumnosInfo() {
+        List<String[]> alumnosInfo = new ArrayList<>();
+        String query = "SELECT p.*, au.nombre AS Aula "
+                + "FROM Persona p "
+                + "JOIN Usuario u ON p.id = u.id "
+                + "JOIN Rol r ON u.role_id = r.id "
+                + "JOIN PersonaAula pa ON p.id = pa.persona_id "
+                + "JOIN Aula au ON pa.aula_id = au.id "
+                + "WHERE r.nombre = 'alumno'";
+        try (Connection connection = DatabaseConnection.getConnection(); PreparedStatement stmt = connection.prepareStatement(query); ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                String[] alumnoInfo = new String[10];
+                alumnoInfo[0] = String.valueOf(rs.getInt("id"));
+                alumnoInfo[1] = rs.getString("nombre");
+                alumnoInfo[2] = rs.getString("apellidos");
+                alumnoInfo[3] = rs.getString("dni");
+                alumnoInfo[4] = rs.getString("sexo");
+                alumnoInfo[5] = String.valueOf(rs.getDate("fechaNacimiento"));
+                alumnoInfo[6] = rs.getString("telefono");
+                alumnoInfo[7] = rs.getString("direccion");
+                alumnoInfo[8] = rs.getString("email");
+                alumnoInfo[9] = rs.getString("Aula");
+
+                alumnosInfo.add(alumnoInfo);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return alumnosInfo;
+    }
+
+    @Override
+    public List<String[]> getAlumnosInfoByName(String nombre) {
+        List<String[]> alumnosInfo = new ArrayList<>();
+        String query = "SELECT p.*, au.nombre AS Aula "
+                + "FROM Persona p "
+                + "JOIN Usuario u ON p.id = u.id "
+                + "JOIN Rol r ON u.role_id = r.id "
+                + "JOIN PersonaAula pa ON p.id = pa.persona_id "
+                + "JOIN Aula au ON pa.aula_id = au.id "
+                + "WHERE r.nombre = 'alumno' AND p.nombre LIKE ?";
+        try (Connection connection = DatabaseConnection.getConnection(); PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setString(1, "%" + nombre + "%");
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    String[] alumnoInfo = new String[12];
+                    alumnoInfo[0] = String.valueOf(rs.getInt("id"));
+                    alumnoInfo[1] = rs.getString("nombre");
+                    alumnoInfo[2] = rs.getString("apellidos");
+                    alumnoInfo[3] = rs.getString("dni");
+                    alumnoInfo[4] = rs.getString("sexo");
+                    alumnoInfo[5] = String.valueOf(rs.getDate("fechaNacimiento"));
+                    alumnoInfo[6] = rs.getString("telefono");
+                    alumnoInfo[7] = rs.getString("direccion");
+                    alumnoInfo[8] = rs.getString("email");
+                    alumnoInfo[9] = rs.getString("Rol");
+                    alumnoInfo[10] = rs.getString("Aula");
+
+                    alumnosInfo.add(alumnoInfo);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return alumnosInfo;
     }
 }

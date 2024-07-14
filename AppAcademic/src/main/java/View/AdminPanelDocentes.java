@@ -26,21 +26,29 @@ public class AdminPanelDocentes extends javax.swing.JPanel {
                 + "arc:25");   
     }
 
+    public JButton getBtnActivar() {
+        return btnActivar;
+    }
+
     public JButton getBtnAdd() {
         return btnAdd;
     }
 
-    public JButton getBtnDelete() {
-        return btnDelete;
-    }
-
-    public JButton getBtnSearch() {
-        return btnSearch;
+    public JButton getBtnDesactivate() {
+        return btnDesactivate;
     }
 
     public JButton getBtnUpdate() {
         return btnUpdate;
     }
+
+    
+
+    public JButton getBtnSearch() {
+        return btnSearch;
+    }
+
+ 
 
     public JTable getTblDocentes() {
         return tblDocentes;
@@ -64,7 +72,8 @@ public class AdminPanelDocentes extends javax.swing.JPanel {
         tblDocentes = new javax.swing.JTable();
         btnAdd = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
+        btnDesactivate = new javax.swing.JButton();
+        btnActivar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(240, 243, 253));
         setPreferredSize(new java.awt.Dimension(815, 588));
@@ -133,11 +142,22 @@ public class AdminPanelDocentes extends javax.swing.JPanel {
         btnUpdate.setText("Editar");
         btnUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        btnDelete.setBackground(new java.awt.Color(255, 102, 102));
-        btnDelete.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
-        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
-        btnDelete.setText("Eliminar");
-        btnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDesactivate.setBackground(new java.awt.Color(255, 102, 102));
+        btnDesactivate.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        btnDesactivate.setForeground(new java.awt.Color(255, 255, 255));
+        btnDesactivate.setText("Desactivar");
+        btnDesactivate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btnActivar.setBackground(new java.awt.Color(56, 53, 122));
+        btnActivar.setFont(new java.awt.Font("Roboto", 0, 13)); // NOI18N
+        btnActivar.setForeground(new java.awt.Color(255, 255, 255));
+        btnActivar.setText("Activar");
+        btnActivar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnActivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActivarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -153,11 +173,13 @@ public class AdminPanelDocentes extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(panelSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAdd)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnUpdate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnActivar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnDesactivate)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -169,9 +191,10 @@ public class AdminPanelDocentes extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(panelSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnDelete)
+                        .addComponent(btnDesactivate)
                         .addComponent(btnAdd)
-                        .addComponent(btnUpdate)))
+                        .addComponent(btnUpdate)
+                        .addComponent(btnActivar)))
                 .addGap(18, 18, 18)
                 .addComponent(jpanel, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
                 .addContainerGap())
@@ -189,11 +212,16 @@ public class AdminPanelDocentes extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnActivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActivarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnActivarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Titulo;
+    private javax.swing.JButton btnActivar;
     private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnDesactivate;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JPanel jPanel1;

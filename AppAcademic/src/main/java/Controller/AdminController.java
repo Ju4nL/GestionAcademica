@@ -12,6 +12,7 @@ public class AdminController {
     private DocenteController docenteController;
     private VacanteController vacanteController;  
     private SolicitudesController solicitudController; 
+    private AlumnoController  alumnoController; 
 
     public AdminController(AdminHomeFrame adminHomeFrame) {
         this.adminHomeFrame = adminHomeFrame; 
@@ -24,6 +25,9 @@ public class AdminController {
         
         solicitudController = new SolicitudesController(this);
         adminHomeFrame.getBtnSolicitudes().addActionListener(e -> solicitudController.loadSolicitudes());
+        
+        alumnoController = new AlumnoController(this);
+        adminHomeFrame.getBtnAlumnos().addActionListener(e -> alumnoController.loadAlumnos());
         
         cursoController = new CursoController(this);
         adminHomeFrame.getBtnCursos().addActionListener(e -> cursoController.loadCursos());
@@ -51,6 +55,8 @@ public class AdminController {
         adminHomeFrame.getBtnVacantes().setBackground(new Color(240, 243, 253));
         adminHomeFrame.getBtnCursos().setBackground(new Color(255, 255, 255));
         adminHomeFrame.getBtnSolicitudes().setBackground(new Color(255, 255, 255));
+        adminHomeFrame.getBtnDocentes().setBackground(new Color(255, 255, 255));
+        adminHomeFrame.getBtnAlumnos().setBackground(new Color(255, 255, 255));
          
     }
     
@@ -59,6 +65,26 @@ public class AdminController {
         adminHomeFrame.getBtnVacantes().setBackground(new Color(255, 255, 255));
         adminHomeFrame.getBtnCursos().setBackground(new Color(255, 255, 255));
         adminHomeFrame.getBtnSolicitudes().setBackground(new Color(240, 243, 253));
+        adminHomeFrame.getBtnDocentes().setBackground(new Color(255, 255, 255));
+        adminHomeFrame.getBtnAlumnos().setBackground(new Color(255, 255, 255));
+         
+    }
+      public void showDocentesPanel() { 
+        showPanel(docenteController.getAdminPanelDocentes());
+        adminHomeFrame.getBtnVacantes().setBackground(new Color(255, 255, 255));
+        adminHomeFrame.getBtnCursos().setBackground(new Color(255, 255, 255));
+        adminHomeFrame.getBtnSolicitudes().setBackground(new Color(255, 255, 255));
+        adminHomeFrame.getBtnDocentes().setBackground(new Color(240, 243, 253));
+        adminHomeFrame.getBtnAlumnos().setBackground(new Color(255, 255, 255));
+         
+    }
+     public void showAlumnosPanel() { 
+        showPanel(alumnoController.getAdminPanelCursos());
+        adminHomeFrame.getBtnVacantes().setBackground(new Color(255, 255, 255));
+        adminHomeFrame.getBtnCursos().setBackground(new Color(255, 255, 255));
+        adminHomeFrame.getBtnSolicitudes().setBackground(new Color(255, 255, 255));
+        adminHomeFrame.getBtnDocentes().setBackground(new Color(255, 255, 255));
+        adminHomeFrame.getBtnAlumnos().setBackground(new Color(240, 243, 253));
          
     }
     
@@ -67,6 +93,8 @@ public class AdminController {
         adminHomeFrame.getBtnVacantes().setBackground(new Color(255, 255, 255));
         adminHomeFrame.getBtnCursos().setBackground(new Color(240, 243, 253));
         adminHomeFrame.getBtnSolicitudes().setBackground(new Color(255, 255, 255));
+        adminHomeFrame.getBtnDocentes().setBackground(new Color(255, 255, 255));
+        adminHomeFrame.getBtnAlumnos().setBackground(new Color(255, 255, 255));
     }
      
    public void displayErrorMessage(String message){
