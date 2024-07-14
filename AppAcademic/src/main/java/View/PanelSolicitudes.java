@@ -4,21 +4,22 @@
  */
 package View;
 
+import Controller.SolicitudesController;
 import com.formdev.flatlaf.FlatClientProperties;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
-/**
- *
- * @author LOZADA
- */
-public class PanelSolicitudes extends javax.swing.JPanel {
-
  
-    public PanelSolicitudes(boolean is_admin) { 
+public class PanelSolicitudes extends javax.swing.JPanel {
+    private SolicitudesController controller; 
+ 
+    public PanelSolicitudes(boolean is_admin,SolicitudesController controller) { 
+        this.controller=controller;
         initComponents(); 
         configureButtons(is_admin);
     }
+    
     private void configureButtons(boolean is_admin) {
         if (is_admin) {
             btnAprobar.setVisible(true);
@@ -53,7 +54,13 @@ public class PanelSolicitudes extends javax.swing.JPanel {
         return tblSolicitudes;
     }
     
-     
+     public void displayErrorMessage(String message){
+        JOptionPane.showMessageDialog(this, message, "Error Login", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    public void displaySucessMessage(String message){
+        JOptionPane.showMessageDialog(this, message);
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

@@ -12,7 +12,7 @@ public class SolicitudVacanteDAOImpl implements SolicitudVacanteDAO {
     @Override
     public List<String[]> getAllSolicitudes() {
         List<String[]> solicitudes = new ArrayList<>();
-        String query = "SELECT s.id, CONCAT('Solicitud', s.id) as nombre, g.nombre as grado, s2.nombre as seccion, s.estado, s.fechaSolicitud " +
+        String query = "SELECT s.id,g.nombre as grado, s2.nombre as seccion, s.estado, s.fechaSolicitud " +
                        "FROM SolicitudVacante s " +
                        "LEFT JOIN Grado g ON s.grado_id = g.id " +
                        "LEFT JOIN Seccion s2 ON s.seccion_id = s2.id";
@@ -24,11 +24,10 @@ public class SolicitudVacanteDAOImpl implements SolicitudVacanteDAO {
             while (rs.next()) {
                 String[] solicitud = new String[6];
                 solicitud[0] = String.valueOf(rs.getInt("id"));
-                solicitud[1] = rs.getString("nombre");
-                solicitud[2] = rs.getString("grado");
-                solicitud[3] = rs.getString("seccion");
-                solicitud[4] = rs.getString("estado");
-                solicitud[5] = rs.getString("fechaSolicitud").toString();
+                solicitud[1] = rs.getString("grado");
+                solicitud[2] = rs.getString("seccion");
+                solicitud[3] = rs.getString("estado");
+                solicitud[4] = rs.getString("fechaSolicitud").toString();
                 solicitudes.add(solicitud);
             }
 
@@ -41,7 +40,7 @@ public class SolicitudVacanteDAOImpl implements SolicitudVacanteDAO {
     @Override
     public List<String[]> getSolicitudesByPadreId(int padreId) {
         List<String[]> solicitudes = new ArrayList<>();
-        String query = "SELECT s.id, CONCAT('Solicitud', s.id) as nombre, g.nombre as grado, s2.nombre as seccion, s.estado, s.fechaSolicitud " +
+        String query = "SELECT s.id, g.nombre as grado, s2.nombre as seccion, s.estado, s.fechaSolicitud " +
                        "FROM SolicitudVacante s " +
                        "LEFT JOIN Grado g ON s.grado_id = g.id " +
                        "LEFT JOIN Seccion s2 ON s.seccion_id = s2.id " +
@@ -55,12 +54,11 @@ public class SolicitudVacanteDAOImpl implements SolicitudVacanteDAO {
 
             while (rs.next()) {
                 String[] solicitud = new String[6];
-                solicitud[0] = String.valueOf(rs.getInt("id"));
-                solicitud[1] = rs.getString("nombre");
-                solicitud[2] = rs.getString("grado");
-                solicitud[3] = rs.getString("seccion");
-                solicitud[4] = rs.getString("estado");
-                solicitud[5] = rs.getString("fechaSolicitud").toString();
+                solicitud[0] = String.valueOf(rs.getInt("id")); 
+                solicitud[1] = rs.getString("grado");
+                solicitud[2] = rs.getString("seccion");
+                solicitud[3] = rs.getString("estado");
+                solicitud[4] = rs.getString("fechaSolicitud").toString();
                 solicitudes.add(solicitud);
             }
 
